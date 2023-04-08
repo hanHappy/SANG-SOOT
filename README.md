@@ -1,0 +1,2 @@
+# SANG-SOOT
+Mini-Project
