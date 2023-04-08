@@ -22,9 +22,11 @@ export default class BattleScenario {
 
     // index
     this.#scenIndex = 0;
+
+    //
   }
 
-  draw(ctx, index) {
+  draw(ctx) {
     let x = this.imgX;
     let y = this.imgY;
     let w = this.imgW;
@@ -34,6 +36,8 @@ export default class BattleScenario {
     let img1 = this.#img1;
     let img2 = this.#img2;
     let img3 = this.#img3;
+
+    let index = this.#scenIndex;
 
     switch (index) {
       case 0:
@@ -48,12 +52,22 @@ export default class BattleScenario {
       case 3:
         ctx.drawImage(img3, x, y, w, h);
         break;
+      case 4:
+        this.#scenIndex = false;
+        break;
     }
   }
 
-  //인덱스 추가시마다가 다음 이미지 보여주게?
-  scenario() {
+  // getIndex(){
+  //   return this.#scenIndex;
+  // }
+
+  get scenIndex() {
+    return this.#scenIndex;
+  }
+
+  scenario(ctx) {
     this.#scenIndex++;
-    this.draw(this.#scenIndex);
+    this.draw(ctx);
   }
 }

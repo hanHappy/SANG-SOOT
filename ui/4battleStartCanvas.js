@@ -5,6 +5,7 @@ export default class BattleStartCanvas {
   #battleStartCanvas;
   #battleStartCtx;
   #battleScenario;
+  #playStop;
 
   constructor() {
     //canvas
@@ -18,12 +19,15 @@ export default class BattleStartCanvas {
     // obj -> scenario
     this.#battleScenario = new BattleScenario();
 
-    //click event
+    // click event
     this.#battleStartCanvas.onclick = this.clickHandler.bind(this);
+
+    // play
+    this.#playStop = this.#battleScenario.scenIndex;
   }
 
   clickHandler(e) {
-    this.#battleScenario.scenario();
+    this.#battleScenario.scenario(this.#battleStartCtx);
   }
 
   run() {
