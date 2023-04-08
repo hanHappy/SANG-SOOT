@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'dgm';
+    src: url('/css/DungGeunMo.ttf') format('truetype');
+}
+body{
+    margin: 0;
+}
+.d-none{
+    display: none;
+}
