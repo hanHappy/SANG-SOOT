@@ -1,6 +1,5 @@
-// import SlotBtn from "/../1slotItem/1SlotGameBtn.js";
 import SlotResult from "../1slotItem/1slotResult.js";
-import SlotReel from "../1slotItem/1SlotReel.js";
+import SlotReel from "../1slotItem/1slotReel.js";
 import SlotGauge from "../1slotItem/1slotGauge.js";
 import SlotFrame from "../1slotItem/1slotFrame.js";
 import SlotBG from "../1slotItem/1slotBG.js";
@@ -15,7 +14,6 @@ export default class SlotCanvas {
     #reelsImgs
     #img;
     #reels;
-    #spinBtn;
     #stopBtn1;
     #stopBtn2;
     #stopBtn3;
@@ -23,6 +21,8 @@ export default class SlotCanvas {
     #slotRsult
     #passImg;
     #failImg;
+    #stopBtn;
+    #spinBtn;
     
 
     // canvas ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -33,13 +33,6 @@ export default class SlotCanvas {
 
         this.#canvas.width = 1150; // 캔버스 사이즈 설정
         this.#canvas.height = 820;
-
-        // this.#spinBtn = document.getElementById("spinBtn"); // spin버튼 가져오기
-        // this.#spinBtn.addEventListener("click", () => {
-        //     // for (let reels of this.#reels) {
-        //     //     reels.update();
-        //     // }
-        // });
 
 
         // backgrouund ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -57,58 +50,38 @@ export default class SlotCanvas {
             new SlotReel(669)
         ];  // 배열에 3개의 객체 생성 (3개의 릴 인스턴스 생성)
         
+        // console.log(this.#reels.length);
+        // this.#canvas.style.backgroundImage = document.getElementById("BG");
         
-        // console.log("위");
-        // this.#reels = new SlotReels(3);
-        // console.log("아래");
-        console.log(this.#reels[0]);
-
  
 //test ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
         this.#slotRsult = new SlotResult()
-
         this.#passImg = document.getElementById("pass");
         this.#failImg = document.getElementById("fail");
 
 
         // spinButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-        this.#spinBtn = false;
+
         
         this.#spinBtn = document.getElementById("spinBtn");
-        this.#spinBtn.addEventListener("click", () => {
-            this.#stopBtn1 = false;
-            this.#stopBtn2 = false;
-            this.#stopBtn3 = false;
-            this.#spinBtn = true;
-            // spinReelsbtn();
-        });
-        
+        this.#spinBtn.addEventListener("click", ()=> {this.spinClick()})
+
         
         // stopButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-        this.#stopBtn1 = false;
-        this.#stopBtn2 = false;
-        this.#stopBtn3 = false;
 
+        
         this.#stopBtn1 = document.getElementById("stop1");
-        this.#stopBtn1.addEventListener("click", () => {
-            this.#stopBtn1 = true;
-        });
+        this.#stopBtn1.addEventListener("click", ()=> {this.stopClick0()});
 
         this.#stopBtn2 = document.getElementById("stop2");
-        this.#stopBtn2.addEventListener("click", () => {
-            this.#stopBtn2 = true;
-        });
+        this.#stopBtn2.addEventListener("click", ()=> {this.stopClick1()});
 
         this.#stopBtn3 = document.getElementById("stop3");
-        this.#stopBtn3.addEventListener("click", () => {
-            this.#stopBtn3 = true;
-        });
+        this.#stopBtn3.addEventListener("click", ()=> {this.stopClick2()});
 
 
-
-
-    }
+    } // constrctor
 
 
 
@@ -125,56 +98,92 @@ export default class SlotCanvas {
 
     update() { // 변할 때
             this.#slotGauge.update();
-        // if (this.#spinBtn == true) {
         // 속성에있는 객체의 함수를 호출 할 때 this.#slotGauge() / this,#을 활용
-        // this.#SlotReels.update();
-        // }
+
     }
 
+    
     paint() {
         this.#slotBG.draw(this.#ctx); // BG객체의 draw함수 호출
         this.#slotFrame.draw(this.#ctx);
         this.#slotGauge.draw(this.#ctx);
 
-        //스핀버튼 클릭하면 게임이 실행된다
-        if (this.#spinBtn == true) {
-            for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 스핀 호출
-                reel.spin(this.#ctx);
-                // this.#slotGauge.draw(this.#ctx);
-            }
-            // this.#spinBtn == false
+        for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 spin 호출
+            reel.spin(this.#ctx);
         }
-        // console.log(this.#spinBtn);
 
-        if(this.#stopBtn1 == true){
-            // this.#spinBtn = false;
+        for(let reel of this.#reels){
+            reel.stop(this.#ctx)
+        }
+
+            
+
+
+    }// print
+
+    spinClick(){
+        console.log("x")
+        for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 spin 호출
+            reel.spinCk();
+        }
+    }
+
+
+    stopClick0(){
+        // spinReelsbtn();
+            this.#reels[0].stopCk();
             this.#reels[0].stop(this.#ctx);
-        }
-        
-        if(this.#stopBtn2 == true){
-            this.#reels[1].stop(this.#ctx);
-        }
-        
-        if(this.#stopBtn3 == true){
-            this.#reels[2].stop(this.#ctx);
-            this.#spinBtn = false;
+    }
 
+    stopClick1(){
+        this.#reels[1].stopCk();
+        this.#reels[1].stop(this.#ctx)
+    }
 
+    stopClick2(){
+        this.#reels[2].stopCk();
+        this.#reels[2].stop(this.#ctx);
+    }
 
-        if(this.#reels[0] == this.#reels[1] && this.#reels[1] == this.#reels[2]){
-            // this.#slotRsult.passDraw(this.ctx);
-            this.#ctx.drawImage(this.#passImg, 100, 100, 300, 100);
-        } else {
-            // this.#slotRsult.failDraw(this.ctx);
-            this.#ctx.drawImage(this.#failImg, 100, 100, 300, 100);
-        }
-
-        // console.log(this.#reels[0]);
             
             // setTimeout(() => {
             // }, 2000);
-        }
-    }
+        // }
+    // } // paint()
+
+
     
-    // paint();
-}
+
+}// class
+
+
+
+
+        // stopBtn()
+        // stopBtn(){
+        //     console.log("stopBtn");
+        //     if(this.#stopBtn1 == true){
+        //         // this.#spinBtn = false;
+        //         this.#reels[0].stop(this.#ctx);
+        //     }
+            
+        //     if(this.#stopBtn2 == true){
+        //         this.#reels[1].stop(this.#ctx);
+        //     }
+            
+        //     if(this.#stopBtn3 == true){
+        //         this.#reels[2].stop(this.#ctx);
+        //         this.#spinBtn = false;
+                
+
+
+
+        //     if(this.#reels[0] == this.#reels[1] && this.#reels[1] == this.#reels[2]){
+        //         // this.#slotRsult.passDraw(this.ctx);
+        //         this.#ctx.drawImage(this.#passImg, 100, 100, 300, 100);
+        //         } else {
+        //             // this.#slotRsult.failDraw(this.ctx);
+        //             this.#ctx.drawImage(this.#failImg, 100, 100, 300, 100);
+        //         }
+        //     }
+        // }

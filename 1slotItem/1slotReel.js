@@ -6,7 +6,10 @@ export default class SlotReel{
     #h;
     #reelsImgs;
     #stopImg;
-    #spinBtn;
+    #stop;
+    #spin;
+    #index;
+    #randNums;
 
 
 
@@ -20,49 +23,93 @@ export default class SlotReel{
         }  // 반복으로 배열에 이미지를 담는다
 
 
-        
         // this.#img = this.#img;
         this.#x = x;
         this.#y = 284;
         this.#w = 213;
         this.#h = 213;
-        this.#stopImg = this.#img[Math.floor(Math.random() * this.#img.length)];
+        // this.#stopImg = this.#img[Math.floor(Math.random() * this.#img.length)];
         // 멈춘 이미지를 랜덤으로 선택하여 저장
 
-
-
+        this.#spin = false;
+        this.#stop = false;
         //test ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         console.log(this.#x, this.#y, this.#w, this.#h);
         console.log(this.#img);
+
+        // this.#rand = Math.floor(Math.random() * 2) + 1;
+        // this.#randArr = this.#randArr[this.#rand];
+        // console.log(this.#randArr);
+
+        this.#index = 0;
+        this.#randNums = new Array(50); //값 30개 배열 생성
+        for(let i=0; i<this.#randNums.length; i++){
+            this.#randNums[i] = Math.floor(Math.random() * 5);
+        }
     }
+    
     
     spin(ctx){
-        let random = Math.floor(Math.random() * this.#img.length);
-        let img = this.#img[random];
-        // let img = this.#img[4];
-        let x = this.#x;
-        let y = this.#y;
-        let w = this.#w;
-        let h = this.#h;
-        ctx.drawImage(img, x, y, w, h);
+        if(this.#spin){
+            // let img = this.#img[4];
+            let random = Math.floor(Math.random() * this.#img.length);
+            let img = this.#img[random];
+            let x = this.#x;
+            let y = this.#y;
+            let w = this.#w;
+            let h = this.#h;
+            ctx.drawImage(img, x, y, w, h);
+
+            this.#stop = false;
+        }
     }
-    
+//속성을 함수 내부 변수로
     stop(ctx){
-        // this.#stopImg = this.#img[Math.floor(Math.random() * this.#img.length)];
-        
-        let img = this.#stopImg;
-        // let img = this.#img[Math.floor(Math.random() * this.#img.length)];
-        let x = this.#x;
-        let y = this.#y;
-        let w = this.#w;
-        let h = this.#h;
-        ctx.drawImage(img, x, y, w, h);
+        if(this.#stop){
+            let index = this.#index;
+            let randNums = this.#randNums[index];
+            // console.log(randNums);
+            let img = this.#img[randNums];
+            let x = this.#x;
+            let y = this.#y;
+            let w = this.#w;
+            let h = this.#h;
+
+            ctx.drawImage(img, x, y, w, h);
+            this.#spin = false;
+            
+         }   
+    }
+
+    spinCk(){
+        this.#spin = true;
+        this.#index++;
+    }
 
 
-        console.log(img);
+    stopCk(){
+        this.#stop = true;
+        // this.#spin = false;
     }
 
 
 
     
-}
+}// class
+
+
+
+
+    // stop(ctx){
+    //     // this.#stopImg = this.#img[Math.floor(Math.random() * this.#img.length)];
+        
+    //     let img = this.#stopImg;
+    //     // let img = Math.floor(Math.random() * this.#img.length);
+    //     let x = this.#x;
+    //     let y = this.#y;
+    //     let w = this.#w;
+    //     let h = this.#h;
+    //     ctx.drawImage(img, x, y, w, h);
+
+    //     console.log(img);
+    // }
