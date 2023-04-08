@@ -17,7 +17,7 @@ export default class BattleStartCanvas {
     this.#battleStartCanvas.height = 820;
 
     // obj -> scenario
-    this.#battleScenario = new BattleScenario();
+    this.#battleScenario = new BattleScenario(this.#battleStartCanvas);
 
     // click event
     this.#battleStartCanvas.onclick = this.clickHandler.bind(this);
@@ -27,7 +27,10 @@ export default class BattleStartCanvas {
   }
 
   clickHandler(e) {
-    this.#battleScenario.scenario(this.#battleStartCtx);
+    this.#battleScenario.scenario(
+      this.#battleStartCtx,
+      this.#battleStartCanvas
+    );
   }
 
   run() {
@@ -35,6 +38,6 @@ export default class BattleStartCanvas {
   }
 
   paint() {
-    this.#battleScenario.draw(this.#battleStartCtx, 0);
+    this.#battleScenario.draw(this.#battleStartCtx);
   }
 }

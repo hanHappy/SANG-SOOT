@@ -5,9 +5,10 @@ export default class BattleScenario {
   #img1;
   #img2;
   #img3;
+  #img4;
   #scenIndex;
 
-  constructor() {
+  constructor(canvas) {
     //대화 이미지 가져오기(변수명 다다르게 가져와야하나?)
     // this.#img1 = document.getElementById("effect1");
     // this.#img2 = document.getElementById("effect2");
@@ -15,6 +16,9 @@ export default class BattleScenario {
     this.#img1 = document.getElementById("talk2");
     this.#img2 = document.getElementById("talk3");
     this.#img3 = document.getElementById("talk4");
+    this.#img4 = document.getElementById("rule");
+
+    this.canvas = canvas;
 
     // 이미지 크기
     this.imgX = 0;
@@ -36,8 +40,10 @@ export default class BattleScenario {
     let img1 = this.#img1;
     let img2 = this.#img2;
     let img3 = this.#img3;
+    let img4 = this.#img4;
 
     let index = this.#scenIndex;
+    let canvas = this.canvas;
 
     switch (index) {
       case 0:
@@ -53,6 +59,10 @@ export default class BattleScenario {
         ctx.drawImage(img3, x, y, w, h);
         break;
       case 4:
+        ctx.drawImage(img4, x, y, w, h);
+        break;
+      case 5:
+        canvas.style.display = "none";
         let battleGameCanvas = new BattleGameCanvas();
         battleGameCanvas.run();
         break;
