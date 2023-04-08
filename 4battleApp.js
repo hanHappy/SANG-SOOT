@@ -7,11 +7,7 @@ window.onload = function () {
   let battleStartCanvas = new BattleStartCanvas();
   battleStartCanvas.run();
 
-  let playStop = battleStartCanvas.playStop;
-
-  if (playStop == false) {
-    //게임
-    let battleGameCanvas = new BattleGameCanvas();
-    battleGameCanvas.run();
-  }
+  // //게임
+  // let battleGameCanvas = new BattleGameCanvas();
+  // battleGameCanvas.run();
 };

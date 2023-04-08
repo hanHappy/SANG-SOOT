@@ -1,3 +1,5 @@
+import BattleGameCanvas from "../ui/4battleGameCanvas.js";
+
 export default class BattleScenario {
   #img0;
   #img1;
@@ -22,8 +24,6 @@ export default class BattleScenario {
 
     // index
     this.#scenIndex = 0;
-
-    //
   }
 
   draw(ctx) {
@@ -53,14 +53,11 @@ export default class BattleScenario {
         ctx.drawImage(img3, x, y, w, h);
         break;
       case 4:
-        this.#scenIndex = false;
+        let battleGameCanvas = new BattleGameCanvas();
+        battleGameCanvas.run();
         break;
     }
   }
-
-  // getIndex(){
-  //   return this.#scenIndex;
-  // }
 
   get scenIndex() {
     return this.#scenIndex;
