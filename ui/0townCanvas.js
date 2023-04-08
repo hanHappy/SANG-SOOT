@@ -35,26 +35,62 @@ export default class TownCanvas {
             new Restaurant("동강학식", 4, 0, 557, 520),
             new Restaurant("영남식당", 5, 0, 760, 520)
         ]
-        // 식당 메뉴
-        this.#rstrnts[0].menus.name.push("짜장면", "짬뽕", "볶음밥");
-        this.#rstrnts[0].menus.price.push(4000, 5000, 5000);
-        this.#rstrnts[0].menus.ratedPrice.push(4000, 5000, 5000);
-        for (let i = 0; i < this.#rstrnts[0].menus.name.length; i++) {
-            let rp = this.#rstrnts[0].menus.ratedPrice[i];
-            let p = this.#rstrnts[0].menus.price[i];
-            this.#rstrnts[0].menus.value.push(Math.floor( rp / p * 100));
+        // 식당 메뉴 --------------------------------------------------------
+        {
+            // 짜장상회
+            let menus = this.#rstrnts[0].menus;
+            menus.name.push("짜장면", "짬뽕", "볶음밥", "짬짜면", "해물볶음짬뽕", "쟁반짜장", "우동");
+            menus.price.push(5000, 6000, 6500, 7500, 8500, 8500, 6000);
+            menus.ratedPrice.push(5000, 6000, 6500, 7500, 8500, 8500, 6000);
         }
-        this.#rstrnts[1].menus.name.push("소세지로제덮밥", "도란도란", "삼겹살카레");
-        this.#rstrnts[1].menus.price.push(8400, 7900, 7900);
-        this.#rstrnts[1].menus.ratedPrice.push(8400, 7900, 7900);
-        for (let i = 0; i < this.#rstrnts[1].menus.name.length; i++) {
-            this.#rstrnts[1].menus.value.push(Math.floor(this.#rstrnts[1].menus.ratedPrice[i] / this.#rstrnts[1].menus.price[i] * 100));
+        {
+            // 뜸들이다
+            let menus = this.#rstrnts[1].menus;
+            menus.name.push("소세지로제덮밥", "도란도란", "삼겹살카레", "소세지카레", "어깨살간장덮밥", "간장계란밥", "매콤꼬막덮밥");
+            menus.price.push(8400, 7900, 7900, 8400, 7400, 4400, 8900);
+            menus.ratedPrice.push(8400, 7900, 7900, 8400, 7400, 4400, 8900);
         }
-        this.#rstrnts[2].menus.name.push("차돌뚝배기카레", "돈까스카레", "수제기본카레");
-        this.#rstrnts[2].menus.price.push(11000, 10900, 7000);
-        this.#rstrnts[2].menus.ratedPrice.push(11000, 10900, 7000);
-        for (let i = 0; i < this.#rstrnts[2].menus.name.length; i++) {
-            this.#rstrnts[2].menus.value.push(Math.floor(this.#rstrnts[2].menus.ratedPrice[i] / this.#rstrnts[2].menus.price[i] * 100));
+        {
+            // 거북이의주방
+            let menus = this.#rstrnts[2].menus;
+            menus.name.push("차돌뚝배기카레", "돈까스카레", "모듬버섯카레", "소세지카레", "치킨가라아게카레", "왕새우카레", "고로케카레");
+            menus.price.push(11000, 10900, 8500, 9900, 9900, 9900, 9900);
+            menus.ratedPrice.push(11000, 10900, 8500, 9900, 9900, 9900, 9900);
+        }
+        {
+            // 마포쌈밥식당
+            let menus = this.#rstrnts[3].menus;
+            menus.name.push("쌈밥정식");
+            menus.price.push(9000);
+            menus.ratedPrice.push(9000);
+        }
+        {
+            // 동강학식
+            let menus = this.#rstrnts[4].menus;
+            menus.name.push("떡볶이", "돈까스", "우정라면", "자율한식");
+            menus.price.push(5000, 4800, 3500, 5500);
+            menus.ratedPrice.push(5000, 4800, 3500, 5500);
+        }
+        {
+            // 영남식당
+            let menus = this.#rstrnts[5].menus;
+            menus.name.push("제육볶음", "부대찌개", "뚝불", "김치찌개", "순두부", "떡만두국");
+            menus.price.push(7000, 7000, 7000, 7000, 7000, 7000);
+            menus.ratedPrice.push(7000, 7000, 7000, 7000, 7000, 7000);
+        }
+
+        // 각 식당 가성비 계산
+        for(let j = 0; j < 6; j++){
+            let rstrnt = this.#rstrnts[j];
+            let menuNums = rstrnt.menus.name.length;
+            let menusValue = rstrnt.menus.value;
+            for(let i = 0; i < menuNums; i++){
+                let p = rstrnt.menus.price[i];
+                let rp = rstrnt.menus.ratedPrice[i];
+                let value = Math.floor(rp/p*100);
+                menusValue.push(value);
+            }
+            console.log(rstrnt);
         }
 
         // User
@@ -125,6 +161,7 @@ export default class TownCanvas {
         this.#user.draw(this.#ctx);
     }
 
+    // run --------------------------------------------------------------------
     run() {
         this.#tid = setInterval(() => {
             this.update();
