@@ -62,7 +62,7 @@ export default class BattleScenario {
         ctx.drawImage(img4, x, y, w, h);
         break;
       case 5:
-        canvas.style.display = "none";
+        canvas.remove();
         let battleGameCanvas = new BattleGameCanvas();
         battleGameCanvas.run();
         break;

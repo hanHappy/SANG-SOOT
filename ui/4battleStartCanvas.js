@@ -1,11 +1,16 @@
-import BattleScenario from "../item/4battleScenario.js";
+import BattleGameCanvas from "./4battleGameCanvas.js";
 
 export default class BattleStartCanvas {
-  #tid; //timeId
+  #tid;
   #battleStartCanvas;
   #battleStartCtx;
-  #battleScenario;
-  #playStop;
+  #scenIndex;
+  #img;
+  #images;
+  #imgX;
+  #imgY;
+  #imgW;
+  #imgH;
 
   constructor() {
     //canvas
@@ -13,24 +18,32 @@ export default class BattleStartCanvas {
     this.#battleStartCtx = this.#battleStartCanvas.getContext("2d");
     document.body.append(this.#battleStartCanvas);
 
+    // size
     this.#battleStartCanvas.width = 1150;
     this.#battleStartCanvas.height = 820;
 
-    // obj -> scenario
-    this.#battleScenario = new BattleScenario(this.#battleStartCanvas);
+    this.#imgX = 0;
+    this.#imgY = 0;
+    this.#imgW = 1150;
+    this.#imgH = 820;
 
     // click event
     this.#battleStartCanvas.onclick = this.clickHandler.bind(this);
 
-    // play
-    this.#playStop = this.#battleScenario.scenIndex;
+    // index
+    this.#scenIndex = 0;
+
+    // img
+    this.#images = new Array(5);
+
+    for (let i = 0; i < this.#images.length; i++) {
+      this.#images[i] = document.getElementById(`talk${i}`);
+    }
   }
 
   clickHandler(e) {
-    this.#battleScenario.scenario(
-      this.#battleStartCtx,
-      this.#battleStartCanvas
-    );
+    this.#scenIndex++;
+    if (this.#scenIndex < 5) this.paint();
   }
 
   run() {
@@ -38,6 +51,25 @@ export default class BattleStartCanvas {
   }
 
   paint() {
-    this.#battleScenario.draw(this.#battleStartCtx);
+    let imgX = this.#imgX;
+    let imgY = this.#imgY;
+    let imgW = this.#imgW;
+    let imgH = this.#imgH;
+
+    this.#battleStartCtx.drawImage(
+      this.#images[this.#scenIndex],
+      imgX,
+      imgY,
+      imgW,
+      imgH
+    );
+  }
+
+  get startCanvas() {
+    return this.#battleStartCanvas;
+  }
+
+  get scenIndex() {
+    return this.#scenIndex;
   }
 }
