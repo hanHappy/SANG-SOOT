@@ -49,9 +49,6 @@ export default class Restaurant {
     // 정보 그리기
     drawInfo(ctx) {
         if(this.#mouseover){
-            ctx.font = '100px dgm';
-            let hi = "안녕하세요"
-            ctx.fillText(`${hi}`, 10, 100);
             let img = this.#infoImg;
             let x = this.#infoX
             let y = this.#infoY;

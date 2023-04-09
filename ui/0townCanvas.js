@@ -1,3 +1,4 @@
+import RestaurantCanvas from "./0restaurantCanvas.js";
 import TownBackground from "../background/0townBG.js";
 import Restaurant from "../items/0restaurant.js";
 import User from "../items/0user.js";
@@ -80,16 +81,17 @@ export default class TownCanvas {
         }
 
         // 각 식당 가성비 계산
-        for(let j = 0; j < 6; j++){
+        for (let j = 0; j < 6; j++) {
             let rstrnt = this.#rstrnts[j];
             let menuNums = rstrnt.menus.name.length;
             let menusValue = rstrnt.menus.value;
-            for(let i = 0; i < menuNums; i++){
+            for (let i = 0; i < menuNums; i++) {
                 let p = rstrnt.menus.price[i];
                 let rp = rstrnt.menus.ratedPrice[i];
-                let value = Math.floor(rp/p*100);
+                let value = Math.floor(rp / p * 100);
                 menusValue.push(value);
             }
+            // test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
             console.log(rstrnt);
         }
 
@@ -118,7 +120,6 @@ export default class TownCanvas {
     }
     // 클릭 - 유저 이동 ----------------------------------------------------------
     click(e) {
-        console.log(this.#rstrnts[0]);
         let user = this.#user;
         let mx = e.offsetX;
         let my = e.offsetY;
@@ -131,6 +132,9 @@ export default class TownCanvas {
                 let arrivalY = (rstrnt.y + rstrnt.h);
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
+                // 레스토랑캔버스 전역변수에 할당
+                RestaurantCanvas.x = arrivalX;
+                RestaurantCanvas.y = arrivalY;
             }
             // 아랫라인 식당
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
@@ -139,8 +143,16 @@ export default class TownCanvas {
                 let arrivalY = rstrnt.y;
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
+                // 레스토랑캔버스 전역변수에 할당
+                RestaurantCanvas.x = arrivalX;
+                RestaurantCanvas.y = arrivalY;
             }
         }
+        let rs = new RestaurantCanvas();
+    }
+
+    get canvas(){
+        return this.#canvas;
     }
 
     // 업뎃 ---------------------------------------------------------------------
