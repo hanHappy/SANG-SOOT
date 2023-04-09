@@ -1,3 +1,4 @@
+//수정중
 import Game from './ui/3quizGame.js';
 
 export default
