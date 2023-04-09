@@ -1,8 +1,8 @@
 export default class SlotResult {
 #x;
 #y;
-// #width;
-// #height;
+#width;
+#height;
 #passImg;
 #failImg;
 #img;
@@ -14,10 +14,9 @@ export default class SlotResult {
         this.#passImg = document.getElementById("pass");
         this.#failImg = document.getElementById("fail");
 
-        this.#passImg.width = 300;
-        this.#passImg.height = 100;
-        this.#failImg.width = 300;
-        this.#failImg.height = 100;
+        this.#width = 300;
+        this.#height = 100;
+
         
 
     }
@@ -25,8 +24,8 @@ export default class SlotResult {
     passDraw(ctx){
         let x = this.#x;
         let y = this.#y;
-        let width = this.#passImg.width;
-        let height = this.#passImg.height;
+        let width = this.#width;
+        let height = this.#height;
         let img = this.#passImg;
 
         ctx.drawImage(img, x, y, width, height);
@@ -35,8 +34,8 @@ export default class SlotResult {
     failDraw(ctx){
         let x = this.#x;
         let y = this.#y;
-        let width = this.#failImg.width;
-        let height = this.#failImg.height;
+        let width = this.#width;
+        let height = this.height;
         let img = this.#failImg;
 
         ctx.drawImage(img, x, y, width, height);

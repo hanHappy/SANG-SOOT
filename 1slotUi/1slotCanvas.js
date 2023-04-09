@@ -10,19 +10,15 @@ export default class SlotCanvas {
     #ctx;
     #slotFrame;
     #slotGauge;
-    #SlotReels;
-    #reelsImgs
-    #img;
     #reels;
     #stopBtn1;
     #stopBtn2;
     #stopBtn3;
-    #reelsStopped;
     #slotRsult
+    #spinBtn;
     #passImg;
     #failImg;
-    #stopBtn;
-    #spinBtn;
+    #stopBtn3Click;
     
 
     // canvas ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -70,7 +66,9 @@ export default class SlotCanvas {
         
         // stopButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-        
+        this.#stopBtn3Click = false;
+        console.log(this.#stopBtn3);
+
         this.#stopBtn1 = document.getElementById("stop1");
         this.#stopBtn1.addEventListener("click", ()=> {this.stopClick0()});
 
@@ -79,7 +77,7 @@ export default class SlotCanvas {
 
         this.#stopBtn3 = document.getElementById("stop3");
         this.#stopBtn3.addEventListener("click", ()=> {this.stopClick2()});
-
+          
 
     } // constrctor
 
@@ -99,9 +97,7 @@ export default class SlotCanvas {
     update() { // 변할 때
             this.#slotGauge.update();
         // 속성에있는 객체의 함수를 호출 할 때 this.#slotGauge() / this,#을 활용
-
     }
-
     
     paint() {
         this.#slotBG.draw(this.#ctx); // BG객체의 draw함수 호출
@@ -116,43 +112,67 @@ export default class SlotCanvas {
             reel.stop(this.#ctx)
         }
 
-            
-
+        if(this.#stopBtn3Click){
+            this.sameIndex();
+        }
 
     }// print
+
+
 
     spinClick(){
         console.log("x")
         for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 spin 호출
             reel.spinCk();
+            this.#stopBtn3Click = false;
         }
     }
 
 
     stopClick0(){
         // spinReelsbtn();
-            this.#reels[0].stopCk();
-            this.#reels[0].stop(this.#ctx);
-    }
+        this.#reels[0].stopCk();
+        this.#reels[0].stop(this.#ctx);
 
+        console.log(this.#reels[0].index);
+    }
+    
     stopClick1(){
         this.#reels[1].stopCk();
-        this.#reels[1].stop(this.#ctx)
+        this.#reels[1].stop(this.#ctx);
+        
+        console.log(this.#reels[1].index);
     }
-
+    
     stopClick2(){
         this.#reels[2].stopCk();
         this.#reels[2].stop(this.#ctx);
+
+        this.#stopBtn3Click = true;
+
+        console.log(this.#reels[2].index);
+        
     }
 
-            
-            // setTimeout(() => {
-            // }, 2000);
-        // }
-    // } // paint()
 
+    sameIndex() {
+        if(this.#reels[0].index == this.#reels[1].index && this.#reels[1].index == this.#reels[2].index){
+                this.#ctx.drawImage(this.#passImg, 400, 200, 300, 100);
+                    // 잭팟시 게임오버
+            } else {
+                this.#ctx.drawImage(this.#failImg, 400, 200, 300, 100);
+                
+        }
+    };
+    
 
     
+    // this.#slotRsult.passDraw(this.ctx);
+    // this.#slotRsult.failDraw(this.ctx);
+    // this.#ctx.drawImage(this.#passImg, 100, 100, 300, 100);
+    // this.#ctx.drawImage(this.#failImg, 100, 100, 300, 100);
+
+
 
 }// class
 
