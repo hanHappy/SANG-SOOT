@@ -49,6 +49,8 @@ export default class BattleGauge {
     if (0 >= this.#redBoxWidth) {
       // if가 하기문장보다 위에있어야 줄어들지않음(업데이트함수는 계속 실행됨)
       //alert("LOSE");
+      let img = document.getElementById("lose");
+      ctx.drawImage(img, 0, 0, 1150, 820);
       return;
     }
 
@@ -57,7 +59,7 @@ export default class BattleGauge {
       return;
     }
 
-    this.#redBoxWidth += 1; //계속 줄어들게..
+    this.#redBoxWidth += 1;
   }
 
   plus() {
