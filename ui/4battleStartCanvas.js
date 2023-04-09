@@ -5,7 +5,8 @@ export default class BattleStartCanvas {
   #battleStartCanvas;
   #battleStartCtx;
   #scenIndex;
-  #img;
+  #img1;
+  #img2;
   #images;
   #imgX;
   #imgY;
@@ -47,6 +48,28 @@ export default class BattleStartCanvas {
   }
 
   run() {
+    // first img
+    setTimeout(() => {
+      let img1 = document.getElementById("talk00");
+      this.#battleStartCtx.drawImage(
+        img1,
+        this.#imgX,
+        this.#imgY,
+        this.#imgW,
+        this.#imgH
+      );
+      setTimeout(() => {
+        let img2 = document.getElementById("talk01");
+        this.#battleStartCtx.drawImage(
+          img2,
+          this.#imgX,
+          this.#imgY,
+          this.#imgW,
+          this.#imgH
+        );
+      }, 1000);
+    }, 10);
+
     this.paint();
   }
 
