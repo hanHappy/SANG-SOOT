@@ -1,6 +1,9 @@
 import TownCanvas from "./ui/0townCanvas.js";
 import RestaurantCanvas from "./ui/0restaurantCanvas.js";
 import User from "./items/0user.js";
+import Main from './3quizMain.js';
+import Rule from './3quizRule.js';
+import Game from './3quizGame.js';
 
 window.onload = () => {
     
@@ -20,4 +23,21 @@ window.onload = () => {
             } // 도착하면
         }, 100); // set interval
     });
+
+    //=======================세영
+    let main = new Main();
+    main.run();
+
+    main.obj.addEventListener('click', (e) => {
+        main.obj.remove();
+        let rule = new Rule();
+        rule.run();
+
+        rule.obj.addEventListener('click', (e) => {
+            rule.obj.remove();
+            let game = new Game();
+            game.run();
+        })
+    });
 };
+
