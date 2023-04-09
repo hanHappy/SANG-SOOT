@@ -13,7 +13,7 @@ export default class BattleNpc {
   constructor() {
     // ceo, user
     this.#img1 = document.getElementById("ceo");
-    this.#img2 = document.getElementById("user");
+    this.#img2 = document.getElementById("4user");
 
     // location
     this.#ceoX = 10;

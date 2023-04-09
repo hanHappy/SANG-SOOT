@@ -1,4 +1,4 @@
-import BattleBackground from "../item/4battleBackground.js";
+import BattleBackground from "../background/4battleBackground.js";
 import BattleGauge from "../item/4battleGauge.js";
 import BattleNpc from "../item/4battleNpc.js";
 import battleFood from "../item/4battleFood.js";
