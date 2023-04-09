@@ -1,4 +1,4 @@
-import Game from './3quizGame.js';
+import Game from './ui/3quizGame.js';
 
 export default
     class Rule {

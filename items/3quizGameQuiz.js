@@ -1,5 +1,3 @@
-// import GameResult from './gameResult.js'; //트로피
-
 export default class Quiz {
   #obj;
   #ctx;
