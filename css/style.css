@@ -2,9 +2,11 @@
     font-family: 'dgm';
     src: url('/css/DungGeunMo.ttf') format('truetype');
 }
-body{
+
+body {
     margin: 0;
 }
-.d-none{
+
+.d-none {
     display: none;
 }

@@ -12,6 +12,17 @@ export default class TownCanvas {
     #rstrnts;
     #rstrntImg;
     #user;
+    #arrived;
+
+    static rstrnts = [
+        new Restaurant("짜장하회", 0, 0, 350, 190),
+        new Restaurant("후딱이다", 1, 0, 557, 190),
+        new Restaurant("토끼의부엌", 2, 0, 760, 190),
+        new Restaurant("우포식당", 3, 0, 350, 520),
+        new Restaurant("동강학식", 4, 0, 557, 520),
+        new Restaurant("영남식당", 5, 0, 760, 520)
+    ]
+
     constructor() {
         // timer ID
         this.#tid = null;
@@ -26,55 +37,45 @@ export default class TownCanvas {
         // Background -----------------------------------------------------
         this.#background = new TownBackground(this.#ctx);
 
-        // Restaurant -----------------------------------------------------
-        // 식당 객체 배열
-        this.#rstrnts = [
-            new Restaurant("짜장하회", 0, 0, 350, 190),
-            new Restaurant("후딱이다", 1, 0, 557, 190),
-            new Restaurant("토끼의부엌", 2, 0, 760, 190),
-            new Restaurant("우포식당", 3, 0, 350, 520),
-            new Restaurant("동강학식", 4, 0, 557, 520),
-            new Restaurant("영남식당", 5, 0, 760, 520)
-        ]
-        // 식당 메뉴 --------------------------------------------------------
+        // 식당 및 메뉴 --------------------------------------------------------
+        // 짜장상회
         {
-            // 짜장상회
-            let menus = this.#rstrnts[0].menus;
+            let menus = TownCanvas.rstrnts[0].menus;
             menus.name.push("짜장면", "짬뽕", "볶음밥", "짬짜면", "해물볶음짬뽕", "쟁반짜장", "우동");
             menus.price.push(5000, 6000, 6500, 7500, 8500, 8500, 6000);
             menus.ratedPrice.push(5000, 6000, 6500, 7500, 8500, 8500, 6000);
         }
+        // 뜸들이다
         {
-            // 뜸들이다
-            let menus = this.#rstrnts[1].menus;
+            let menus = TownCanvas.rstrnts[1].menus;
             menus.name.push("소세지로제덮밥", "도란도란", "삼겹살카레", "소세지카레", "어깨살간장덮밥", "간장계란밥", "매콤꼬막덮밥");
             menus.price.push(8400, 7900, 7900, 8400, 7400, 4400, 8900);
             menus.ratedPrice.push(8400, 7900, 7900, 8400, 7400, 4400, 8900);
         }
+        // 거북이의주방
         {
-            // 거북이의주방
-            let menus = this.#rstrnts[2].menus;
+            let menus = TownCanvas.rstrnts[2].menus;
             menus.name.push("차돌뚝배기카레", "돈까스카레", "모듬버섯카레", "소세지카레", "치킨가라아게카레", "왕새우카레", "고로케카레");
             menus.price.push(11000, 10900, 8500, 9900, 9900, 9900, 9900);
             menus.ratedPrice.push(11000, 10900, 8500, 9900, 9900, 9900, 9900);
         }
+        // 마포쌈밥식당
         {
-            // 마포쌈밥식당
-            let menus = this.#rstrnts[3].menus;
+            let menus = TownCanvas.rstrnts[3].menus;
             menus.name.push("쌈밥정식");
             menus.price.push(9000);
             menus.ratedPrice.push(9000);
         }
+        // 동강학식
         {
-            // 동강학식
-            let menus = this.#rstrnts[4].menus;
+            let menus = TownCanvas.rstrnts[4].menus;
             menus.name.push("떡볶이", "돈까스", "우정라면", "자율한식");
             menus.price.push(5000, 4800, 3500, 5500);
             menus.ratedPrice.push(5000, 4800, 3500, 5500);
         }
+        // 영남식당
         {
-            // 영남식당
-            let menus = this.#rstrnts[5].menus;
+            let menus = TownCanvas.rstrnts[5].menus;
             menus.name.push("제육볶음", "부대찌개", "뚝불", "김치찌개", "순두부", "떡만두국");
             menus.price.push(7000, 7000, 7000, 7000, 7000, 7000);
             menus.ratedPrice.push(7000, 7000, 7000, 7000, 7000, 7000);
@@ -82,7 +83,7 @@ export default class TownCanvas {
 
         // 각 식당 가성비 계산
         for (let j = 0; j < 6; j++) {
-            let rstrnt = this.#rstrnts[j];
+            let rstrnt = TownCanvas.rstrnts[j];
             let menuNums = rstrnt.menus.name.length;
             let menusValue = rstrnt.menus.value;
             for (let i = 0; i < menuNums; i++) {
@@ -91,12 +92,11 @@ export default class TownCanvas {
                 let value = Math.floor(rp / p * 100);
                 menusValue.push(value);
             }
-            // test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-            console.log(rstrnt);
         }
 
         // User
         this.#user = new User();
+        this.#arrived = this.#user.arrived;
 
         // click
         this.#canvas.addEventListener('click', (e) => { this.click(e) });
@@ -110,7 +110,7 @@ export default class TownCanvas {
     mousemove(e) {
         let mx = e.offsetX;
         let my = e.offsetY;
-        for (let rstrnt of this.#rstrnts) {
+        for (let rstrnt of TownCanvas.rstrnts) {
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
                 && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h) {
                 rstrnt.mouseover();
@@ -124,7 +124,7 @@ export default class TownCanvas {
         let mx = e.offsetX;
         let my = e.offsetY;
         // 개별 식당 좌표 내 클릭 시
-        for (let rstrnt of this.#rstrnts) {
+        for (let rstrnt of TownCanvas.rstrnts) {
             // 윗라인 식당
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
                 && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my < 400) {
@@ -148,11 +148,16 @@ export default class TownCanvas {
                 RestaurantCanvas.y = arrivalY;
             }
         }
-        let rs = new RestaurantCanvas();
     }
 
+    // town canvas getter -----------------------------------------------------
     get canvas(){
         return this.#canvas;
+    }
+
+    // 식당 배열 getter
+    get rstrnts(){
+        return TownCanvas.rstrnts;
     }
 
     // 업뎃 ---------------------------------------------------------------------
@@ -165,7 +170,7 @@ export default class TownCanvas {
         // 배경 그리기
         this.#background.draw(this.#ctx);
         // 식당 그리기
-        for (let rstrnt of this.#rstrnts) {
+        for (let rstrnt of TownCanvas.rstrnts) {
             rstrnt.draw(this.#ctx);
             rstrnt.drawInfo(this.#ctx);
         }

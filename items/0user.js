@@ -8,6 +8,9 @@ export default class User{
     #vy;
     #dx;
     #dy;
+    
+    static arrived = false;
+
     constructor(){
         this.#img = document.getElementById("user");
         this.#x = 30;
@@ -18,6 +21,7 @@ export default class User{
         this.#vy = 0;
         this.#dx = 0;
         this.#dy = 0;
+
     }
 
     // 식당으로 이동 --------------------------------------------------
@@ -41,6 +45,7 @@ export default class User{
         // 목표 y좌표에 도착했을 때 -> y 변화량 = 0
         if (this.#dy - 2 <= this.#y && this.#y <= this.#dy + 2) {
             this.#vy = 0;
+            User.arrived = true;
             return;
         }
         // x 변화량이 0일 때 -> y좌표 이동
@@ -75,4 +80,4 @@ export default class User{
         return this.#h;
     }
     
-}
+} // class

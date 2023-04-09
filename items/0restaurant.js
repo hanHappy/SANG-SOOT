@@ -12,6 +12,7 @@ export default class Restaurant {
     #infoH;
     #menus;
     #mouseover;
+
     constructor(name, i, j, x = 0, y = 0) {
         // 식당
         this.#name = name;
@@ -65,6 +66,9 @@ export default class Restaurant {
         this.#mouseover = false;
     }
 
+    get name(){
+        return this.#name;
+    }
     get menus(){
         return this.#menus;
     }
