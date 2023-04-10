@@ -1,16 +1,19 @@
 import TownCanvas from "./0townCanvas.js";
+import Menu from "../items/0menu.js";
 
 export default class RestaurantCanvas {
     #canvas;
     #ctx;
     #index;
     #scenes;
+    #sceneNums;
+
+    #menu;
 
     #x;
     #y;
     #w;
     #h;
-    #rstrnt;
 
     static x;
     static y;
@@ -29,12 +32,16 @@ export default class RestaurantCanvas {
         this.#w = 1150;
         this.#h = 820;
 
+        // Menu ---------------------------------------------------------
+        this.#menu = new Menu();
+
         // click ---------------------------------------------------------
         this.#canvas.onclick = this.clickHandler.bind(this);
         this.#index = 0;
 
         // images --------------------------------------------------------
-        this.#scenes = new Array(2);
+        this.#sceneNums = 2; // ★★★★★★★★★★★★★★★★★★★★★★★★★
+        this.#scenes = new Array(this.#sceneNums);
         for (let i = 0; i < this.#scenes.length; i++) {
             this.#scenes[i] = document.getElementById(`inRstrnt${i}`);
         }
@@ -60,34 +67,7 @@ export default class RestaurantCanvas {
         ctx.drawImage(scene, x, y, w, h);
 
         if (index == 1) {
-            let name = this.#rstrnt.menus.name;
-            let p = this.#rstrnt.menus.price;
-            let rP = this.#rstrnt.menus.ratedPrice;
-            let value = this.#rstrnt.menus.value;
-            let menuNums = this.#rstrnt.menus.name.length;
-            ctx.font = "45px dgm";
-            ctx.fillText("메뉴            가격   평가가격   가성비", 140, 230);
-            for(let i = 0; i < menuNums; i++){
-                if(value[i]<80){
-                    value[i] = "                    ★";
-                } else if(value[i] < 90){
-                    value[i] = "               ★★";
-                } else if(value[i] < 110){
-                    value[i] = "           ★★★";
-                } else if(value[i] < 120){
-                    value[i] = "     ★★★★";
-                } else {
-                    value[i] = "★★★★★";
-                }
-                ctx.font = "35px dgm";
-                ctx.letterSpacing = "1px";
-                ctx.fillText(name[i], 140, 65 * (i+1) + 240);
-                ctx.fillText(p[i], 511, 65 * (i+1) + 240);
-                ctx.fillText(rP[i], 710, 65 * (i+1) + 240);
-                ctx.font = "35px arial";
-                ctx.letterSpacing = "-7px";
-                ctx.fillText(value[i], 898, 65 * (i+1) + 240);
-            }
+            this.#menu.printInfo(this.#ctx);
         }
 
     } // click handler
