@@ -80,7 +80,6 @@ export default class TownCanvas {
             menus.price.push(7000, 7000, 7000, 7000, 7000, 7000);
             menus.ratedPrice.push(7000, 7000, 7000, 7000, 7000, 7000);
         }
-
         // 각 식당 가성비 계산
         for (let j = 0; j < 6; j++) {
             let rstrnt = TownCanvas.rstrnts[j];
@@ -133,8 +132,8 @@ export default class TownCanvas {
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
                 // 레스토랑캔버스 전역변수에 할당
-                RestaurantCanvas.x = arrivalX;
-                RestaurantCanvas.y = arrivalY;
+                Restaurant.pointX = arrivalX;
+                Restaurant.pointY = arrivalY;
             }
             // 아랫라인 식당
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
@@ -144,8 +143,8 @@ export default class TownCanvas {
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
                 // 레스토랑캔버스 전역변수에 할당
-                RestaurantCanvas.x = arrivalX;
-                RestaurantCanvas.y = arrivalY;
+                Restaurant.pointX = arrivalX;
+                Restaurant.pointY = arrivalY;
             }
         }
     }

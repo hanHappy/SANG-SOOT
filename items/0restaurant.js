@@ -13,6 +13,9 @@ export default class Restaurant {
     #menus;
     #mouseover;
 
+    static pointX;
+    static pointY;
+
     constructor(name, i, j, x = 0, y = 0) {
         // 식당
         this.#name = name;

@@ -1,5 +1,6 @@
 import TownCanvas from "./0townCanvas.js";
 import Menu from "../items/0menu.js";
+import Restaurant from "../items/0restaurant.js";
 
 export default class RestaurantCanvas {
     #canvas;
@@ -14,9 +15,6 @@ export default class RestaurantCanvas {
     #y;
     #w;
     #h;
-
-    static x;
-    static y;
 
     constructor() {
 
@@ -48,11 +46,11 @@ export default class RestaurantCanvas {
         
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     
-    draw(){
+    welcome(){
         // 어서오세요~
         this.#ctx.drawImage(this.#scenes[this.#index], this.#x, this.#y, this.#w, this.#h);
         this.#ctx.font = "37px dgm";
-        this.#ctx.fillText(`${this.#rstrnt.name}입니다!`, 300, 681)
+        this.#menu.printRstName(this.#ctx);
     }
 
     clickHandler() {
