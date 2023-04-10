@@ -10,6 +10,7 @@ import Game from './3quizGame.js';
 // 예진
 import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 import BattleGameCanvas from "./ui/4battleGameCanvas.js";
+import MatchPage from "./items/4battleMatch.js";
 // 현준
 
 // 현채

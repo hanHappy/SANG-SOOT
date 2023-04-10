@@ -39,6 +39,10 @@ export default class BattleGameCanvas {
     // keyboard event
     this.#battleGameCanvas.onkeydown = this.keyDownHandler.bind(this);
     this.#battleGameCanvas.onkeyup = this.keyUpHandler.bind(this);
+
+    // NPC 얼굴 설정
+    //
+    battleNpc.onChangeNpc = battleNpc.onChangeNpcHandler.bind(this);
   }
 
   keyDownHandler(e) {
@@ -47,6 +51,12 @@ export default class BattleGameCanvas {
       this.#battleGauge.plus();
       this.#battleFood.press();
     } else alert("스페이스바를 입력하세요");
+  }
+
+  onChangeNpcHandler() {
+    //게이지가 일정이상,이하가 됐을 때 기존이미지 지우고 새이미지 띄우기
+
+    this.battleGauge.onChangeNpc = battleNpc.onChangeNpcHandler.bind(this);
   }
 
   //눌렀을때 인덱스 ++; 인덱스를 나머지 연산해서 나머지가 0일때 , 1일때
@@ -67,6 +77,9 @@ export default class BattleGameCanvas {
 
   update() {
     this.#battleGauge.update();
+
+    if (this.#battleGameCanvas) {
+    }
   }
 
   paint() {

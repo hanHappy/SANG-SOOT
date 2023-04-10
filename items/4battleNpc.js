@@ -28,6 +28,13 @@ export default class BattleNpc {
 
     this.#userW = 400;
     this.#userH = 500;
+
+    //call back
+    this.onChangeNpc = null;
+  }
+
+  set onChangeNpc(Callback) {
+    this.onChangeNpc = Callback;
   }
 
   draw(ctx) {
