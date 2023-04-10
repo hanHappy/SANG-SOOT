@@ -1,13 +1,18 @@
+// 상민
 import TownCanvas from "./ui/0townCanvas.js";
 import RestaurantCanvas from "./ui/0restaurantCanvas.js";
 import User from "./items/0user.js";
 import Main from './3quizMain.js';
 import Rule from './3quizRule.js';
 import Game from './3quizGame.js';
+// 세영
 
-//Jin
+// 예진
 import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 import BattleGameCanvas from "./ui/4battleGameCanvas.js";
+// 현준
+
+// 현채
 
 <<<<<<< HEAD
 window.onload = () => {
