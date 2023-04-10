@@ -33,5 +33,6 @@ export default
 
     run() {
         this.draw();
+        // this.draw();
     }
 }
