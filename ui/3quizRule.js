@@ -1,4 +1,5 @@
-import Game from './3quizGame.js';
+//수정중
+import Game from './ui/3quizGame.js';
 
 export default
     class Rule {

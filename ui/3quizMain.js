@@ -1,4 +1,4 @@
-import Rule from './3quizRule.js';
+import Rule from './ui/3quizRule.js';
 
 export default class Main {
   #ctx;
