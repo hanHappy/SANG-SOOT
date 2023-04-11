@@ -3,6 +3,8 @@
     src: url('/css/DungGeunMo.ttf') format('truetype');
 }
 
+/* ■■■■■■■■■■■■■■■■■■■ 상민 ■■■■■■■■■■■■■■■■■■■■ */
+
 body {
     margin: 0;
 }
@@ -11,7 +13,12 @@ body {
     display: none;
 }
 
-/* 세영 */
+body img button{
+    font-family: "dgm";
+    height: 35px;
+}
+
+/* ■■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■■ */
 #startbtn1{
     position: absolute;
     left: 372px;
