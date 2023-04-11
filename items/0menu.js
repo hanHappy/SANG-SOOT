@@ -16,10 +16,12 @@ export default class Menu {
         this.#value = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.value;
         this.#menuNums = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name.length;
         this.#btns = [];
-        for(let i = 0; i < 7; i++){
+        for(let i = 0; i < this.#menuNums; i++){
             this.#btns[i] = document.getElementById(`menuBtn${i}`);
+            this.#btns[i].addEventListener('click', function(){
+                
+            })
         }
-        console.log(this.#btns);
     }
 
     // 메뉴 출력 --------------------------------------------------------
