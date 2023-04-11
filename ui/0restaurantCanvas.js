@@ -38,8 +38,9 @@ export default class RestaurantCanvas {
         this.#sceneIndex = 0;
 
         // images --------------------------------------------------------
-        this.#sceneNums = 2; // ★★★★★★★★★★★★★★★★★★★★★★★★★
+        this.#sceneNums = 2; // ★★★★★★★★★★★ scene 수에 따라 값 설정
         this.#scenes = new Array(this.#sceneNums);
+        // html에서 scenes 이미지 가져오기
         for (let i = 0; i < this.#scenes.length; i++) {
             this.#scenes[i] = document.getElementById(`inRstrnt${i}`);
         }
@@ -55,6 +56,7 @@ export default class RestaurantCanvas {
         this.#ctx.fillText(`${rstrntName}입니다!`, 300, 681);
     }
 
+    // 클릭할 때마다 다음 scene으로 넘어감
     clickHandler() {
         this.#sceneIndex++;
         let index = this.#sceneIndex;
@@ -66,6 +68,7 @@ export default class RestaurantCanvas {
         let h = this.#h;
         this.#ctx.drawImage(scene, x, y, w, h);
 
+        // Scene_2 : 메뉴판
         if (index == 1) {
             this.#menu = new Menu();
             this.#menu.printInfo(this.#ctx);
