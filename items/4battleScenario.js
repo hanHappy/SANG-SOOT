@@ -9,9 +9,7 @@ export default class BattleScenario {
   #scenIndex;
 
   constructor(canvas) {
-    //대화 이미지 가져오기(변수명 다다르게 가져와야하나?)
-    // this.#img1 = document.getElementById("effect1");
-    // this.#img2 = document.getElementById("effect2");
+    //대화 이미지 가져오기
     this.#img0 = document.getElementById("talk1");
     this.#img1 = document.getElementById("talk2");
     this.#img2 = document.getElementById("talk3");

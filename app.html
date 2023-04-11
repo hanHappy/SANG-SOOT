@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>town</title>
     <script src="app.js" type="module" defer="defer"></script>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/app.css" />
   </head>
 
   <body>
-    <!-- ■■■■■■■■■■■■■■■■■■ 상민 ■■■■■■■■■■■■■■■■■■■■-->
+    <!-- ■■■■■■■■■■■■■■■■■■ 맵 ■■■■■■■■■■■■■■■■■■■■-->
     <!-- 맵 배경 -->
     <img src="/images/townBg.png" id="map" class="d-none" />
         <!-- 식당 이미지 -->
@@ -22,9 +22,10 @@
         <img src="/images/rstrnt_5.png" id="rstrnt5" class="d-none" />
         <!-- 식당 정보 -->
         <img src="/images/balloon.png" id="rstrntInfo0" class="d-none" />
-        <!-- 예진 -->
+        <!-- 예진 캐릭터 -->
         <img src="/images/userWalk.png" id="user" class="d-none" />
-    <!-- 식당 입장 후 -->
+        
+    <!-- ■■■■■■■■■■■■■■■■■■ 식당 입장 ■■■■■■■■■■■■■■■■■■ -->
     <!-- Scene_0 : 어서오세요 -->
     <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none" />
     <!-- Scene_1 : 메뉴판 -->
@@ -37,20 +38,37 @@
         <button id="menuBtn4" class="menuBtn4">선택</button>
         <button id="menuBtn5" class="menuBtn5">선택</button>
         <button id="menuBtn6" class="menuBtn6">선택</button>
+    <!-- Scene_2~8 -->
+    <img src="/images/inrstrnt_2.png" id="inRstrnt2" class="d-none" />
+    <img src="/images/inrstrnt_3.png" id="inRstrnt3" class="d-none" />
+    <img src="/images/inrstrnt_4.png" id="inRstrnt4" class="d-none" />
+    <img src="/images/inrstrnt_5.png" id="inRstrnt5" class="d-none" />
+    <img src="/images/inrstrnt_6.png" id="inRstrnt6" class="d-none" />
+    <img src="/images/inrstrnt_7.png" id="inRstrnt7" class="d-none" />
+    <img src="/images/inrstrnt_8.png" id="inRstrnt8" class="d-none" />
     <!-- Scene_9 : 평가 -->
     <img src="images/inRstrnt_9.png" id="inRstrnt9" class="d-none">
+    <img src="/images/inrstrnt_10.png" id="inRstrnt10" class="d-none" />
+    <img src="/images/inrstrnt_11.png" id="inRstrnt11" class="d-none" />
+    <img src="/images/inrstrnt_12.png" id="inRstrnt12" class="d-none" />
+    <img src="/images/inrstrnt_13.png" id="inRstrnt13" class="d-none" />
+    <img src="/images/inrstrnt_14.png" id="inRstrnt14" class="d-none" />
+    <img src="/images/inrstrnt_15.png" id="inRstrnt15" class="d-none" />
+    <img src="/images/inrstrnt_16.png" id="inRstrnt16" class="d-none" />
+    <img src="/images/inrstrnt_17.png" id="inRstrnt17" class="d-none" />
 
     <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
+
     <!-- 배경 -->
-    <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1">
-    <img src="3quizImg/quiz_bg2.png" class="d-none" id="bg2">
+    <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1" />
+    <img src="3quizImg/quiz_bg2.png" class="d-none" id="bg2" />
     <!-- 콘텐츠 -->
-    <img src="3quizImg/rule.png" class="d-none" id="rule">
+    <img src="3quizImg/rule.png" class="d-none" id="rule" />
     <!-- 버튼 -->
-    <img class="d-none" id="startbtn1" src="3quizImg/button_start.png">
-    <img class="d-none" id="startbtn2" src="3quizImg/button_start2.png">
-    <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png">
-    
+    <img class="d-none" id="startbtn1" src="3quizImg/button_start.png" />
+    <img class="d-none" id="startbtn2" src="3quizImg/button_start2.png" />
+    <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png" />
+
     <!-- ■■■■■■■■■■■■■■■■■■ 4battle JIN ■■■■■■■■■■■■■■■■■■ -->
     <!-- scenairo -->
     <img id="talk00" class="d-none" src="4battleImg/잠깐1.png" />
@@ -70,6 +88,8 @@
     <!-- game NPC -->
     <img id="ceo" class="d-none" src="./4battleImg/ceoHappy.png" />
     <img id="4user" class="d-none" src="./4battleImg/userHappy.png" />
+    <img id="ceowin" class="d-none" src="./4battleImg/userHappy.png" />
+    <img id="userwin" class="d-none" src="./4battleImg/ceoMad.png" />
 
     <!-- food -->
     <img id="food" class="d-none" src="./4battleImg/onion.png" />
@@ -82,10 +102,7 @@
     <!-- win/lose -->
     <img id="win" class="d-none" src="./4battleImg/win.png" />
     <img id="lose" class="d-none" src="./4battleImg/lose.png" />
-    <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none">
-    <img src="/images/menu.png" id="inRstrnt1" class="d-none">
-
-
-
-</body>
+    <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none" />
+    <img src="/images/menu.png" id="inRstrnt1" class="d-none" />
+  </body>
 </html>
