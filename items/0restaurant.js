@@ -1,7 +1,4 @@
 export default class Restaurant {
-    #posX;
-    #posY;
-    #rstIndex;
     #name;
     #img;
     #x;

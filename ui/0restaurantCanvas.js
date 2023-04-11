@@ -33,11 +33,11 @@ export default class RestaurantCanvas {
     // this.#menu = new Menu();
 
     // click ---------------------------------------------------------
-    this.#canvas.onclick = this.clickHandler.bind(this);
     this.#sceneIndex = 0;
+    this.#canvas.onclick = this.clickHandler.bind(this);
 
     // images --------------------------------------------------------
-    this.#sceneNums = 2; // ★★★★★★★★★★★ scene 수에 따라 값 설정
+    this.#sceneNums = 17; // ★★★★★★★★★★★ scene 수에 따라 값 설정
     this.#scenes = new Array(this.#sceneNums);
     // html에서 scenes 이미지 가져오기
     for (let i = 0; i < this.#scenes.length; i++) {
@@ -45,7 +45,7 @@ export default class RestaurantCanvas {
     }
   } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // Scene_1
+  // Scene_0
   welcome() {
     // 어서오세요~
     this.#ctx.drawImage(
@@ -57,11 +57,13 @@ export default class RestaurantCanvas {
     );
     let rstrntName = TownCanvas.rstrnts[Restaurant.rstrntIndex].name;
     this.#ctx.font = "37px dgm";
-    this.#ctx.fillText(`${rstrntName}입니다!`, 300, 681);
+    this.#ctx.fillText(`${rstrntName}입니다!`, 330, 687);
   }
 
   // 클릭할 때마다 다음 scene으로 넘어감
   clickHandler() {
+    if(this.#sceneIndex==1 || this.#sceneIndex==9)
+      return;
     this.#sceneIndex++;
     let index = this.#sceneIndex;
     let ctx = this.#ctx;
@@ -72,9 +74,9 @@ export default class RestaurantCanvas {
     let h = this.#h;
     this.#ctx.drawImage(scene, x, y, w, h);
 
-    // Scene_2 : 메뉴판
+    // Scene_1 : 메뉴판
     if (index == 1) {
-      this.#menu = new Menu();
+      this.#menu = new Menu(this.#ctx);
       this.#menu.printInfo(this.#ctx);
     }
   } // click handler
