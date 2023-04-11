@@ -1,7 +1,7 @@
 import BattleBackground from "../background/4battleBackground.js";
-import BattleGauge from "../item/4battleGauge.js";
-import BattleNpc from "../item/4battleNpc.js";
-import battleFood from "../item/4battleFood.js";
+import BattleGauge from "../items/4battleGauge.js";
+import BattleNpc from "..//items/4battleNpc.js";
+import battleFood from "../items/4battleFood.js";
 
 export default class BattleGameCanvas {
   #battleGameCanvas;
@@ -41,8 +41,8 @@ export default class BattleGameCanvas {
     this.#battleGameCanvas.onkeyup = this.keyUpHandler.bind(this);
 
     // NPC 얼굴 설정
-    //
-    battleNpc.onChangeNpc = battleNpc.onChangeNpcHandler.bind(this);
+
+    this.#battleGauge.onChangeNpc = this.onChangeNpcHandler.bind(this);
   }
 
   keyDownHandler(e) {
@@ -55,8 +55,13 @@ export default class BattleGameCanvas {
 
   onChangeNpcHandler() {
     //게이지가 일정이상,이하가 됐을 때 기존이미지 지우고 새이미지 띄우기
+    console.log("100이하됐음");
 
-    this.battleGauge.onChangeNpc = battleNpc.onChangeNpcHandler.bind(this);
+    //게이지 낮을때 (손님우세) 사장이미지 변경
+    this.#battleGameCtx.clearRect(0, 0, 1150, 820);
+    this.#battleNpc.newDraw(this.#battleGameCtx);
+
+    //
   }
 
   //눌렀을때 인덱스 ++; 인덱스를 나머지 연산해서 나머지가 0일때 , 1일때
@@ -78,8 +83,10 @@ export default class BattleGameCanvas {
   update() {
     this.#battleGauge.update();
 
-    if (this.#battleGameCanvas) {
-    }
+    // if (this.#battleGameCanvas) {
+    //   this.battleGauge.onChangeNpc =
+    //     this.#battleNpc.onChangeNpcHandler.bind(this);
+    // }
   }
 
   paint() {

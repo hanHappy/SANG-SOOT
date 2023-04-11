@@ -5,6 +5,7 @@ export default class BattleGauge {
   #height;
   #color;
   #redBoxWidth;
+  #onChangeNpc;
 
   constructor() {
     //게이지 x,y 좌표
@@ -18,8 +19,13 @@ export default class BattleGauge {
 
     //게이지 너비
     this.#redBoxWidth = 450;
+
+    this.#onChangeNpc = null;
   }
 
+  set onChangeNpc(Callback) {
+    this.#onChangeNpc = Callback;
+  }
   //클래스 내에 함수에서는 지역변수를 선언해서 사용하는 걸 지향하자.
 
   //게이지 그리기
@@ -35,7 +41,7 @@ export default class BattleGauge {
     ctx.fillStyle = "pink";
     ctx.fillRect(x, y, width, height);
 
-    //red gauge
+    //red gauge.
     ctx.fillStyle = color;
     ctx.fillRect(x, y, redBoxWidth, height);
 
@@ -46,11 +52,17 @@ export default class BattleGauge {
   }
 
   update() {
+    if (100 >= this.#redBoxWidth) {
+      if (this.#onChangeNpc) {
+        this.#onChangeNpc(this);
+      }
+    }
+
     if (0 >= this.#redBoxWidth) {
       // if가 하기문장보다 위에있어야 줄어들지않음(업데이트함수는 계속 실행됨)
       //alert("LOSE");
-      let img = document.getElementById("lose");
-      ctx.drawImage(img, 0, 0, 1150, 820);
+      //let img = document.getElementById("lose");
+      //ctx.drawImage(img, 0, 0, 1150, 820);
       return;
     }
 
