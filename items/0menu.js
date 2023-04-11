@@ -10,6 +10,8 @@ export default class Menu {
     constructor() {
         this.#posX = Restaurant.pointX;
         this.#posY = Restaurant.pointY;
+        console.log(this.#posX);
+        console.log(this.#posY);
         this.#rstIndex = 0;
 
         // 식당
@@ -30,11 +32,11 @@ export default class Menu {
             if (posX == 850 && posY == 520)
                 this.#rstIndex = 5;
         }
-
+        
         this.#rstrnt = TownCanvas.rstrnts[this.#rstIndex];
     }
 
-    printInfo() {
+    printInfo(ctx) {
         let name = this.#rstrnt.menus.name;
         let p = this.#rstrnt.menus.price;
         let rP = this.#rstrnt.menus.ratedPrice;
