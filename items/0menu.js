@@ -24,9 +24,8 @@ export default class Menu {
         let rP = this.#ratedPrice;
         let value = this.#value;
         let menuNums = this.#name.length;
-        console.log(name)
         ctx.font = "45px dgm";
-        ctx.fillText("메뉴            가격   평가가격   가성비", 140, 230);
+        ctx.fillText("메뉴            가격   평가가격   가성비", 140, 240);
         // 가성비 -> ★로 변환
         // 급간 : 판매 가격의 10%
         for (let i = 0; i < menuNums; i++) {
