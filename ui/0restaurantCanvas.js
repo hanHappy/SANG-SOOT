@@ -5,7 +5,7 @@ import Restaurant from "../items/0restaurant.js";
 export default class RestaurantCanvas {
     #canvas;
     #ctx;
-    #index;
+    #sceneIndex;
     #scenes;
     #sceneNums;
 
@@ -31,11 +31,11 @@ export default class RestaurantCanvas {
         this.#h = 820;
 
         // Menu ---------------------------------------------------------
-        this.#menu = new Menu();
+        // this.#menu = new Menu();
 
         // click ---------------------------------------------------------
         this.#canvas.onclick = this.clickHandler.bind(this);
-        this.#index = 0;
+        this.#sceneIndex = 0;
 
         // images --------------------------------------------------------
         this.#sceneNums = 2; // ★★★★★★★★★★★★★★★★★★★★★★★★★
@@ -46,25 +46,28 @@ export default class RestaurantCanvas {
         
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     
+    // Scene_1
     welcome(){
         // 어서오세요~
-        this.#ctx.drawImage(this.#scenes[this.#index], this.#x, this.#y, this.#w, this.#h);
+        this.#ctx.drawImage(this.#scenes[this.#sceneIndex], this.#x, this.#y, this.#w, this.#h);
+        let rstrntName = TownCanvas.rstrnts[Restaurant.rstrntIndex].name;
         this.#ctx.font = "37px dgm";
-        this.#menu.printRstName(this.#ctx);
+        this.#ctx.fillText(`${rstrntName}입니다!`, 300, 681);
     }
 
     clickHandler() {
-        this.#index++;
-        let index = this.#index;
+        this.#sceneIndex++;
+        let index = this.#sceneIndex;
         let ctx = this.#ctx;
         let scene = this.#scenes[index];
         let x = this.#x;
         let y = this.#y;
         let w = this.#w;
         let h = this.#h;
-        ctx.drawImage(scene, x, y, w, h);
+        this.#ctx.drawImage(scene, x, y, w, h);
 
         if (index == 1) {
+            this.#menu = new Menu();
             this.#menu.printInfo(this.#ctx);
         }
 

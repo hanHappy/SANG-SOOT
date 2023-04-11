@@ -1,4 +1,7 @@
 export default class Restaurant {
+    #posX;
+    #posY;
+    #rstIndex;
     #name;
     #img;
     #x;
@@ -13,11 +16,10 @@ export default class Restaurant {
     #menus;
     #mouseover;
 
-    static pointX;
-    static pointY;
+    static rstrntIndex = 0;
 
     constructor(name, i, j, x = 0, y = 0) {
-        // 식당
+        // 식당 정보
         this.#name = name;
         this.#img = document.getElementById(`rstrnt${i}`);
         this.#x = x;
