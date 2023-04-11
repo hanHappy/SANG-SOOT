@@ -14,11 +14,15 @@ export default class SlotCanvas {
     #stopBtn1;
     #stopBtn2;
     #stopBtn3;
-    #slotRsult
+    #slotRsult;
     #spinBtn;
     #passImg;
     #failImg;
     #stopBtn3Click;
+    #removeCanvas;//
+    #ch;
+    #strGauge;
+    #spinBtnClick
     
 
     // canvas ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -59,6 +63,7 @@ export default class SlotCanvas {
 
         // spinButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
+        this.#spinBtnClick = false;
         
         this.#spinBtn = document.getElementById("spinBtn");
         this.#spinBtn.addEventListener("click", ()=> {this.spinClick()})
@@ -67,22 +72,50 @@ export default class SlotCanvas {
         // stopButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
         this.#stopBtn3Click = false;
-        console.log(this.#stopBtn3);
 
         this.#stopBtn1 = document.getElementById("stop1");
-        this.#stopBtn1.addEventListener("click", ()=> {this.stopClick0()});
+        this.#stopBtn1.addEventListener("click", ()=> {this.stopClick1()});
 
         this.#stopBtn2 = document.getElementById("stop2");
-        this.#stopBtn2.addEventListener("click", ()=> {this.stopClick1()});
+        this.#stopBtn2.addEventListener("click", ()=> {this.stopClick2()});
 
         this.#stopBtn3 = document.getElementById("stop3");
-        this.#stopBtn3.addEventListener("click", ()=> {this.stopClick2()});
+        this.#stopBtn3.addEventListener("click", ()=> {this.stopClick3()});
           
 
+
+
+        this.#slotGauge.disappear = this.onDisappear.bind(this); // 5
+
+        
+        // this.#ch =false;
+        // this.#slotGameover = new SlotGameoverCanvas();
+
     } // constrctor
+    
 
 
 
+
+    // 콜백
+    onDisappear() // 4
+    {
+
+        this.#canvas.remove(); 
+        console.log("remove");
+
+        document.getElementById("spinBtn").style.display = "none";
+        document.getElementById("stop1").style.display = "none";
+        document.getElementById("stop2").style.display = "none";
+        document.getElementById("stop3").style.display = "none";
+
+        // this.#ch = true;
+
+    }//.bind(this)
+
+    get ch(){
+        return this.#ch;
+    }
 
     // 이하 함수영역 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 
     run() {  // 실행영역.  반복해서 호출하기 위함. 1초에 60번 64 frame과 비슷하다
@@ -95,7 +128,9 @@ export default class SlotCanvas {
     }
 
     update() { // 변할 때
+        if(this.#spinBtnClick){
             this.#slotGauge.update();
+        }
         // 속성에있는 객체의 함수를 호출 할 때 this.#slotGauge() / this,#을 활용
     }
     
@@ -122,14 +157,15 @@ export default class SlotCanvas {
 
     spinClick(){
         console.log("x")
-        for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 spin 호출
+        for (let reel of this.#reels) {
             reel.spinCk();
             this.#stopBtn3Click = false;
         }
+        this.#spinBtnClick = true;
     }
 
 
-    stopClick0(){
+    stopClick1(){
         // spinReelsbtn();
         this.#reels[0].stopCk();
         this.#reels[0].stop(this.#ctx);
@@ -137,19 +173,18 @@ export default class SlotCanvas {
         console.log(this.#reels[0].index);
     }
     
-    stopClick1(){
+    stopClick2(){
         this.#reels[1].stopCk();
         this.#reels[1].stop(this.#ctx);
         
         console.log(this.#reels[1].index);
     }
     
-    stopClick2(){
+    stopClick3(){
         this.#reels[2].stopCk();
         this.#reels[2].stop(this.#ctx);
 
         this.#stopBtn3Click = true;
-
         console.log(this.#reels[2].index);
         
     }
@@ -166,44 +201,8 @@ export default class SlotCanvas {
     };
     
 
-    
-    // this.#slotRsult.passDraw(this.ctx);
-    // this.#slotRsult.failDraw(this.ctx);
-    // this.#ctx.drawImage(this.#passImg, 100, 100, 300, 100);
-    // this.#ctx.drawImage(this.#failImg, 100, 100, 300, 100);
+
 
 
 
 }// class
-
-
-
-
-        // stopBtn()
-        // stopBtn(){
-        //     console.log("stopBtn");
-        //     if(this.#stopBtn1 == true){
-        //         // this.#spinBtn = false;
-        //         this.#reels[0].stop(this.#ctx);
-        //     }
-            
-        //     if(this.#stopBtn2 == true){
-        //         this.#reels[1].stop(this.#ctx);
-        //     }
-            
-        //     if(this.#stopBtn3 == true){
-        //         this.#reels[2].stop(this.#ctx);
-        //         this.#spinBtn = false;
-                
-
-
-
-        //     if(this.#reels[0] == this.#reels[1] && this.#reels[1] == this.#reels[2]){
-        //         // this.#slotRsult.passDraw(this.ctx);
-        //         this.#ctx.drawImage(this.#passImg, 100, 100, 300, 100);
-        //         } else {
-        //             // this.#slotRsult.failDraw(this.ctx);
-        //             this.#ctx.drawImage(this.#failImg, 100, 100, 300, 100);
-        //         }
-        //     }
-        // }

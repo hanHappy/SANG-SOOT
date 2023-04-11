@@ -11,7 +11,7 @@ import Game from './3quizGame.js';
 import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 import BattleGameCanvas from "./ui/4battleGameCanvas.js";
 // 현준
-
+// import SlotMainCanvas from  "./1slotUi/1slotMainCanvas.js";
 // 현채
 
 <<<<<<< HEAD

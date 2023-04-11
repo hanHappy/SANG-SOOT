@@ -1,118 +1,77 @@
-/** @type {HTMLCanvasElement} */
-
-const canvas = document.getElementById("gameover");
-const ctx = canvas.getContext('2d');
-
-canvas.width = 1150;
-canvas.height = 820;
-
-
-//배경이미지1
-const img1 = new Image();
-img1.src = "./1slotImg/gameBack00.png";
-img1.onload = function () {
-ctx.drawImage(img1, -105, -15, 1370, 840);
-}
+export default class SlotGameoverCanvas{
+  #canvas;
+  #ctx;
+  #x0;
+  #y0;
+  #x1;
+  #y1;
+  #img0;
+  #img1;
+  #tid; // timeID
+  #toMainBtn;
+  #toOverBtn;
 
 
+  constructor(){
 
-// 메인으로 버튼 클릭 시 실행될 함수 정의
-function goToIndex() {
-    window.location.href = "main.html";
-    }
-    
-    // 버튼에 onclick 이벤트 추가
-    canvas.addEventListener("click", function(event) {
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-    
-    // 클릭한 위치가 버튼 이미지 내부인 경우에만 이벤트 실행
-    if (160 <= x && x <= 489 && 598 <= y && y <= 710) {
-        console.log(x);
-        goToIndex();
-    }
-});
+    this.#canvas = document.createElement("canvas");
+    document.body.append(this.#canvas);
+    this.#ctx = this.#canvas.getContext("2d");
 
+    this.#canvas.width = 1120;
+    this.#canvas.height = 820;
 
-// 종료하기 버튼 클릭 시 실행될 함수 정의
-function goToIndex1() {
-    window.location.href = "ending.html";
-    }
-    
-// 버튼에 onclick 이벤트 추가
-canvas.addEventListener("click", function(event) {
-    const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    this.#img0 = document.getElementById("slotOver0");
+    this.#x0;
+    this.#y0;
+    this.#img0.width = 1150;
+    this.#img0.height = 820;
 
-// 클릭한 위치가 버튼 이미지 내부인 경우에만 이벤트 실행
-if (687 <= x && x <= 1013 && 595 <= y && y <= 707) {
-    console.log(x);
-    goToIndex1();
-}
-});
+    this.#img1 = document.getElementById("slotOver1");
+    this.#x1;
+    this.#y1;
+    this.#img1.width = 1150;
+    this.#img1.height = 820;
 
-
-
-
-
-
-// 두 개의 배경 이미지 생성
-const bgImg1 = new Image();
-bgImg1.src = "./1slotImg/gameover1.png";
-const bgImg2 = new Image();
-bgImg2.src = "./1slotImg/gameover2.png";
-
-// 초기 상태 설정
-let currentBgImg = bgImg1;
-let lastUpdateTime = 0;
-const interval = 200;
-
-function draw(timestamp) {
-  // 이전 프레임과의 시간 차이를 계산
-  const elapsedTime = timestamp - lastUpdateTime;
-
-  // 일정 시간이 경과하면 배경 이미지 변경
-  if (elapsedTime > interval) {
-    lastUpdateTime = timestamp;
-
-    // 현재 이미지가 bgImg1인 경우 bgImg2로, bgImg2인 경우 bgImg1로 변경
-    if (currentBgImg === bgImg1) {
-      currentBgImg = bgImg2;
-    } else {
-      currentBgImg = bgImg1;
-    }
+    this.#toMainBtn = document.getElementById("toMainBtn");
+    this.#toOverBtn = document.getElementById("toOverBtn");
   }
 
-  // 현재 배경 이미지 그리기
-  ctx.drawImage(currentBgImg, -105, -15, 1370, 840);
-
-    // // strBtn 이미지 그리기 ?????위랑 중복?????
-    // ctx.drawImage(strBtn, 250, 530, 650, 300);
-
-  // 다음 프레임 요청
-  requestAnimationFrame(draw);
+get canvas(){
+  return this.#canvas;
 }
 
-// 애니메이션 시작
-requestAnimationFrame(draw);
+draw0(){
+  let x = this.#x0;
+  let y = this.#y0;
+  let w = this.#img0.width;
+  let h = this.#img0.height;
+  let img = this.#img0;
+
+  this.#ctx.drawImage(img, x, y, w, h);
+}
+
+draw1(){
+  let x = this.#x1;
+  let y = this.#y1;
+  let w = this.#img1.width;
+  let h = this.#img1.height;
+  let img = this.#img1;
+
+  this.#ctx.drawImage(img, x, y, w, h);
+}
+
+  run() {
+    this.#tid = setInterval(() => {
+
+      this.draw0();
+      setTimeout(() => {
+        this.draw1();
+      }, 100)
+
+    }, 200);
+  }
 
 
+}
 
-
-
-
-
-
-
-
-
-
-    // 좌표값 찾는 코드
-    canvas.addEventListener('click', function(event) {
-        var rect = canvas.getBoundingClientRect(); // 캔버스의 위치와 크기 정보를 가져옴
-        var ix = event.clientX - rect.left; // 캔버스 내부에서의 x 좌표값 계산
-        var iy = event.clientY - rect.top; // 캔버스 내부에서의 y 좌표값 계산
-        console.log("x 좌표값: " + ix + ", y 좌표값: " + iy);
-    });

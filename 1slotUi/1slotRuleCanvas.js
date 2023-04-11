@@ -1,59 +1,76 @@
-/** @type {HTMLCanvasElement} */
+export default class SlotRuleCanvas {
+    #canvas;
+    #ctx;
+    #img0;
+    #img1;
+    #x0;
+    #y0;
+    #x1;
+    #y1
+    #tid;
+    #conBtn;
 
-const canvas = document.getElementById("gameRule");
-const ctx = canvas.getContext('2d');
+    constructor() {
 
-canvas.width = 1150;
-canvas.height = 820;
+        this.#canvas = document.createElement("canvas");
+        document.body.append(this.#canvas);
+        this.#ctx = this.#canvas.getContext("2d");
 
+        this.#canvas.width = 1150;
+        this.#canvas.height = 820;
 
-//배경이미지1
-const img1 = new Image();
-img1.src = "./1slotImg/gameBack00.png";
-img1.onload = function () {
-    ctx.drawImage(img1, -105, -15, 1370, 840);
-}
+        this.#img0 = document.getElementById("slotRule0");
+        this.#x0 = 0;
+        this.#y0 = 0;
+        this.#img0.width = 1150;
+        this.#img0.height = 820;
 
-//규칙이미지
-const info = new Image();
-info.src = "./1slotImg/rule.png";
-info.onload = function () {
-    ctx.drawImage(info, 90, 95, 960, 600);
-}
+        this.#img1 = document.getElementById("slotRule1");
+        this.#x1 = 0;
+        this.#y1 = 0;
+        this.#img1.width = 1150;
+        this.#img1.height = 820;
 
-//스핀버튼 이미지
-const yesBtn = new Image();
-yesBtn.src = "./1slotImg/yesBtn.png";
-yesBtn.onload = function () {
-    ctx.drawImage(yesBtn, 800, 550, 150, 80);
-}
-
-
-// 버튼 클릭 시 실행될 함수 정의
-function goToIndex() {
-    window.location.href = "1slotGame.html";
+        
     }
-    
-    // 버튼에 onclick 이벤트 추가
-    canvas.addEventListener("click", function(event) {
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-    
-    // 클릭한 위치가 버튼 이미지 내부인 경우에만 이벤트 실행
-    if (818 <= x && x <= 934 && 565 <= y && y <= 614) {
-        console.log(x);
-        goToIndex();
+
+    get canvas(){
+        return this.#canvas;
     }
-});
+
+
+    draw0() {
+        let img = this.#img0;
+        let x = this.#x0;
+        let y = this.#y0;
+        let w = this.#img0.width;
+        let h = this.#img0.height;
+
+        this.#ctx.drawImage(img, x, y, w, h);
+    }
+
+
+    draw1() {
+        let img = this.#img1;
+        let x = this.#x1;
+        let y = this.#y1;
+        let w = this.#img1.width;
+        let h = this.#img1.height;
+
+        this.#ctx.drawImage(img, x, y, w, h);
+    }
+
+    run() {
+        this.#tid = setInterval(() => {
+
+            this.draw0();
+            setTimeout(() => {
+                this.draw1();
+            }, 100)
+
+        }, 200);
+    }
 
 
 
-
-
-// canvas.addEventListener('click', function(event) {
-//     var rect = canvas.getBoundingClientRect(); // 캔버스의 위치와 크기 정보를 가져옴
-//     var ix = event.clientX - rect.left; // 캔버스 내부에서의 x 좌표값 계산
-//     var iy = event.clientY - rect.top; // 캔버스 내부에서의 y 좌표값 계산
-//     console.log("x 좌표값: " + ix + ", y 좌표값: " + iy);
-// });
+}

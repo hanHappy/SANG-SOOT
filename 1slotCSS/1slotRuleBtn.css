@@ -1,0 +1,25 @@
+        /* 확인버튼 */
+        #conBtn {
+            position: absolute;
+            border-radius: 30px;
+            top: 580px;
+            left: 465px;
+            padding: 3px 30px;
+            font-family: 'Galmuri7 Regular';
+            font-size: 60px;
+            color: rgb(255 242 204);
+            background-color: rgb(27 20 100);
+            border: 12px solid rgb(41 171 226);
+        }
+
+        /* 누름효과 */
+        #conBtn:active {
+            -webkit-transform: translateY((4px));
+            transform: translateY(4px);
+        }
+
+        /*호버 */
+        #conBtn:hover {
+            border-color: #0FF;
+            box-shadow: 0 0 70px 20px #57b7e4;
+        }
