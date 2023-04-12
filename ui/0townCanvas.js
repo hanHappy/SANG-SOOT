@@ -80,7 +80,6 @@ export default class TownCanvas {
             menus.price.push(7000, 7000, 7000, 7000, 7000, 7000);
             menus.ratedPrice.push(7000, 7000, 7000, 7000, 7000, 7000);
         }
-
         // 각 식당 가성비 계산
         for (let j = 0; j < 6; j++) {
             let rstrnt = TownCanvas.rstrnts[j];
@@ -112,7 +111,16 @@ export default class TownCanvas {
         let my = e.offsetY;
         for (let rstrnt of TownCanvas.rstrnts) {
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h) {
+                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my < 400) {
+                mx = (rstrnt.x + (rstrnt.w / 2));
+                my = (rstrnt.y + rstrnt.h);
+                this.updateInfo(mx, my);
+                rstrnt.mouseover();
+            } else if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
+                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my > 400) {
+                let mx = (rstrnt.x + (rstrnt.w / 2));
+                let my = rstrnt.y;
+                this.updateInfo(mx, my);
                 rstrnt.mouseover();
             } else
                 rstrnt.mouseleave();
@@ -132,9 +140,7 @@ export default class TownCanvas {
                 let arrivalY = (rstrnt.y + rstrnt.h);
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
-                // 레스토랑캔버스 전역변수에 할당
-                RestaurantCanvas.x = arrivalX;
-                RestaurantCanvas.y = arrivalY;
+                this.updateInfo(arrivalX, arrivalY);
             }
             // 아랫라인 식당
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
@@ -143,20 +149,33 @@ export default class TownCanvas {
                 let arrivalY = rstrnt.y;
                 // 유저 이동
                 user.moveTo(arrivalX, arrivalY);
-                // 레스토랑캔버스 전역변수에 할당
-                RestaurantCanvas.x = arrivalX;
-                RestaurantCanvas.y = arrivalY;
+                this.updateInfo(arrivalX, arrivalY);
             }
         }
     }
 
+    updateInfo(x, y) {
+        if (x == 440 && y == 316)
+            Restaurant.rstrntIndex = 0;
+        if (x == 647 && y == 316)
+            Restaurant.rstrntIndex = 1;
+        if (x == 850 && y == 316)
+            Restaurant.rstrntIndex = 2;
+        if (x == 440 && y == 520)
+            Restaurant.rstrntIndex = 3;
+        if (x == 647 && y == 520)
+            Restaurant.rstrntIndex = 4;
+        if (x == 850 && y == 520)
+            Restaurant.rstrntIndex = 5;
+    }
+
     // town canvas getter -----------------------------------------------------
-    get canvas(){
+    get canvas() {
         return this.#canvas;
     }
 
     // 식당 배열 getter
-    get rstrnts(){
+    get rstrnts() {
         return TownCanvas.rstrnts;
     }
 
