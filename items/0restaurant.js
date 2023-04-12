@@ -1,3 +1,5 @@
+import TownCanvas from "../ui/0townCanvas.js";
+
 export default class Restaurant {
     #name;
     #img;
@@ -49,46 +51,80 @@ export default class Restaurant {
         let h = this.#h;
         ctx.drawImage(img, x, y, w, h);
     }
-    // 정보 그리기
+    // 마우스오버 -> 식당 정보
     drawInfo(ctx) {
-        if(this.#mouseover){
+        if (this.#mouseover) {
+            // 말풍선
             let img = this.#infoImg;
             let x = this.#infoX
             let y = this.#infoY;
             let w = this.#infoW;
             let h = this.#infoH;
             ctx.drawImage(img, x, y, w, h);
+            // 식당 정보
+            let menus = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus;
+            let avgPrice = 0;
+            let avgRatedPrice = 0;
+            // 판매가격
+            for (let price of menus.price) {
+                avgPrice += Math.floor(price / menus.price.length);
+            }
+            // 평가가격
+            for (let rp of menus.ratedPrice) {
+                avgRatedPrice += Math.floor(rp / menus.ratedPrice.length);
+            }
+            let value = (avgRatedPrice / avgPrice) * 100;
+            // 가성비 -> ★로 변환
+            if (value < 80) {
+                value = "                    ★";
+            } else if (value < 90) {
+                value = "               ★★";
+            } else if (value < 110) {
+                value = "           ★★★";
+            } else if (value < 120) {
+                value = "     ★★★★";
+            } else {
+                value = "★★★★★";
+            }
+            ctx.font = "18px dgm";
+            ctx.letterSpacing = "0px";
+            ctx.fillText(`평균가격 : ${avgPrice}원`, x + 15, y + 52);
+            ctx.fillText(`평가가격 : ${avgPrice}원`, x + 15, y + 80);
+            ctx.fillText(`가성비   : `, x + 15, y + 108);
+            ctx.font = "18px arial";
+            ctx.letterSpacing = "-5px";
+            ctx.fillText(value, x + 110, y + 108);
         }
     }
-    
-    mouseover(){
+
+    mouseover() {
         this.#mouseover = true;
     }
-    mouseleave(){
+    mouseleave() {
         this.#mouseover = false;
     }
 
-    get name(){
+    get name() {
         return this.#name;
     }
-    get menus(){
+    get menus() {
         return this.#menus;
     }
 
-    get info(){
+    get info() {
         return this.#infoImg;
     }
 
-    get x(){
+    get x() {
         return this.#x;
     }
-    get y(){
+    get y() {
         return this.#y;
     }
-    get w(){
+    get w() {
         return this.#w;
     }
-    get h(){
+    get h() {
         return this.#h;
     }
 
