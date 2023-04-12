@@ -8,17 +8,20 @@ export default class Menu {
     #ratedPrices;
     #values;
     #menuNums;
+    #rstrntIndex;
     #menuIndex;
     #btns;
 
+    static menuIndex;
+
     constructor(ctx) {
         this.#ctx = ctx;
+        this.#menuIndex = 0;
         this.#names = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name;
         this.#prices = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price;
         this.#ratedPrices = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.ratedPrice;
         this.#values = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.value;
         this.#menuNums = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name.length;
-        this.#menuIndex = 0;
         this.#btns = [];
         for(let i = 0; i < this.#menuNums; i++){
             this.#btns[i] = document.getElementById(`menuBtn${i}`);
@@ -37,10 +40,10 @@ export default class Menu {
     }
 
     get name(){
-        return this.#names[this.#menuIndex];
+        return this.#names;
     }
     get price(){
-        return this.#prices[this.#menuIndex];
+        return this.#prices;
     }
     get ratedPrice(){
         return this.#ratedPrices[this.#menuIndex];
@@ -59,17 +62,17 @@ export default class Menu {
         this.#ctx.clearRect(645, 130, 350, 40);
         this.#ctx.font = "35px dgm";
         this.#ctx.letterSpacing = "1px";
-        this.#ctx.fillText(this.#names[i], 670, 161);
-        this.#menuIndex = i;
+        this.#ctx.fillText(TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name[i], 670, 161);
+        Menu.menuIndex = i;
     }
 
     // 메뉴 출력 --------------------------------------------------------
     printInfo(ctx) {
-        let name = this.#names;
-        let p = this.#prices;
-        let rP = this.#ratedPrices;
-        let value = this.#values;
-        let menuNums = this.#names.length;
+        let name = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name;
+        let p = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price;
+        let rP = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.ratedPrice;
+        let value = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.value;
+        let menuNums = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name.length;
         // 가성비 -> ★로 변환
         // 급간 : 판매 가격의 10%
         for (let i = 0; i < menuNums; i++) {
