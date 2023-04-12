@@ -74,12 +74,44 @@ export default class RestaurantCanvas {
     let h = this.#h;
     this.#ctx.drawImage(scene, x, y, w, h);
 
+    this.#menu = new Menu(this.#ctx);
+    
     // Scene_1 : 메뉴판
-    if (index == 1) {
-      this.#menu = new Menu(this.#ctx);
-      this.#menu.printInfo(this.#ctx);
-    }
+    if (this.#sceneIndex == 1)
+      this.scene1(this.#menu);
+    // Scene_2 : 평가
+    if (this.#sceneIndex == 9)
+      this.scene9(this.#menu);
   } // click handler
+
+  scene9(menu){
+    let name = menu.name;
+    let price = menu.price;
+    let ratedPrice = menu.ratedPrice;
+    let value = menu.value;
+    this.#ctx.font = "35px dgm";
+    this.#ctx.fillText(name, 122, 530);
+    this.#ctx.fillText(price, 255, 618);
+  }
+
+  scene1(menu){
+    menu.printInfo(this.#ctx);
+    let btn = document.getElementById("S1-next");
+    btn.style.display = "block";
+    btn.addEventListener('click', function(){
+      this.#sceneIndex++;
+      let index = this.#sceneIndex;
+      let ctx = this.#ctx;
+      let scene = this.#scenes[index];
+      let x = this.#x;
+      let y = this.#y;
+      let w = this.#w;
+      let h = this.#h;
+      this.#ctx.drawImage(scene, x, y, w, h);
+      this.#menu.removeBtn();
+      btn.style.display = "none";
+    }.bind(this))
+  }
 
   get canvas() {
     return this.#canvas;

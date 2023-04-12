@@ -18,12 +18,22 @@ button:hover{
     filter: brightness(0.8);
 }
 
+.S1-next{
+    display: none;
+    position: absolute;
+    margin-left: 990px;
+    margin-top: 133px;
+    background-color: #F2D800;
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
 .menuBtn0{
-    /* display: none; */
+    display: none;
     position: absolute;
     margin-left: 85px;
     margin-top: 275px;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -31,11 +41,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn1{
-    /* display: none; */
+    display: none;
     position: absolute;
     margin-left: 85px;
     margin-top: 340px;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -43,11 +52,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn2{
-    /* display: none; */
+    display: none;
     margin-left: 85px;
     margin-top: 405px;
     position: absolute;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -55,11 +63,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn3{
-    /* display: none; */
+    display: none;
     margin-left: 85px;
     margin-top: 470px;
     position: absolute;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -67,11 +74,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn4{
-    /* display: none; */
+    display: none;
     margin-left: 85px;
     margin-top: 535px;
     position: absolute;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -79,11 +85,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn5{
-    /* display: none; */
+    display: none;
     margin-left: 85px;
     margin-top: 600px;
     position: absolute;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
@@ -91,11 +96,10 @@ button:hover{
     text-align: center;
 }
 .menuBtn6{
-    /* display: none; */
+    display: none;
     margin-left: 85px;
     margin-top: 665px;
     position: absolute;
-    display: none;
     background-color: rgb(207, 207, 207);
     height: 38px;
     font-family: "dgm";
