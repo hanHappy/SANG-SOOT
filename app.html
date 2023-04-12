@@ -4,32 +4,83 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>town</title>
+    <title>app</title>
+    <link rel="stylesheet" href="css/app.css">
     <script src="app.js" type="module" defer="defer"></script>
-    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
+    <!-- ■■■■■■■■■■■■■■■■■■ 맵 ■■■■■■■■■■■■■■■■■■■■-->
     <!-- 맵 배경 -->
     <img src="/images/townBg.png" id="map" class="d-none" />
-    <!-- 식당 이미지 -->
-    <img src="/images/rstrnt_0.png" id="rstrnt0" class="d-none" />
-    <img src="/images/rstrnt_1.png" id="rstrnt1" class="d-none" />
-    <img src="/images/rstrnt_2.png" id="rstrnt2" class="d-none" />
-    <img src="/images/rstrnt_3.png" id="rstrnt3" class="d-none" />
-    <img src="/images/rstrnt_4.png" id="rstrnt4" class="d-none" />
-    <img src="/images/rstrnt_5.png" id="rstrnt5" class="d-none" />
-    <!-- 식당 정보 -->
-    <img src="/images/balloon.png" id="rstrntInfo0" class="d-none" />
-    
-    <!-- 예진 -->
-    <img src="/images/userWalk.png" id="user" class="d-none" />
-    <!-- scenes -->
+        <!-- 식당 이미지 -->
+        <img src="/images/rstrnt_0.png" id="rstrnt0" class="d-none" />
+        <img src="/images/rstrnt_1.png" id="rstrnt1" class="d-none" />
+        <img src="/images/rstrnt_2.png" id="rstrnt2" class="d-none" />
+        <img src="/images/rstrnt_3.png" id="rstrnt3" class="d-none" />
+        <img src="/images/rstrnt_4.png" id="rstrnt4" class="d-none" />
+        <img src="/images/rstrnt_5.png" id="rstrnt5" class="d-none" />
+        <!-- 식당 정보 -->
+        <img src="/images/balloon.png" id="rstrntInfo0" class="d-none" />
+        <!-- 예진 캐릭터 -->
+        <img src="/images/userWalk.png" id="user" class="d-none" />
+
+    <!-- ■■■■■■■■■■■■■■■■■■ 식당 입장 ■■■■■■■■■■■■■■■■■■ -->
+    <!-- Scene_0 : 어서오세요 -->
     <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none" />
-    <img src="/images/menu.png" id="inRstrnt1" class="d-none" />
+    <!-- Scene_1 : 메뉴판 -->
+    <img src="/images/inRstrnt_1.png" id="inRstrnt1" class="d-none" />
+        <!-- 메뉴 선택 버튼 -->
+        <button id="menuBtn0" class="menuBtn0">선택</button>
+        <button id="menuBtn1" class="menuBtn1">선택</button>
+        <button id="menuBtn2" class="menuBtn2">선택</button>
+        <button id="menuBtn3" class="menuBtn3">선택</button>
+        <button id="menuBtn4" class="menuBtn4">선택</button>
+        <button id="menuBtn5" class="menuBtn5">선택</button>
+        <button id="menuBtn6" class="menuBtn6">선택</button>
+        <button id="S1-next" class="S1-next">다음</button>
+    <!-- Scene_2~8 -->
+    <img src="/images/inrstrnt_2.png" id="inRstrnt2" class="d-none" />
+    <img src="/images/inrstrnt_3.png" id="inRstrnt3" class="d-none" />
+    <img src="/images/inrstrnt_4.png" id="inRstrnt4" class="d-none" />
+    <img src="/images/inrstrnt_5.png" id="inRstrnt5" class="d-none" />
+    <img src="/images/inrstrnt_6.png" id="inRstrnt6" class="d-none" />
+    <img src="/images/inrstrnt_7.png" id="inRstrnt7" class="d-none" />
+    <img src="/images/inrstrnt_8.png" id="inRstrnt8" class="d-none" />
+    <!-- Scene_9 : 평가 -->
+    <img src="/images/inRstrnt_9.png" id="inRstrnt9" class="d-none">
+        <form target="ifr" id="S9-form" class="d-none">
+          <input type="number" id="S9-input" class="S9-input" placeholder="평가 금액을 입력해주세요">
+          <input type="submit" value="평가" id="S9-submit" class="S9-submit">
+        </form>
+  <iframe name="ifr" style="display: none;"></iframe>
+    <!-- Scene_10~17 -->
+    <img src="/images/inrstrnt_10.png" id="inRstrnt10" class="d-none" />
+    <img src="/images/inrstrnt_11.png" id="inRstrnt11" class="d-none" />
+    <img src="/images/inrstrnt_12.png" id="inRstrnt12" class="d-none" />
+    <img src="/images/inrstrnt_13.png" id="inRstrnt13" class="d-none" />
+    <img src="/images/inrstrnt_14.png" id="inRstrnt14" class="d-none" />
+    <img src="/images/inrstrnt_15.png" id="inRstrnt15" class="d-none" />
+    <img src="/images/inrstrnt_16.png" id="inRstrnt16" class="d-none" />
+    <img src="/images/inrstrnt_17.png" id="inRstrnt17" class="d-none" />
 
-    <!-- 4battle JIN -->
+    <!-- ■■■■■■■■■■■■■■■■■■ 게임 이후 ■■■■■■■■■■■■■■■■■■ -->
+    <!-- Scene_1 : 게임 결과 화면 -->
+    <img src="images/afterGame_0.png" id="afterGame0" class="d-none">
 
+    <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
+
+    <!-- 배경 -->
+    <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1" />
+    <img src="3quizImg/quiz_bg2.png" class="d-none" id="bg2" />
+    <!-- 콘텐츠 -->
+    <img src="3quizImg/rule.png" class="d-none" id="rule" />
+    <!-- 버튼 -->
+    <img class="d-none" id="startbtn1" src="3quizImg/button_start.png" />
+    <img class="d-none" id="startbtn2" src="3quizImg/button_start2.png" />
+    <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png" />
+
+    <!-- ■■■■■■■■■■■■■■■■■■ 4battle JIN ■■■■■■■■■■■■■■■■■■ -->
     <!-- scenairo -->
     <img id="talk00" class="d-none" src="4battleImg/잠깐1.png" />
     <img id="talk01" class="d-none" src="4battleImg/잠깐2.png" />
@@ -48,6 +99,8 @@
     <!-- game NPC -->
     <img id="ceo" class="d-none" src="./4battleImg/ceoHappy.png" />
     <img id="4user" class="d-none" src="./4battleImg/userHappy.png" />
+    <img id="ceowin" class="d-none" src="./4battleImg/userHappy.png" />
+    <img id="userwin" class="d-none" src="./4battleImg/ceoMad.png" />
 
     <!-- food -->
     <img id="food" class="d-none" src="./4battleImg/onion.png" />
@@ -60,20 +113,7 @@
     <!-- win/lose -->
     <img id="win" class="d-none" src="./4battleImg/win.png" />
     <img id="lose" class="d-none" src="./4battleImg/lose.png" />
-    <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none">
-    <img src="/images/menu.png" id="inRstrnt1" class="d-none">
-
-    <!-------------- 세영 -------------->
-    <!-- 배경 -->
-    <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1">
-    <img src="3quizImg/quiz_bg2.png" class="d-none" id="bg2">
-    <!-- 콘텐츠 -->
-    <img src="3quizImg/rule.png" class="d-none" id="rule">
-    <!-- 버튼 -->
-    <img class="d-none" id="startbtn1" src="3quizImg/button_start.png">
-    <img class="d-none" id="startbtn2" src="3quizImg/button_start2.png">
-    <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png">
-
-
-</body>
+    <img src="/images/inRstrnt_0.png" id="inRstrnt0" class="d-none" />
+    <img src="/images/menu.png" id="inRstrnt1" class="d-none" />
+  </body>
 </html>
