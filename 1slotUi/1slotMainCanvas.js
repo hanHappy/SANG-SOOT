@@ -9,7 +9,7 @@ export default class SlotMainCanvas{
   #y1;
   #strBtn;
   #tid;
-
+  #jackpotImg
 
   constructor(){
     
@@ -19,7 +19,6 @@ export default class SlotMainCanvas{
     
     this.#canvas.width = 1150;
     this.#canvas.height = 820
-
 
     this.#img0 = document.getElementById("slotMain0");
     this.#x0 = 0;
@@ -41,7 +40,6 @@ export default class SlotMainCanvas{
     return this.#canvas;
   }
 
-
   draw0() {
     let x = this.#x0;
     let y = this.#y0;
@@ -50,9 +48,8 @@ export default class SlotMainCanvas{
     let img = this.#img0;
 
     this.#ctx.drawImage(img, x, y, w, h);
-
+    
   }
-
 
   draw1() {
     let x = this.#x1;
@@ -64,7 +61,6 @@ export default class SlotMainCanvas{
     this.#ctx.drawImage(img, x, y, w, h);
   }
 
-
   run() { 
     this.#tid = setInterval(() => {
 
@@ -74,7 +70,9 @@ export default class SlotMainCanvas{
         }, 100)
 
     }, 200);
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
   }
-  
 }
 

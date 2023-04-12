@@ -2,9 +2,9 @@
         #toMainBtn {
             position: absolute;
             border-radius: 30px;
-            top: 580px;
-            left: 465px;
-            padding: 3px 30px;
+            top: 600px;
+            left: 195px;
+            padding: 13px 30px;
             font-family: 'Galmuri7 Regular';
             font-size: 60px;
             color: rgb(255 242 204);
@@ -29,9 +29,9 @@
         #toOverBtn {
             position: absolute;
             border-radius: 30px;
-            top: 580px;
-            left: 465px;
-            padding: 3px 30px;
+            top: 600px;
+            left: 393px;
+            padding: 13px 30px;
             font-family: 'Galmuri7 Regular';
             font-size: 60px;
             color: rgb(255 242 204);

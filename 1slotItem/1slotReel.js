@@ -39,7 +39,7 @@ export default class SlotReel{
 
 
         this.#index = 0;
-        this.#randNums = new Array(50); //값 30개 배열 생성
+        this.#randNums = new Array(100); //값 30개 배열 생성
         for(let i=0; i<this.#randNums.length; i++){
             this.#randNums[i] = Math.floor(Math.random() * 5);
         } 

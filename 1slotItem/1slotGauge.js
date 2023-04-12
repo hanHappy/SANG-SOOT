@@ -22,31 +22,22 @@ export default class SlotGauge{
         this.#vy = 0;
 
         this.#disappear = null; //1
-
-        // this.#gaugeOver = false;
-
     }
     
-    set disappear(GG){ // 2
-        this.#disappear = GG;
+    set disappear(callBack){ // 2
+        this.#disappear = callBack;
     }
-
-
 
     update(){
         if(this.#width <= 0){
             if(this.#disappear){ //3
                 this.#disappear();
             }
-            // this.#gaugeOver = true;
             return;
         }
-        this.#width -= 5;
+        this.#width -= 0.01;
     }
     // 게이지가 0이하로 줄어들면 너비가 0에서 멈추도록한다
-    
-    
-
         
     draw(ctx){
         let x = this.#x;
@@ -63,10 +54,6 @@ export default class SlotGauge{
     }
 
 
-
-
 }
 
 
-
-// 릴세트
