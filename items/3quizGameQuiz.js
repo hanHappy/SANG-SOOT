@@ -3,7 +3,9 @@ export default class Quiz {
   #ctx;
   #clickCount;
   #quizWBeep;
-  #quizCBeep
+  #quizCBeep;
+  #nextbtnW;
+  #nextbtnC;
 
   constructor(ctx, obj) {
     this.#ctx = ctx;
@@ -11,6 +13,9 @@ export default class Quiz {
 
     this.#quizCBeep = document.getElementById("quizCBeep")
     this.#quizWBeep = document.getElementById("quizWBeep")
+
+    this.#nextbtnW = document.getElementById("nextbtnW");
+    this.#nextbtnC = document.getElementById("nextbtnC");
 
     this.#clickCount = 0;
   }
@@ -22,7 +27,6 @@ export default class Quiz {
     quizImg.onload = () => {
       this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
       setTimeout(function () {
-        this.#ctx.drawImage(quizImg, 120, 132, 911, 584);
         this.#ctx.drawImage(quizImg, 120, 132, 911, 584);
         this.#obj.addEventListener('click', this.#clickHandler);
       }.bind(this), 500); //setT
@@ -46,6 +50,7 @@ export default class Quiz {
         imgW.onload = () => {
           this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
           this.#ctx.drawImage(imgW, 120, 132, 911, 584);
+          this.#ctx.drawImage(this.#nextbtnW, 937, 780, 200, 27);
           this.#obj.removeEventListener("click", this.#clickHandler);
         };
         this.#clickCount++;
@@ -60,6 +65,7 @@ export default class Quiz {
         imgW.onload = () => {
           this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
           this.#ctx.drawImage(imgW, 120, 132, 911, 584);
+          this.#ctx.drawImage(this.#nextbtnW, 937, 780, 200, 27);
           this.#obj.removeEventListener("click", this.#clickHandler);
         };
         this.#clickCount++;
@@ -78,6 +84,7 @@ export default class Quiz {
         imgC.onload = () => {
           this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
           this.#ctx.drawImage(imgC, 120, 132, 911, 584);
+          this.#ctx.drawImage(this.#nextbtnC, 937, 780, 200, 27);
           this.#obj.removeEventListener('click', this.#clickHandler);
         };
         this.#clickCount++;
