@@ -1,3 +1,5 @@
+import GameResult from "../items/0gameResult.js";
+
 export default class afterGameCanvas {
 
     #canvas;
@@ -6,6 +8,7 @@ export default class afterGameCanvas {
     #y;
     #w;
     #h;
+    #gameResult;
     #scenes;
     #sceneIndex;
 
@@ -23,6 +26,9 @@ export default class afterGameCanvas {
         this.#w = 1150;
         this.#h = 820;
 
+        // Game Result
+        this.#gameResult = new GameResult(this.#ctx);
+
         // click ---------------------------------------------------------
         this.#sceneIndex = 0;
         this.#canvas.onclick = this.clickHandler.bind(this);
@@ -37,7 +43,7 @@ export default class afterGameCanvas {
     clickHandler() {
 
         if(this.#sceneIndex==0){
-            this.drawResult();
+            this.#gameResult.drawTrophies();
             return;
         }
         
@@ -46,11 +52,6 @@ export default class afterGameCanvas {
     
        
       } // click handler
-
-      // 게임 결과 화면 (트로피)
-      drawResult(){
-
-      }
 
       draw() {
         let scene = this.#scenes[this.#sceneIndex];
