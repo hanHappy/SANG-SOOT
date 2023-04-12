@@ -111,7 +111,16 @@ export default class TownCanvas {
         let my = e.offsetY;
         for (let rstrnt of TownCanvas.rstrnts) {
             if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h) {
+                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my < 400) {
+                mx = (rstrnt.x + (rstrnt.w / 2));
+                my = (rstrnt.y + rstrnt.h);
+                this.updateInfo(mx, my);
+                rstrnt.mouseover();
+            } else if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
+                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my > 400) {
+                let mx = (rstrnt.x + (rstrnt.w / 2));
+                let my = rstrnt.y;
+                this.updateInfo(mx, my);
                 rstrnt.mouseover();
             } else
                 rstrnt.mouseleave();
