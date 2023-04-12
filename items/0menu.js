@@ -28,6 +28,14 @@ export default class Menu {
         }
     }
 
+    set ratedPrice(rp){
+        this.#ratedPrices[this.#menuIndex] = (this.#ratedPrices + rp)/2;
+    }
+
+    get menuIndex(){
+        return this.#menuIndex;
+    }
+
     get name(){
         return this.#names[this.#menuIndex];
     }

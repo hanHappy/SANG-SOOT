@@ -37,7 +37,7 @@ export default class RestaurantCanvas {
     this.#canvas.onclick = this.clickHandler.bind(this);
 
     // images --------------------------------------------------------
-    this.#sceneNums = 17; // ★★★★★★★★★★★ scene 수에 따라 값 설정
+    this.#sceneNums = 17;
     this.#scenes = new Array(this.#sceneNums);
     // html에서 scenes 이미지 가져오기
     for (let i = 0; i < this.#scenes.length; i++) {
@@ -62,7 +62,7 @@ export default class RestaurantCanvas {
 
   // 클릭할 때마다 다음 scene으로 넘어감
   clickHandler() {
-    if(this.#sceneIndex==1 || this.#sceneIndex==9)
+    if (this.#sceneIndex == 1 || this.#sceneIndex == 9)
       return;
     this.#sceneIndex++;
     let index = this.#sceneIndex;
@@ -75,34 +75,57 @@ export default class RestaurantCanvas {
     this.#ctx.drawImage(scene, x, y, w, h);
 
     this.#menu = new Menu(this.#ctx);
-    
+
     // Scene_1 : 메뉴판
     if (this.#sceneIndex == 1)
       this.scene1(this.#menu);
-    // Scene_2 : 평가
+    // Scene_9 : 평가
     if (this.#sceneIndex == 9)
       this.scene9(this.#menu);
   } // click handler
 
-  scene9(menu){
+  scene9(menu) {
     let name = menu.name;
     let price = menu.price;
-    let ratedPrice = menu.ratedPrice;
-    let value = menu.value;
     this.#ctx.font = "35px dgm";
+    // 메뉴명
     this.#ctx.fillText(name, 122, 530);
+    // 판매가격
     this.#ctx.fillText(price, 255, 618);
+
+    // 평가
+    let form = document.getElementById("S9-form");
+    form.style.display = "block";
+    // 입력 박스
+    let input = document.getElementById("S9-input");
+
+    // 평가 버튼
+    let submit = document.getElementById("S9-submit");
+    submit.addEventListener('click', function () {
+      menu.ratedPrice = input.value;
+      console.log(input.value);
+      
+      this.#sceneIndex++;
+      let ctx = this.#ctx;
+      let scene = this.#scenes[this.#sceneIndex];
+      let x = this.#x;
+      let y = this.#y;
+      let w = this.#w;
+      let h = this.#h;
+      this.#ctx.drawImage(scene, x, y, w, h);
+      form.style.display = "none";
+    }.bind(this));
   }
 
-  scene1(menu){
+  // 메뉴판
+  scene1(menu) {
     menu.printInfo(this.#ctx);
     let btn = document.getElementById("S1-next");
     btn.style.display = "block";
-    btn.addEventListener('click', function(){
+    btn.addEventListener('click', function () {
       this.#sceneIndex++;
-      let index = this.#sceneIndex;
       let ctx = this.#ctx;
-      let scene = this.#scenes[index];
+      let scene = this.#scenes[this.#sceneIndex];
       let x = this.#x;
       let y = this.#y;
       let w = this.#w;
