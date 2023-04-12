@@ -7,6 +7,20 @@
     <title>app</title>
     <link rel="stylesheet" href="css/app.css">
     <script src="app.js" type="module" defer="defer"></script>
+
+
+
+    <style>
+      body{
+          margin:0px;
+      }
+
+      .d-none{
+          display: none;
+      }
+      
+  </style>
+
   </head>
 
   <body>
@@ -66,7 +80,71 @@
 
     <!-- ■■■■■■■■■■■■■■■■■■ 게임 이후 ■■■■■■■■■■■■■■■■■■ -->
     <!-- Scene_1 : 게임 결과 화면 -->
+
     <img src="images/afterGame_0.png" id="afterGame0" class="d-none">
+
+
+    <!-- ■■■■■■■■■■■■■■■■■■ 솔롯 게임 현준 ■■■■■■■■■■■■■■■■■■ -->
+<!-- 슬롯 메인 캔버스 -->
+<img id="slotMain0" src="/images/slotMain0.png" class="d-none">
+<img id="slotMain1" src="/images/slotMain1.png" class="d-none">
+<button id="strBtn" class="d-none" >Start!</button>
+
+<!-- 슬롯 룰 캔버스 -->
+<img id="slotRule0" src="/images/slotRule0.png" class="d-none">
+<img id="slotRule1" src="/images/slotRule1.png" class="d-none">
+<button id="conBtn" class="d-none">확인</button>
+
+<!-- 슬롯 게임 캔버스 -->
+<!-- <img id="frame" src="./1slotImg/frame1.png" class = "d-none"> -->
+<img id="frame" src="./images/slotFrame.png" class = "d-none">
+<img id="BG" src="./images/gameBack11.png" class="d-none">
+
+
+<img id="jackpot" src="/images/j1.png" class="d-none">
+<img id="fail" src="/images/f2.png" class="d-none">
+
+
+<img id="f1" src="/images/food1.jpg" class="d-none">
+<img id="f2" src="/images/food2.jpg" class="d-none">
+<img id="f3" src="/images/food3.jpg" class="d-none">
+<img id="f4" src="/images/food4.jpg" class="d-none">
+<img id="f5" src="/images/newLec.jpg" class="d-none">
+
+<!-- <img id="f6" src="/1slotImg/newLec.jpg" class="d-none">
+<img id="f7" src="/1slotImg/newLec.jpg" class="d-none">
+<img id="f8" src="/1slotImg/newLec.jpg" class="d-none">
+<img id="f9" src="/1slotImg/newLec.jpg" class="d-none">
+<img id="f10" src="/1slotImg/newLec.jpg" class="d-none"> -->
+
+<button id="spinBtn" class = "d-none">Spin</button>
+<button id="stop1" class = "d-none">stop!</button>
+<button id="stop2" class = "d-none">stop!</button>
+<button id="stop3" class = "d-none">stop!</button>
+
+<!-- 슬롯 게임오버 캔버스 -->
+<img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
+<img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
+
+<button id="toOverBtn" class="d-none">종료하기</button>
+<!-- <button id="toMainBtn" class="d-none">메인으로</button> -->
+
+
+<!-- 엔딩크레딧 -->
+<video id="ending"  src="/images/ending.mp4" autoplay class="d-none" autoplay></video>
+
+<!-- S.E. -->
+<audio id="clickSE" src="/1slotSound/click.wav"></audio>
+<audio id="ruleSE" src="/1slotSound/Rule.wav"></audio>
+<audio id="spinSE" src="/1slotSound/spin.wav"></audio>
+<audio id="stopSE" src="/1slotSound/stop.wav"></audio>
+<audio id="failSE" src="/1slotSound/fail.wav"></audio>
+<audio id="jackSE" src="/1slotSound/jackpot.wav"></audio>
+
+
+
+
+
 
     <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
 

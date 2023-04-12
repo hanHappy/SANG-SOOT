@@ -35,7 +35,7 @@ export default class SlotGauge{
             }
             return;
         }
-        this.#width -= 0.01;
+        this.#width -= 3;
     }
     // 게이지가 0이하로 줄어들면 너비가 0에서 멈추도록한다
         
