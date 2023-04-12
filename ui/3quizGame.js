@@ -1,6 +1,6 @@
-import Countdown from '../items/3quizGameCountdown.js';
-import Move from '../items/3quizGameMove.js';
-import Quiz from '../items/3quizGameQuiz.js';
+import Countdown from "../items/3quizGameCountdown.js";
+import Move from "../items/3quizGameMove.js";
+import Quiz from "../items/3quizGameQuiz.js";
 
 export default
   class Game {

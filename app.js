@@ -3,9 +3,9 @@
 // import RestaurantCanvas from "./ui/0restaurantCanvas.js";
 // import User from "./items/0user.js";
 // // 세영
-import Main from './ui/3quizMain.js';
-import Rule from './ui/3quizRule.js';
-import Game from './ui/3quizGame.js';
+import Main from "./ui/3quizMain.js";
+import Rule from "./ui/3quizRule.js";
+import Game from "./ui/3quizGame.js";
 // // 예진
 // import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 // import BattleGameCanvas from "./ui/4battleGameCanvas.js";

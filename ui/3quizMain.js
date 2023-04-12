@@ -1,7 +1,7 @@
 export default class Main {
   #ctx;
   #obj;
-  #startbtn;
+  #startbtn1;
   #startbtn2;
 
   constructor() {
@@ -19,7 +19,7 @@ export default class Main {
   }
 
   draw() {
-    this.#ctx.drawImage(this.#startbtn, 372, 610);
+    this.#ctx.drawImage(this.#startbtn1, 372, 610);
   };
 
   onMouseMove(e) {
