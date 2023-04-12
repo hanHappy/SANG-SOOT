@@ -1,7 +1,7 @@
 import BattleBackground from "../background/4battleBackground.js";
 import BattleGauge from "../items/4battleGauge.js";
 import BattleNpc from "..//items/4battleNpc.js";
-import battleFood from "../items/4battleFood.js";
+import MatchPage from "../items/4battleMatch.js";
 
 export default class BattleGameCanvas {
   #battleGameCanvas;
@@ -9,7 +9,7 @@ export default class BattleGameCanvas {
   #background;
   #battleGauge;
   #battleNpc;
-  #battleFood;
+  #matchPage;
 
   #tid;
 
@@ -33,32 +33,29 @@ export default class BattleGameCanvas {
     // NPC
     this.#battleNpc = new BattleNpc();
 
-    // food
-    this.#battleFood = new battleFood();
+    // MatchPage
+    this.#matchPage = new MatchPage();
 
     // keyboard event
-    this.#battleGameCanvas.onkeydown = this.keyDownHandler.bind(this);
+    //this.#battleGameCanvas.onkeydown = this.keyDownHandler.bind(this);
     this.#battleGameCanvas.onkeyup = this.keyUpHandler.bind(this);
 
     // NPC 얼굴 설정
-
     this.#battleGauge.onChangeNpc = this.onChangeNpcHandler.bind(this);
   }
 
-  keyDownHandler(e) {
-    //입력받은 키보드 코드가 32라면 게이지
-    if (e.keyCode == 32) {
-      this.#battleGauge.plus();
-      this.#battleFood.press();
-    } else alert("스페이스바를 입력하세요");
-  }
+  // keyDownHandler(e) {
+  //   //입력받은 키보드 코드가 32라면 게이지
+  //   if (e.keyCode == 32) {
+  //     this.#battleGauge.plus();
+  //   } else alert("스페이스바를 입력하세요");
+  // }
 
   onChangeNpcHandler() {
     //게이지가 일정이상,이하가 됐을 때 기존이미지 지우고 새이미지 띄우기
-    console.log("100이하됐음");
+    console.log("200이하됐음");
 
     //게이지 낮을때 (손님우세) 사장이미지 변경
-    this.#battleGameCtx.clearRect(0, 0, 1150, 820);
     this.#battleNpc.newDraw(this.#battleGameCtx);
 
     //
@@ -69,11 +66,11 @@ export default class BattleGameCanvas {
   keyUpHandler(e) {
     if (e.keyCode == 32) {
       this.#battleGauge.plus();
-      this.#battleFood.press();
     } else alert("스페이스바를 입력하세요");
   }
 
   run() {
+    //위에 함수 끝나면 실행
     this.#tid = setInterval(() => {
       this.update();
       this.paint();
@@ -98,9 +95,5 @@ export default class BattleGameCanvas {
 
     // NPC
     this.#battleNpc.draw(this.#battleGameCtx);
-
-    // food
-    this.#battleFood.draw(this.#battleGameCtx);
-    this.#battleFood.cut(this.#battleGameCtx);
   }
 } //class

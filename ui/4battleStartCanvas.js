@@ -1,4 +1,5 @@
 import BattleGameCanvas from "./4battleGameCanvas.js";
+import MatchPage from "../items/4battleMatch.js";
 
 export default class BattleStartCanvas {
   #tid;
@@ -12,6 +13,7 @@ export default class BattleStartCanvas {
   #imgY;
   #imgW;
   #imgH;
+  #matchPage;
 
   constructor() {
     //canvas
@@ -35,16 +37,19 @@ export default class BattleStartCanvas {
     this.#scenIndex = 0;
 
     // img
-    this.#images = new Array(5);
+    this.#images = new Array(6);
 
     for (let i = 0; i < this.#images.length; i++) {
       this.#images[i] = document.getElementById(`talk${i}`);
     }
+
+    // Match Page
+    this.#matchPage = new MatchPage();
   }
 
   clickHandler(e) {
     this.#scenIndex++;
-    if (this.#scenIndex < 5) this.paint();
+    if (this.#scenIndex < 6) this.paint();
   }
 
   run() {
@@ -79,13 +84,21 @@ export default class BattleStartCanvas {
     let imgW = this.#imgW;
     let imgH = this.#imgH;
 
-    this.#battleStartCtx.drawImage(
-      this.#images[this.#scenIndex],
-      imgX,
-      imgY,
-      imgW,
-      imgH
-    );
+    //해당페이지(인덱스==6)에서 매치화면
+    if (this.#scenIndex == 5) {
+      console.log("네모안떠?");
+      this.#battleStartCtx.clearRect(0, 0, 1150, 820);
+      this.#matchPage.run(this.#battleStartCtx);
+    } else {
+      console.log("#scenIndex");
+      this.#battleStartCtx.drawImage(
+        this.#images[this.#scenIndex],
+        imgX,
+        imgY,
+        imgW,
+        imgH
+      );
+    }
   }
 
   get startCanvas() {

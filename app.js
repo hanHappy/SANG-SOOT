@@ -50,7 +50,7 @@ window.onload = () => {
   // // Game
   // let checkIndex = setInterval(() => {
   //   let index = battleStartCanvas.scenIndex;
-  //   if (index == 5) {
+  //   if (index == 6) {
   //     battleStartCanvas.startCanvas.remove();
   //     battleGameCanvas.run();
   //     clearInterval(checkIndex);
