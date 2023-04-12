@@ -1,6 +1,3 @@
-//수정중
-import Game from './ui/3quizGame.js';
-
 export default
     class Rule {
     #obj;
@@ -16,9 +13,7 @@ export default
         this.#obj.height = 820;
         this.#obj.style.backgroundImage = `url(${document.getElementById("bg2").src})`;
 
-        this.#rulebtn = new Image();
-        this.#rulebtn.src = "3quizImg/rulebtn.png";
-
+        this.#rulebtn = document.getElementById("rulebtn");
         this.#rule = document.getElementById("rule");
     }
 
@@ -27,12 +22,21 @@ export default
         this.#ctx.drawImage(this.#rulebtn, 778, 580, 244, 94);
     };
 
-    get obj() {
-        return this.#obj;
+    rulePlay() {
+        const ruleBeep = document.getElementById("ruleBeep");
+        ruleBeep.play();
     }
 
     run() {
         this.draw();
         // this.draw();
+    }
+
+    get obj() {
+        return this.#obj;
+    }
+
+    get rule() {
+        return this.#rulebtn;
     }
 }
