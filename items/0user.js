@@ -33,6 +33,8 @@ export default class User{
         let a = Math.sqrt(w*w + h*h);
         this.#vx = 4*w/a;
         this.#vy = 3;
+        // this.#vx = 100*w/a;
+        // this.#vy = 100;
     }
 
     // 업뎃 ----------------------------------------------------------

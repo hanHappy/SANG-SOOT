@@ -3,6 +3,8 @@
     src: url('/css/DungGeunMo.ttf') format('truetype');
 }
 
+/* ■■■■■■■■■■■■■■■■■■■ 상민 ■■■■■■■■■■■■■■■■■■■■ */
+
 body {
     margin: 0;
 }
@@ -11,7 +13,136 @@ body {
     display: none;
 }
 
-/* 세영 */
+button:hover{
+    cursor: pointer;
+    filter: brightness(0.8);
+}
+
+.S1-next{
+    display: none;
+    position: absolute;
+    margin-left: 990px;
+    margin-top: 133px;
+    background-color: #F2D800;
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn0{
+    display: none;
+    position: absolute;
+    margin-left: 85px;
+    margin-top: 275px;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn1{
+    display: none;
+    position: absolute;
+    margin-left: 85px;
+    margin-top: 340px;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn2{
+    display: none;
+    margin-left: 85px;
+    margin-top: 405px;
+    position: absolute;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn3{
+    display: none;
+    margin-left: 85px;
+    margin-top: 470px;
+    position: absolute;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn4{
+    display: none;
+    margin-left: 85px;
+    margin-top: 535px;
+    position: absolute;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn5{
+    display: none;
+    margin-left: 85px;
+    margin-top: 600px;
+    position: absolute;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+.menuBtn6{
+    display: none;
+    margin-left: 85px;
+    margin-top: 665px;
+    position: absolute;
+    background-color: rgb(207, 207, 207);
+    height: 38px;
+    font-family: "dgm";
+    font-size: 23px;
+    text-align: center;
+}
+/* Scene_9 : 평가 */
+.S9-input{
+    position:absolute;
+    margin-top: 580px;
+    margin-left: 430px;
+    text-align: center;
+    font-size: x-large;
+    width: 500px;
+    height: 50px;
+    border-color: black;
+    font-family: 'dgm';
+    font-size: 40px;
+}
+
+.S9-input::placeholder{
+    font-size: 30px;
+    color: #bbbbbb;
+}
+
+.S9-submit{
+    position: absolute;
+    font-family: 'dgm';
+    background-color: #F2D800;
+    font-size: 25px;
+    margin-top: 580px;
+    margin-left: 965px;
+    width: 80px;
+    height: 55px;
+}
+
+.S9-submit:hover{
+    cursor: pointer;
+    filter: brightness(0.8);
+}
+
+
+/* ■■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■■ */
 #startbtn1{
     position: absolute;
     left: 372px;
