@@ -3,20 +3,22 @@ import TownCanvas from "../ui/0townCanvas.js";
 
 export default class Menu {
     #ctx;
-    #name;
-    #price;
-    #ratedPrice;
-    #value;
+    #names;
+    #prices;
+    #ratedPrices;
+    #values;
     #menuNums;
+    #menuIndex;
     #btns;
 
     constructor(ctx) {
         this.#ctx = ctx;
-        this.#name = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name;
-        this.#price = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price;
-        this.#ratedPrice = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.ratedPrice;
-        this.#value = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.value;
+        this.#names = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name;
+        this.#prices = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price;
+        this.#ratedPrices = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.ratedPrice;
+        this.#values = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.value;
         this.#menuNums = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name.length;
+        this.#menuIndex = 0;
         this.#btns = [];
         for(let i = 0; i < this.#menuNums; i++){
             this.#btns[i] = document.getElementById(`menuBtn${i}`);
@@ -26,20 +28,40 @@ export default class Menu {
         }
     }
 
+    get name(){
+        return this.#names[this.#menuIndex];
+    }
+    get price(){
+        return this.#prices[this.#menuIndex];
+    }
+    get ratedPrice(){
+        return this.#ratedPrices[this.#menuIndex];
+    }
+    get value(){
+        return this.#values[this.#menuIndex];
+    }
+
+    removeBtn(){
+        for(let i in this.#btns){
+            this.#btns[i].style.display = "none";
+        }
+    }
+
     pickMenu(i){
         this.#ctx.clearRect(645, 130, 350, 40);
         this.#ctx.font = "35px dgm";
         this.#ctx.letterSpacing = "1px";
-        this.#ctx.fillText(this.#name[i], 670, 161);
+        this.#ctx.fillText(this.#names[i], 670, 161);
+        this.#menuIndex = i;
     }
 
     // 메뉴 출력 --------------------------------------------------------
     printInfo(ctx) {
-        let name = this.#name;
-        let p = this.#price;
-        let rP = this.#ratedPrice;
-        let value = this.#value;
-        let menuNums = this.#name.length;
+        let name = this.#names;
+        let p = this.#prices;
+        let rP = this.#ratedPrices;
+        let value = this.#values;
+        let menuNums = this.#names.length;
         // 가성비 -> ★로 변환
         // 급간 : 판매 가격의 10%
         for (let i = 0; i < menuNums; i++) {
