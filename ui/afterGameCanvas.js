@@ -61,7 +61,16 @@ export default class afterGameCanvas {
 
     // Scene_17 : 메인 || 종료
     goMainOrEnd(){
-        
+        let btnMain = document.getElementById("AG-S17-btnToMain");
+        let btnEnd = document.getElementById("AG-S17-btnToEnding");
+        btnMain.style.display = "block";
+        btnEnd.style.display = "block";
+        btnMain.addEventListener('click', function(){
+            // 메인으로
+        })
+        btnEnd.addEventListener('click', function(){
+            // 종료하기
+        })
     }
 
     clickHandler() {
