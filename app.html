@@ -1,28 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>app</title>
-    <link rel="stylesheet" href="css/app.css">
-    <script src="app.js" type="module" defer="defer"></script>
-
-
-    <style>
-      body{
-          margin:0px;
-      }
-
-      .d-none{
-          display: none;
-      }
-      
-  </style>
-
-  </head>
-=======
 >>>>>>> 75c41c63757661a40be199e6d1f367cb618d7503
 
 <head>
@@ -96,78 +73,57 @@
   <img src="/images/inrstrnt_16.png" id="inRstrnt16" class="d-none" />
   <img src="/images/inrstrnt_17.png" id="inRstrnt17" class="d-none" />
 
-<<<<<<< HEAD
-    <!-- ■■■■■■■■■■■■■■■■■■ 게임 이후 ■■■■■■■■■■■■■■■■■■ -->
-    <!-- Scene_1 : 게임 결과 화면 -->
+  <!-- ■■■■■■■■■■■■■■■■■■ 슬롯게임 현준 ■■■■■■■■■■■■■■■■■■ -->
 
-    <img src="images/afterGame_0.png" id="afterGame0" class="d-none">
+    <!-- 슬롯 메인 캔버스 -->
+    <img id="slotMain0" src="/images/slotMain0.png" class="d-none">
+    <img id="slotMain1" src="/images/slotMain1.png" class="d-none">
+    <button id="strBtn" class="d-none" >Start!</button>
+    
+    <!-- 슬롯 룰 캔버스 -->
+    <img id="slotRule0" src="/images/slotRule0.png" class="d-none">
+    <img id="slotRule1" src="/images/slotRule1.png" class="d-none">
+    <button id="conBtn" class="d-none">확인</button>
+    
+    <!-- 슬롯 게임 캔버스 -->
+    <img id="frame" src="./images/frame0.png" class = "d-none">
+    <img id="BG" src="./images/gameBack11.png" class="d-none">
 
+    <img id="jackpot" src="/images/j0.png" class="d-none">
+    <img id="fail" src="/images/f0.png" class="d-none">
+    
+    <img id="f1" src="/images/food1.jpg" class="d-none">
+    <img id="f2" src="/images/food2.jpg" class="d-none">
+    <img id="f3" src="/images/food3.jpg" class="d-none">
+    <img id="f4" src="/images/food4.jpg" class="d-none">
+    <img id="f5" src="/images/newLec.jpg" class="d-none">
+    
+    <button id="spinBtn" class = "d-none">Spin</button>
+    <button id="stop1" class = "d-none">stop!</button>
+    <button id="stop2" class = "d-none">stop!</button>
+    <button id="stop3" class = "d-none">stop!</button>
 
-    <!-- ■■■■■■■■■■■■■■■■■■ 솔롯 게임 현준 ■■■■■■■■■■■■■■■■■■ -->
-<!-- 슬롯 메인 캔버스 -->
-<img id="slotMain0" src="/images/slotMain0.png" class="d-none">
-<img id="slotMain1" src="/images/slotMain1.png" class="d-none">
-<button id="strBtn" class="d-none" >Start!</button>
+    <!-- 슬롯 게임오버 캔버스 -->
+    <img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
+    <img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
 
-<!-- 슬롯 룰 캔버스 -->
-<img id="slotRule0" src="/images/slotRule0.png" class="d-none">
-<img id="slotRule1" src="/images/slotRule1.png" class="d-none">
-<button id="conBtn" class="d-none">확인</button>
+    <button id="toOverBtn" class="d-none">종료하기</button>
 
-<!-- 슬롯 게임 캔버스 -->
-<!-- <img id="frame" src="./1slotImg/frame1.png" class = "d-none"> -->
-<img id="frame" src="./images/slotFrame.png" class = "d-none">
-<img id="BG" src="./images/gameBack11.png" class="d-none">
+    <!-- 엔딩 -->
+    <video id="ending" src="/images/ending.mp4" width="100%" height="100%" class="d-none" ></video>
 
+    
+    <!-- S.E. -->
+    <audio id="mainSE" src="/1slotSound/main00.wav"></audio>
+    <audio id="clickSE" src="/1slotSound/stop.wav"></audio>
+    <audio id="ruleSE" src="/1slotSound/Rule.wav"></audio>
+    <audio id="spinSE" src="/1slotSound/spin.wav"></audio>
+    <audio id="stopSE" src="/1slotSound/stop.wav"></audio>
+    <audio id="failSE" src="/1slotSound/fail.wav"></audio>
+    <audio id="jackSE" src="/1slotSound/jackpot.wav"></audio>
+    <audio id="overSE" src="/1slotSound/over01.wav"></audio>
+    <audio id="endingSE" src="/1slotSound/ending01.wav"></audio>
 
-<img id="jackpot" src="/images/j1.png" class="d-none">
-<img id="fail" src="/images/f2.png" class="d-none">
-
-
-<img id="f1" src="/images/food1.jpg" class="d-none">
-<img id="f2" src="/images/food2.jpg" class="d-none">
-<img id="f3" src="/images/food3.jpg" class="d-none">
-<img id="f4" src="/images/food4.jpg" class="d-none">
-<img id="f5" src="/images/newLec.jpg" class="d-none">
-
-<!-- <img id="f6" src="/1slotImg/newLec.jpg" class="d-none">
-<img id="f7" src="/1slotImg/newLec.jpg" class="d-none">
-<img id="f8" src="/1slotImg/newLec.jpg" class="d-none">
-<img id="f9" src="/1slotImg/newLec.jpg" class="d-none">
-<img id="f10" src="/1slotImg/newLec.jpg" class="d-none"> -->
-
-<button id="spinBtn" class = "d-none">Spin</button>
-<button id="stop1" class = "d-none">stop!</button>
-<button id="stop2" class = "d-none">stop!</button>
-<button id="stop3" class = "d-none">stop!</button>
-
-<!-- 슬롯 게임오버 캔버스 -->
-<img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
-<img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
-
-<button id="toOverBtn" class="d-none">종료하기</button>
-<!-- <button id="toMainBtn" class="d-none">메인으로</button> -->
-
-
-<!-- 엔딩크레딧 -->
-<video id="ending"  src="/images/ending.mp4" autoplay class="d-none" autoplay></video>
-
-<!-- S.E. -->
-<audio id="clickSE" src="/1slotSound/click.wav"></audio>
-<audio id="ruleSE" src="/1slotSound/Rule.wav"></audio>
-<audio id="spinSE" src="/1slotSound/spin.wav"></audio>
-<audio id="stopSE" src="/1slotSound/stop.wav"></audio>
-<audio id="failSE" src="/1slotSound/fail.wav"></audio>
-<audio id="jackSE" src="/1slotSound/jackpot.wav"></audio>
-
-
-
-
-
-
-    <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
-=======
-  <!-- ■■■■■■■■■■■■■■■■■■ 슬롯머신 이후 ■■■■■■■■■■■■■■■■■■ -->
   <img src="images/afterGame_0.png" id="afterGame0" class="d-none">
 
   <!-- ■■■■■■■■■■■■■■■■■■ 본게임 이후 ■■■■■■■■■■■■■■■■■■ -->
@@ -197,7 +153,9 @@
   <button id="AG-S17-btnToMain" class="AG-S17-btnToMain"><img src="images/btnToMain.png"></button>
   <button id="AG-S17-btnToEnding" class="AG-S17-btnToEnding"><img src="images/btnToEnding.png"></button>
   <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
->>>>>>> 75c41c63757661a40be199e6d1f367cb618d7503
+
+
+
 
   <!-- 배경 -->
   <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1" />

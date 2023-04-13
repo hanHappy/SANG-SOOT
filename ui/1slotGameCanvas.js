@@ -1,8 +1,7 @@
-// import SlotResult from "../1slotItem/1slotResult.js";
-import SlotReel from "../items/1slotReel.js";
-import SlotGauge from "../items/1slotGauge.js";
-import SlotFrame from "../items/1slotFrame.js";
-import SlotBG from "../items/1slotBG.js";
+import SlotReel from "../1slotItem/1slotReel.js";
+import SlotGauge from "../1slotItem/1slotGauge.js";
+import SlotFrame from "../1slotItem/1slotFrame.js";
+import SlotBG from "../1slotItem/1slotBG.js";
 export default class SlotGameCanvas {
     #tid; // 은닉화 영역
     #slotBG;
@@ -19,23 +18,24 @@ export default class SlotGameCanvas {
     #jackpotImg;
     #failImg;
     #stopBtn3Click;
-    #removeCanvas;//
+    #removeCanvas;
     #strGauge;
     #spinBtnClick;
     #jackpot;
     #jackSE;
     #failSE;
-    
-    #onJackpot;
-    #onFail;
+    #spinSE;
+
+    #result;
+    #sameEnd;
 
     // canvas ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     constructor(onGameOver) { // 생성자영역 >> 클래스의 속성들이 위치 // this , #
         this.#canvas = document.createElement("canvas"); // 캔버스 스스로 생성
-        document.body.append(this.#canvas); // html body영역의 제일 마지막에 요소를 insert한다
-        this.#ctx = this.#canvas.getContext('2d'); // 그리기위한 컨텍스트 만듬
+        document.body.append(this.#canvas);
+        this.#ctx = this.#canvas.getContext('2d');
 
-        this.#canvas.width = 1150; // 캔버스 사이즈 설정
+        this.#canvas.width = 1150;
         this.#canvas.height = 820;
 
 
@@ -58,6 +58,11 @@ export default class SlotGameCanvas {
         // this.#canvas.style.backgroundImage = document.getElementById("BG");
         
  
+        // result ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+        // this.#result = new SlotResult();
+
+
 //test ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
         // this.#slotRsult = new SlotResult()
@@ -68,7 +73,6 @@ export default class SlotGameCanvas {
         // spinButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
         this.#spinBtnClick = false;
-        
         this.#spinBtn = document.getElementById("spinBtn");
         this.#spinBtn.addEventListener("click", ()=> {this.spinClick()})
 
@@ -76,7 +80,6 @@ export default class SlotGameCanvas {
         // stopButton ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
         this.#stopBtn3Click = false;
-
         this.#stopBtn1 = document.getElementById("stop1");
         this.#stopBtn1.addEventListener("click", ()=> {this.stopClick1()});
 
@@ -95,11 +98,12 @@ export default class SlotGameCanvas {
         this.#jackSE = document.getElementById("jackSE");
         this.#failSE = document.getElementById("failSE");
 
-        // this.#onFail = false;
-        this.#onFail = false;
-        this.#onJackpot = false;
-
         
+        this.#spinSE = document.getElementById("spinSE");
+        
+        this.#sameEnd = 0;
+        this.#sameEnd = true;
+
     } // constrctor
 
 
@@ -109,7 +113,7 @@ export default class SlotGameCanvas {
 
     get canvas(){
         return this.#canvas;
-      }
+    }
     
 
 
@@ -123,18 +127,19 @@ export default class SlotGameCanvas {
         }, 17);
     }
 
-    update() { // 변할 때
+    update() {
         if(this.#spinBtnClick){
             this.#slotGauge.update();
         }
     }
     
     paint() {
-        this.#slotBG.draw(this.#ctx); // BG객체의 draw함수 호출
+        this.#slotBG.draw(this.#ctx);
         this.#slotFrame.draw(this.#ctx);
         this.#slotGauge.draw(this.#ctx);
 
-        for (let reel of this.#reels) {// 3개의 릴을 담고 reel의 spin 호출
+        // 3개의 릴을 담고 reel의 spin 호출
+        for (let reel of this.#reels) {
             reel.spin(this.#ctx);
         }
 
@@ -142,13 +147,15 @@ export default class SlotGameCanvas {
             reel.stop(this.#ctx)
         }
 
-        if(this.#stopBtn3Click){
+        
+        if (!this.#sameEnd) {
+            return;
+        }
+        
+        if (this.#stopBtn3Click) {
             this.sameIndex();
         }
-
-        // if(!onFail){
-        //     return;
-        // }
+        
 
     }// print
     
@@ -156,17 +163,15 @@ export default class SlotGameCanvas {
     
     spinClick(){
         console.log("x")
-        document.getElementById("spinSE");
-        spinSE.play();
+        this.#spinSE.play();
         for (let reel of this.#reels) {
             reel.spinCk();
             this.#stopBtn3Click = false;
         }
         this.#spinBtnClick = true;
     }
-
+    
     stopClick1(){
-        // spinReelsbtn();
         document.getElementById("stopSE");
         stopSE.play();
         this.#reels[0].stopCk();
@@ -187,56 +192,33 @@ export default class SlotGameCanvas {
     stopClick3(){
         document.getElementById("stopSE");
         stopSE.play();
-        spinSE.pause();
+        this.#spinSE.pause();
         this.#reels[2].stopCk();
         this.#reels[2].stop(this.#ctx);
-
+        
         this.#stopBtn3Click = true;
         console.log(this.#reels[2].index);
         
     }
     
-
-    // 잭팟 혹은 게임초과 시 게임오버 페이지로 이동
+    //  잭팟 혹은 게임초과 시 게임오버 페이지로 이동
     sameIndex() {
-        if(this.#reels[0].index == this.#reels[1].index && this.#reels[1].index == this.#reels[2].index){
-                // this.#ctx.drawImage(this.#jackpotImg, 110, -272, 1000, 800);
-                this.#jackSE.play();
-                this.#ctx.drawImage(this.#jackpotImg, -330, -55, 1600, 900);
-                setTimeout(() => {
-                        this.#jackpot();
-                    }, 3000)
-                } else {
-                    this.#failSE.play();
-                    this.#ctx.drawImage(this.#failImg, -280, -230, 1600, 1230);
-                    
-                }
-            };
+        if (this.#reels[0].index == this.#reels[1].index && this.#reels[1].index == this.#reels[2].index) {
+            this.#ctx.drawImage(this.#jackpotImg, -50, 0, 1200, 850);
+            this.#jackSE.play();
+            setTimeout(() => {
+                this.#jackpot();
+            }, 3000)
+        } else {
+            this.#failSE.play();
+            this.#ctx.drawImage(this.#failImg, -50, 0, 1200, 850);
+            setTimeout(() => {
+            }, 1000)
             
-            // setTimeout(() => { this.onFailImg() }, 500)
-            
-            // onFailImg(){
-            //     this.#ctx.drawImage(this.#failImg, -280, -230, 1600, 1230);
-        // };
+        }
+    };
 
+    
 
 
 }// class
-
-
-
-    // 콜백
-    // onDisappear() // 4
-    // {
-
-    //     this.#canvas.remove(); 
-    //     console.log("remove");
-
-    //     document.getElementById("spinBtn").style.display = "none";
-    //     document.getElementById("stop1").style.display = "none";
-    //     document.getElementById("stop2").style.display = "none";
-    //     document.getElementById("stop3").style.display = "none";
-
-    //     // this.#ch = true;
-
-    // }//.bind(this)
