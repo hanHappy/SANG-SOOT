@@ -3,6 +3,7 @@ import Data from "./items/data.js";
 import IntroCanvas from "./ui/introCanvas.js";
 import TownCanvas from "./ui/0townCanvas.js";
 import RestaurantCanvas from "./ui/0restaurantCanvas.js";
+import AfterGameCanvas from "./ui/afterGameCanvas.js";
 // 세영
 // import Main from './ui/3quizMain.js';
 // import Rule from './ui/3quizRule.js';
@@ -25,13 +26,18 @@ window.onload = () => {
     canvas.remove();
     rstrntCanvas.canvas.style.display = "block";
   }
+  // callback : rstrntCanvas -> slot || game
+  let rstrntToGame = function(canvas){
+    canvas.remove();
+  }
 
   // 캔버스 인스턴스 ------------------------------------------
   const introCanvas = new IntroCanvas(introToTown);
   const townCanvas = new TownCanvas(townToRstrant);
-  const rstrntCanvas = new RestaurantCanvas();
+  const rstrntCanvas = new RestaurantCanvas(rstrntToGame);
   // const battleStartCanvas = new BattleStartCanvas();
   // const battleGameCanvas = new BattleGameCanvas();
+  const afterGameCanvas = new AfterGameCanvas();
 
   // 인트로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   introCanvas.firstScene();
@@ -42,24 +48,36 @@ window.onload = () => {
   // 식당 입장 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   rstrntCanvas.welcome();
 
-  // GAME_0 : 슬롯머신 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // 높은 평가 시
+  if(Data.highRating)
+  {
+    // GAME_0 : 슬롯머신 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    
+  } 
 
-  // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // 낮은 평가 시
+  else
+  {
+    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  
+    // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  
+    // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // // Main
+    // battleStartCanvas.run();
+    // // Game
+    // let checkIndex = setInterval(() => {
+    //   let index = battleStartCanvas.scenIndex;
+    //   if (index == 5) {
+    //     battleStartCanvas.startCanvas.remove();
+    //     battleGameCanvas.run();
+    //     clearInterval(checkIndex);
+    //   }
+    // }, 100);
 
-  // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  }
 
-  // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  // // Main
-  // battleStartCanvas.run();
-  // // Game
-  // let checkIndex = setInterval(() => {
-  //   let index = battleStartCanvas.scenIndex;
-  //   if (index == 5) {
-  //     battleStartCanvas.startCanvas.remove();
-  //     battleGameCanvas.run();
-  //     clearInterval(checkIndex);
-  //   }
-  // }, 100);
+
 
 
 }; // window.onload

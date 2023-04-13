@@ -1,6 +1,6 @@
 import GameResult from "../items/0gameResult.js";
 
-export default class afterGameCanvas {
+export default class AfterGameCanvas {
 
     #canvas;
     #ctx;
@@ -16,6 +16,7 @@ export default class afterGameCanvas {
         // canvas, constext -----------------------------------------------
         this.#canvas = document.createElement("canvas");
         document.body.append(this.#canvas);
+        this.#canvas.style.display = "none";
         this.#canvas.width = 1150;
         this.#canvas.height = 820;
         this.#ctx = this.#canvas.getContext("2d");
