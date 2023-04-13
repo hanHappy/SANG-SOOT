@@ -17,17 +17,18 @@ export default class KioskResult{
     #loseImg;
     #winsound;
     #failsound;
+    #end;
 
     #lastBtn;
     #lasted;
 
     constructor(){
 
-        this.#winImg = document.getElementById('win');
+        this.#winImg = document.getElementById('hcwin');
         this.#winImg.width = 1150;
         this.#winImg.height = 820;
 
-        this.#loseImg = document.getElementById('lose');
+        this.#loseImg = document.getElementById('hclose');
         this.#loseImg.width = 1150;
         this.#loseImg.height = 820;
 
@@ -38,10 +39,20 @@ export default class KioskResult{
   
         this.#lastBtn = document.getElementById('last-btn');
         this.#lasted = false;
+
+        this.#end = false;
    
     }
 
+    get end(){
+        return this.#end;
+    }
+
     draw(ctx){
+        this.#lastBtn.style.display = "block";
+        this.#lastBtn.addEventListener('click', function(){
+            this.#end = true;
+        })
         // let img = this.#winImg;
         let x = this.#x; //지역변수를 만들어서 값을 넣어주기^*^
         let y = this.#y;
@@ -62,21 +73,13 @@ export default class KioskResult{
     checkResult(result){
         if(result){
             this.#win = true
-            document.getElementById('win').style.display = "block";
+            document.getElementById('hcwin').style.display = "block";
             this.#winsound.play();
 
         } else{
             this.#win = false
-            document.getElementById('lose').style.display = "block";
+            document.getElementById('hclose').style.display = "block";
             this.#failsound.play();
         }
     }
-
-    click(){
-        this.#lasted = true;
-        this.#lastBtn.style.display = "none";
-    }
-
-
-
 }

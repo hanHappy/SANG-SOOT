@@ -21,6 +21,7 @@ export default class BattleStartCanvas {
     this.#battleStartCanvas = document.createElement("canvas");
     this.#battleStartCtx = this.#battleStartCanvas.getContext("2d");
     document.body.append(this.#battleStartCanvas);
+    this.#battleStartCanvas.style.display = "none";
 
     this.#battleClick = document.getElementById("battleClick");
     this.#battleStartBtn = document.getElementById("battleStartBtn");

@@ -5,6 +5,7 @@ export default class KioskCanvas0 {
     #y;
     #canvas;
     #ctx;
+    #nextCanvas
 
     #startBtn;
     #started;
@@ -12,13 +13,15 @@ export default class KioskCanvas0 {
     // #submitBtn;
     // #ckBoxes
 
-    constructor() {
+    constructor(callback) {
 
         this.#canvas = document.createElement('canvas');
         document.body.append(this.#canvas);
+        this.#canvas.style.display = "none";
         this.#canvas.width = 1150;
         this.#canvas.height = 820;
         this.#ctx = this.#canvas.getContext('2d');
+        this.#nextCanvas = callback;
         
 
         this.#img = document.getElementById('startkiosk');
@@ -28,9 +31,6 @@ export default class KioskCanvas0 {
         this.#img.width = 1150;
         this.#img.height = 820;
 
-        this.#startBtn = document.getElementById('start-btn');
-        this.#startBtn.style.display = "block";
-        // this.#started = false;
     }
 
     get canvas(){
@@ -38,6 +38,12 @@ export default class KioskCanvas0 {
     }
 
     draw() {
+        let btn = document.getElementById('start-btn');
+        btn.style.display = "block";
+        btn.addEventListener('click', () => {
+            btn.style.display = "none";
+            this.#nextCanvas(this.#canvas);
+        })
         let img = this.#img;
         let x = this.#x; //지역변수를 만들어서 값을 넣어주기^*^
         let y = this.#y;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,6 +12,7 @@
 </head>
 
 <body>
+  <!-- ■■■■■■■■■■■■■■■■■■ 인트로 ■■■■■■■■■■■■■■■■■■■■-->
   <!-- ■■■■■■■■■■■■■■■■■■ 인트로 ■■■■■■■■■■■■■■■■■■■■-->
   <img src="/images/intro_0.png" id="intro0" class="d-none" />
   <img src="/images/intro_1.png" id="intro1" class="d-none" />
@@ -87,7 +89,33 @@
   <!-- 슬롯 게임 캔버스 -->
   <img id="frame" src="./images/frame0.png" class="d-none">
   <img id="BG" src="./images/gameBack11.png" class="d-none">
+  <!-- 슬롯 메인 캔버스 -->
+  <img id="slotMain0" src="/images/slotMain0.png" class="d-none">
+  <img id="slotMain1" src="/images/slotMain1.png" class="d-none">
+  <button id="strBtn" class="d-none">Start!</button>
 
+  <!-- 슬롯 룰 캔버스 -->
+  <img id="slotRule0" src="/images/slotRule0.png" class="d-none">
+  <img id="slotRule1" src="/images/slotRule1.png" class="d-none">
+  <button id="conBtn" class="d-none">확인</button>
+
+  <!-- 슬롯 게임 캔버스 -->
+  <img id="frame" src="./images/frame0.png" class="d-none">
+  <img id="BG" src="./images/gameBack11.png" class="d-none">
+
+  <img id="jackpot" src="/images/j0.png" class="d-none">
+  <img id="fail" src="/images/f0.png" class="d-none">
+
+  <img id="f1" src="/images/food1.jpg" class="d-none">
+  <img id="f2" src="/images/food2.jpg" class="d-none">
+  <img id="f3" src="/images/food3.jpg" class="d-none">
+  <img id="f4" src="/images/food4.jpg" class="d-none">
+  <img id="f5" src="/images/newLec.jpg" class="d-none">
+
+  <button id="spinBtn" class="d-none">Spin</button>
+  <button id="stop1" class="d-none">stop!</button>
+  <button id="stop2" class="d-none">stop!</button>
+  <button id="stop3" class="d-none">stop!</button>
   <img id="jackpot" src="/images/j0.png" class="d-none">
   <img id="fail" src="/images/f0.png" class="d-none">
 
@@ -105,7 +133,11 @@
   <!-- 슬롯 게임오버 캔버스 -->
   <img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
   <img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
+  <!-- 슬롯 게임오버 캔버스 -->
+  <img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
+  <img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
 
+  <button id="toOverBtn" class="d-none">종료하기</button>
   <button id="toOverBtn" class="d-none">종료하기</button>
 
   <!-- 엔딩 -->
@@ -132,6 +164,8 @@
   <img src="./2kioskImg/start.jpg" id="startkiosk" class="d-none">
   <img src="./2kioskImg/gamerule.png" id="gamerule" class="d-none">
   <img src="./2kioskImg/kimbap.jpg" id="food" class="d-none">
+  <img src="./2kioskImg/win_.png" id="hcwin" class="d-none">
+  <img src="./2kioskImg/lose_.png" id="hclose" class="d-none">
 
   <ul id="ingredient-list" class="d-none">
     <li><input type="checkbox" name="ingredient" value="kim"> 김밥김</li>
@@ -147,9 +181,6 @@
   <button id="next-btn" class="d-none">다음</button>
   <button id="submit-btn" class="d-none">제출</button>
   <button id="last-btn" class="d-none">나가기</button>
-
-  <img src="./2kioskImg/win_.png" id="hcwin" class="d-none">
-  <img src="./2kioskImg/lose_.png" id="hclose" class="d-none">
 
   <!-- ■■■■■■■■■■■■■■■■■■ 음식 맞추기 ■■■■■■■■■■■■■■■■■■ -->
   
@@ -188,7 +219,6 @@
     src="./4battleSound/3quizSound_click.wav"
   ></audio>
   <audio id="battleKeyup" src="./4battleSound/etc03.wav"></audio>
-
 
   <!-- ■■■■■■■■■■■■■■■■■■ 본게임 이후 ■■■■■■■■■■■■■■■■■■ -->
   <!-- Scene_0 : 게임 결과 화면 -->

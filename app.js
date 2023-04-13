@@ -18,10 +18,10 @@ import SlotGameCanvas from "./ui/1slotGameCanvas.js";
 import SlotGameoverCanvas from "./ui/1slotGameover.js";
 
 // 현채
-import KioskCanvas0 from "./2kioskui/2kioskCanvas0.js";
-import KioskCanvas1 from "./2kioskui/2kioskCanvas1.js";
-import KioskCanvas2 from "./2kioskui/2kioskCanvas2.js";
-import KioskResult from "./2kioskitem/2kioskResult.js";
+import KioskCanvas0 from "./ui/2kioskCanvas0.js";
+import KioskCanvas1 from "./ui/2kioskCanvas1.js";
+import KioskCanvas2 from "./ui/2kioskCanvas2.js";
+import KioskResult from "./items/2kioskResult.js";
 
 
 window.onload = () => {
@@ -156,8 +156,33 @@ window.onload = () => {
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
-    
-    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    let mainToRule = function(canvas){
+      canvas.remove();
+      kioskCanvas1.canvas.style.display = "block";
+    }
+    let ruleToGame = function(canvas){
+      canvas.remove();
+      kioskCanvas2.canvas.style.display = "block";
+    }
+    let kioskToSecondGame = function(canvas){
+      canvas.remove();
+      battleStartCanvas.startCanvas.style.display = "block";
+    }
+
+    // GAME_1 : 키오스크 --------------------------------------------------------------
+  
+    // 첫번째 캔버스
+    const kioskCanvas0 = new KioskCanvas0(mainToRule);
+    const kioskCanvas1 = new KioskCanvas1(ruleToGame);
+    const kioskCanvas2 = new KioskCanvas2(kioskToSecondGame);
+    kioskCanvas0.canvas.style.display = "block";
+
+    kioskCanvas0.draw();
+
+    kioskCanvas1.draw();
+
+    kioskCanvas2.run();
 
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     
@@ -176,8 +201,7 @@ window.onload = () => {
     }, 100);
 
     // 게임 이후 시나리오
-    afterGameCanvas.gameResult();
-
+    // afterGameCanvas.gameResult();
 
   } // toGame()
 

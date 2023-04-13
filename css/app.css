@@ -427,7 +427,7 @@ input[type=checkbox] {
   body {
     font-family: 'dgm', sans-serif;
     margin: 0;
-    background-image: url('../2kioskimage/whitebg.jpg');
+    background-image: url('../2kioskImg/whitebg.jpg');
     background-size: 1150px 820px;
     background-repeat: no-repeat;
     position: relative;
