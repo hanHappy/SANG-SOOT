@@ -147,10 +147,15 @@ window.onload = () => {
       ending.play();
       endingSE.play();
     })
-  }
+  } // slot game ----------------------------------------------------------
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
+    
+    // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    
+
+
     // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     // // Main
     battleStartCanvas.run();
@@ -160,11 +165,14 @@ window.onload = () => {
       if (index == 4) {
         battleGameCanvas.battleCanvas.style.display = "block";
         battleStartCanvas.startCanvas.remove();
+        console.log("1");
         battleGameCanvas.run();
+        console.log("2");
         clearInterval(checkIndex);
       }
     }, 100);
-    // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     // const startBtn = document.getElementById('start-btn');
     // const nextBtn = document.getElementById('next-btn');
     // const submitBtn = document.getElementById('submit-btn');
@@ -215,9 +223,5 @@ window.onload = () => {
     //   document.getElementById('last-btn').style.display = "block";
     // })
   }
-
-
-  // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
 
 }; // window.onload

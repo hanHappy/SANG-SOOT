@@ -41,8 +41,8 @@ export default class RestaurantCanvas {
     this.#sceneIndex = 0;
     this.#canvas.onclick = this.clickHandler.bind(this);
 
-    // images --------------------------------------------------------
-    this.#scenes = new Array(18);
+      // images --------------------------------------------------------
+      this.#scenes = new Array(18);
     // html에서 scenes 이미지 가져오기
     for (let i = 0; i < this.#scenes.length; i++) {
       this.#scenes[i] = document.getElementById(`inRstrnt${i}`);
