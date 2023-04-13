@@ -18,10 +18,10 @@ import SlotGameCanvas from "./ui/1slotGameCanvas.js";
 import SlotGameoverCanvas from "./ui/1slotGameover.js";
 
 // 현채
-import KioskCanvas0 from "./2kioskui/2kioskCanvas0.js";
-import KioskCanvas1 from "./2kioskui/2kioskCanvas1.js";
-import KioskCanvas2 from "./2kioskui/2kioskCanvas2.js";
-import KioskResult from "./2kioskitem/2kioskResult.js";
+import KioskCanvas0 from "./ui/2kioskCanvas0.js";
+import KioskCanvas1 from "./ui/2kioskCanvas1.js";
+import KioskCanvas2 from "./ui/2kioskCanvas2.js";
+import KioskResult from "./items/2kioskResult.js";
 
 
 window.onload = () => {
@@ -152,7 +152,7 @@ window.onload = () => {
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
-    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // GAME_1 : 키오스크 
     const startBtn = document.getElementById('start-btn');
     const nextBtn = document.getElementById('next-btn');
     const submitBtn = document.getElementById('submit-btn');
@@ -160,50 +160,43 @@ window.onload = () => {
     const clicksound = document.getElementById('clicksound');
     const winsound = document.getElementById('winsound');
     const failsound = document.getElementById('failsound');
-
-    clicksound.load();
-    winsound.load();
-    failsound.load();
-
-    //첫번째 캔버스
+  
+    // 첫번째 캔버스
     const kioskCanvas0 = new KioskCanvas0();
     kioskCanvas0.draw();
-
     document.getElementById('start-btn').style.display = "block";
-
+  
     const kioskCanvas1 = new KioskCanvas1();
     startBtn.addEventListener('click', (e) => {
+      // 두번째 캔버스
       clicksound.play();
-      //두번째 캔버스
       kioskCanvas0.canvas.remove();
       kioskCanvas1.draw();
       document.getElementById('start-btn').style.display = "none";
       document.getElementById('next-btn').style.display = "block";
+  
+      const kioskCanvas2 = new KioskCanvas2();
+      nextBtn.addEventListener('click', (e) => {
+        // 세번째 캔버스
+        clicksound.play();
+        kioskCanvas1.canvas.remove();
+        kioskCanvas2.run();
+        document.getElementById('next-btn').style.display = "none";
+        document.getElementById('submit-btn').style.display = "block";
+        document.getElementById('ingredient-list').style.display = "block";
+  
+        // 결과 캔버스
+        const kioskResult = new KioskResult();
+        submitBtn.addEventListener('click', (e) => {
+          kioskCanvas2.canvas.remove();
+          document.getElementById('submit-btn').style.display = "none";
+          document.getElementById('ingredient-list').style.display = "none";
+          document.getElementById('last-btn').style.display = "block";
+        });
+      });
     });
-
-    const kioskCanvas2 = new KioskCanvas2();
-    nextBtn.addEventListener('click', (e) => {
-      // clicksound0.pause();
-      clicksound.play();
-      //세번째 캔버스
-      kioskCanvas1.canvas.remove();
-      kioskCanvas2.run();
-      document.getElementById('next-btn').style.display = "none";
-      document.getElementById('submit-btn').style.display = "block";
-      document.getElementById('ingredient-list').style.display = "block";
-
-    })
-
-    const kioskResult = new KioskResult();
-    submitBtn.addEventListener('click', (e) => {
-      kioskCanvas2.canvas.remove();
-      document.getElementById('submit-btn').style.display = "none";
-      document.getElementById('ingredient-list').style.display = "none";
-
-      document.getElementById('last-btn').style.display = "block";
-    })
   }
-
+  
 
   // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 

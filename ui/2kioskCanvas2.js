@@ -1,7 +1,7 @@
-import KioskBG from "../2kioskitem/2kioskBG.js";
-import KioskFood from "../2kioskitem/2kioskFood.js";
-import KioskGauge from "../2kioskitem/2kioskGauge.js";
-import KioskResult from "../2kioskitem/2kioskResult.js";
+import KioskBG from "../items/2kioskBG.js";
+import KioskFood from "../items/2kioskFood.js";
+import KioskGauge from "../items/2kioskGauge.js";
+import KioskResult from "../items/2kioskResult.js";
 
 export default class KioskCanvas2 {
 
@@ -87,8 +87,11 @@ export default class KioskCanvas2 {
         }
         const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
         const result = equals(selectedIngredients, correctIngredients);
-        console.log(result);
+        // console.log(result);
         this.#kioskResult.checkResult(result);
+        this.#kioskResult.draw();
+
+
         this.#submitted = true;
         this.#submitBtn.style.display = "none";
         this.#ckBoxes.style.display = "none";

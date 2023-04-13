@@ -23,11 +23,11 @@ export default class KioskResult{
 
     constructor(){
 
-        this.#winImg = document.getElementById('win');
+        this.#winImg = document.getElementById('hcwin');
         this.#winImg.width = 1150;
         this.#winImg.height = 820;
 
-        this.#loseImg = document.getElementById('lose');
+        this.#loseImg = document.getElementById('hclose');
         this.#loseImg.width = 1150;
         this.#loseImg.height = 820;
 
@@ -62,12 +62,12 @@ export default class KioskResult{
     checkResult(result){
         if(result){
             this.#win = true
-            document.getElementById('win').style.display = "block";
+            document.getElementById('hcwin').style.display = "block";
             this.#winsound.play();
 
         } else{
             this.#win = false
-            document.getElementById('lose').style.display = "block";
+            document.getElementById('hclose').style.display = "block";
             this.#failsound.play();
         }
     }
