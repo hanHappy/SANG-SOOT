@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -72,7 +71,57 @@
   <img src="/images/inrstrnt_16.png" id="inRstrnt16" class="d-none" />
   <img src="/images/inrstrnt_17.png" id="inRstrnt17" class="d-none" />
 
-  <!-- ■■■■■■■■■■■■■■■■■■ 슬롯머신 이후 ■■■■■■■■■■■■■■■■■■ -->
+  <!-- ■■■■■■■■■■■■■■■■■■ 슬롯게임 현준 ■■■■■■■■■■■■■■■■■■ -->
+
+    <!-- 슬롯 메인 캔버스 -->
+    <img id="slotMain0" src="/images/slotMain0.png" class="d-none">
+    <img id="slotMain1" src="/images/slotMain1.png" class="d-none">
+    <button id="strBtn" class="d-none" >Start!</button>
+    
+    <!-- 슬롯 룰 캔버스 -->
+    <img id="slotRule0" src="/images/slotRule0.png" class="d-none">
+    <img id="slotRule1" src="/images/slotRule1.png" class="d-none">
+    <button id="conBtn" class="d-none">확인</button>
+    
+    <!-- 슬롯 게임 캔버스 -->
+    <img id="frame" src="./images/frame0.png" class = "d-none">
+    <img id="BG" src="./images/gameBack11.png" class="d-none">
+
+    <img id="jackpot" src="/images/j0.png" class="d-none">
+    <img id="fail" src="/images/f0.png" class="d-none">
+    
+    <img id="f1" src="/images/food1.jpg" class="d-none">
+    <img id="f2" src="/images/food2.jpg" class="d-none">
+    <img id="f3" src="/images/food3.jpg" class="d-none">
+    <img id="f4" src="/images/food4.jpg" class="d-none">
+    <img id="f5" src="/images/newLec.jpg" class="d-none">
+    
+    <button id="spinBtn" class = "d-none">Spin</button>
+    <button id="stop1" class = "d-none">stop!</button>
+    <button id="stop2" class = "d-none">stop!</button>
+    <button id="stop3" class = "d-none">stop!</button>
+
+    <!-- 슬롯 게임오버 캔버스 -->
+    <img id="slotOver0" src="/images/slotGameover0.png" class="d-none">
+    <img id="slotOver1" src="/images/slotGameover1.png" class="d-none">
+
+    <button id="toOverBtn" class="d-none">종료하기</button>
+
+    <!-- 엔딩 -->
+    <video id="ending" src="/images/ending.mp4" width="100%" height="100%" class="d-none" ></video>
+
+    
+    <!-- S.E. -->
+    <audio id="mainSE" src="/1slotSound/main00.wav"></audio>
+    <audio id="clickSE" src="/1slotSound/stop.wav"></audio>
+    <audio id="ruleSE" src="/1slotSound/Rule.wav"></audio>
+    <audio id="spinSE" src="/1slotSound/spin.wav"></audio>
+    <audio id="stopSE" src="/1slotSound/stop.wav"></audio>
+    <audio id="failSE" src="/1slotSound/fail.wav"></audio>
+    <audio id="jackSE" src="/1slotSound/jackpot.wav"></audio>
+    <audio id="overSE" src="/1slotSound/over01.wav"></audio>
+    <audio id="endingSE" src="/1slotSound/ending01.wav"></audio>
+
   <img src="images/afterGame_0.png" id="afterGame0" class="d-none">
 
   <!-- ■■■■■■■■■■■■■■■■■■ 본게임 이후 ■■■■■■■■■■■■■■■■■■ -->
@@ -98,33 +147,34 @@
     <img src="images/afterGame_15.png" id="afterGame15" class="d-none">
     <img src="images/afterGame_16.png" id="afterGame16" class="d-none">
     <!-- Scene_17 : Main || End -->
+    
   <img src="images/afterGame_17.png" id="afterGame17" class="d-none">
   <button id="AG-S17-btnToMain" class="AG-S17-btnToMain"><img src="images/btnToMain.png"></button>
   <button id="AG-S17-btnToEnding" class="AG-S17-btnToEnding"><img src="images/btnToEnding.png"></button>
   <!-- ■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■ -->
 
-  <!-- 배경 -->
+  <!-- 배경
   <img src="3quizImg/quiz_bg1.png" class="d-none" id="bg1" />
   <img src="3quizImg/quiz_bg2.png" class="d-none" id="bg2" />
   <!-- 콘텐츠 -->
-  <img src="3quizImg/rule.png" class="d-none" id="rule" />
+  <!-- <img src="3quizImg/rule.png" class="d-none" id="rule" /> -->
   <!-- 버튼 -->
-  <img class="d-none" id="startbtn1" src="3quizImg/button_start.png" />
+  <!-- <img class="d-none" id="startbtn1" src="3quizImg/button_start.png" />
   <img class="d-none" id="startbtn2" src="3quizImg/button_start2.png" />
-  <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png" />
+  <img class="d-none" id="rulebtn" src="3quizImg/rulebtn.png" /> -->
 
   <!-- ■■■■■■■■■■■■■■■■■■ 4battle JIN ■■■■■■■■■■■■■■■■■■ -->
   <!-- scenairo -->
-  <img id="talk00" class="d-none" src="4battleImg/잠깐1.png" />
+  <!-- <img id="talk00" class="d-none" src="4battleImg/잠깐1.png" />
   <img id="talk01" class="d-none" src="4battleImg/잠깐2.png" />
   <img id="talk0" class="d-none" src="4battleImg/talk0.png" />
   <img id="talk1" class="d-none" src="4battleImg/talk1.png" />
   <img id="talk2" class="d-none" src="4battleImg/talk2.png" />
   <img id="talk3" class="d-none" src="4battleImg/talk3.png" />
-  <img id="talk4" class="d-none" src="4battleImg/Gamerule.png" />
+  <img id="talk4" class="d-none" src="4battleImg/Gamerule.png" /> -->
 
   <!-- background -->
-  <img id="background" class="d-none" src="./4battleImg/background.png" />
+  <!-- <img id="background" class="d-none" src="./4battleImg/background.png" /> -->
 
   <!-- girl -->
   <img id="girl" class="d-none" src="./4battleImg/girl.png" />
