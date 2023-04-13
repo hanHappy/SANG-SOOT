@@ -14,10 +14,19 @@ import Game from "./ui/3quizGame.js";
 // // 현채
 
 window.onload = () => {
+  //상민
   // const townCanvas = new TownCanvas();
   // const rstrntCanvas = new RestaurantCanvas();
-  // // const battleStartCanvas = new BattleStartCanvas();
-  // // const battleGameCanvas = new BattleGameCanvas();
+  //세영
+  let main = new Main();
+  let rule = new Rule();
+  let game = new Game();
+  //예진
+  // const battleStartCanvas = new BattleStartCanvas();
+  // const battleGameCanvas = new BattleGameCanvas();
+  //현준
+  //현채
+  
   // // 인트로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
   // // // 맵 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -44,7 +53,6 @@ window.onload = () => {
 
   // // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  let main = new Main();
   main.run();
 
   main.obj.addEventListener('click', (e) => {
@@ -54,30 +62,33 @@ window.onload = () => {
     // [Main] 시작하기 버튼 클릭 시 -> [Rule] 이동
     if (startX >= 372 && startX <= 772 && startY >= 610 && startY <= 731) {
       main.obj.remove();
+      rule.obj.style.display = "block";
       main.mainPlay();
       const quizIntroBgm = document.getElementById("quizIntroBgm")
       quizIntroBgm.play();
-      let rule = new Rule();
+      // let rule = new Rule();
       rule.run();
-
-      rule.obj.addEventListener('click', (e) => {
-        const startX = e.offsetX;
-        const startY = e.offsetY;
-
-        // [Rule] 다음 버튼 클릭 시 -> [Game] 게임 진행
-        if (startX >= 778 && startX <= 1022 && startY >= 580 && startY <= 674) {
-          rule.obj.remove();
-          rule.rulePlay();
-          quizIntroBgm.pause();
-          let game = new Game();
-          game.run();
-          setTimeout(() => {
-            game.countPlay();
-          }, 850);
-        } // rule if
-      }) // rule click(e)
     } // main if
   }); // main click(e)
+
+  rule.obj.addEventListener('click', (e) => {
+    const startX = e.offsetX;
+    const startY = e.offsetY;
+
+    // [Rule] 다음 버튼 클릭 시 -> [Game] 게임 진행
+    if (startX >= 778 && startX <= 1022 && startY >= 580 && startY <= 674) {
+      rule.obj.remove();
+      game.obj.style.display = "block";
+      rule.rulePlay();
+      quizIntroBgm.pause();
+      // let game = new Game();
+      game.run();
+      setTimeout(() => {
+        game.countPlay();
+      }, 850);
+    } // rule if
+  }); // rule click(e)
+
 
   // // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // // Main

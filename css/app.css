@@ -158,3 +158,18 @@ button:hover{
     left: 778px;
     top: 580px;
 }
+#nextbtn{
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    left: 900px;
+    top: 758px;
+    background: none;
+    border: solid 5px white;
+    border-radius: 10px;
+    font-family: "dgm";
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+}

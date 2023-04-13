@@ -13,6 +13,7 @@ export default
   constructor() {
     this.#obj = document.createElement("canvas");
     document.body.append(this.#obj);
+    this.#obj.style.display = "none";
     this.#ctx = this.#obj.getContext("2d");
     this.#obj.width = 1150;
     this.#obj.height = 820;
@@ -30,6 +31,10 @@ export default
 
   run() {
     this.#countdown.run();
+  }
+
+  get obj() {
+    return this.#obj;
   }
 }
 

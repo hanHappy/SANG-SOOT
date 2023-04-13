@@ -11,8 +11,8 @@ export default class Quiz {
     this.#ctx = ctx;
     this.#obj = obj;
 
-    this.#correctAnswer= document.getElementById("correctAnswer");
-    this.#wrongAnswer= document.getElementById("wrongAnswer");
+    this.#correctAnswer = document.getElementById("correctAnswer");
+    this.#wrongAnswer = document.getElementById("wrongAnswer");
 
     this.#quizCBeep = document.getElementById("quizCBeep");
     this.#quizWBeep = document.getElementById("quizWBeep");
@@ -32,7 +32,15 @@ export default class Quiz {
       }.bind(this), 500); //setT
     };
   } //drawImg
-  
+
+  nextBtn() {
+    let btn = document.getElementById("nextbtn");
+    btn.style.display = "block";
+    btn.addEventListener("click", () => {
+      //클릭 시//
+    });
+  }
+
   #showResult(img) {
     const result = new Image();
 
@@ -41,37 +49,44 @@ export default class Quiz {
     } else {
       result.src = img.src;
     }
-    
+
     result.onload = () => {
       this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
       this.#ctx.drawImage(result, 120, 132, 911, 584);
       this.#obj.removeEventListener("click", this.#clickHandler);
     };
   }
-  
+
   #playBeepSound(sound) {
     sound.play();
   }
-  
-    #clickHandler = (e) => {
-      if (this.#clickCount >= 1)
-        return;
-  
-      const x = e.offsetX;
-      const y = e.offsetY;
-  
-      if (x <= 153 && x >= 998)
-        return;
-  
-      if (y >= 291 && y <= 700) { //wrong
-        if (y >= 291 && y <= 420 || y >= 431 && y <= 560) {
-          this.#playBeepSound(this.#quizWBeep);
-          this.#showResult(this.#wrongAnswer);
-        } else if (y >= 571 && y <= 700) {
-          this.#playBeepSound(this.#quizCBeep);
-          this.#showResult(this.#correctAnswer);
-        }
-        this.#clickCount++;
+
+
+  #clickHandler = (e) => {
+    if (this.#clickCount >= 1)
+      return;
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    if (x <= 153 && x >= 998)
+      return;
+
+    if (y >= 291 && y <= 700) { //wrong
+      if (y >= 291 && y <= 420 || y >= 431 && y <= 560) {
+        this.#playBeepSound(this.#quizWBeep);
+        this.#showResult(this.#wrongAnswer);
+        this.nextBtn();
+      } else if (y >= 571 && y <= 700) {
+        this.#playBeepSound(this.#quizCBeep);
+        this.#showResult(this.#correctAnswer);
+        this.nextBtn();
       }
-    } // click(e)
+      this.#clickCount++;
+    }
+  } // click(e)
+
+  get obj() {
+    return this.#obj;
+  }
 } // quiz class

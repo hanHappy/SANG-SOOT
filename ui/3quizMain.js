@@ -11,7 +11,6 @@ export default class Main {
     this.#obj.width = 1150;
     this.#obj.height = 820;
     this.#obj.style.backgroundImage = `url(${document.getElementById("bg1").src})`;
-
     this.#startbtn1 = document.getElementById("startbtn1");
     this.#startbtn2 = document.getElementById("startbtn2");
 
