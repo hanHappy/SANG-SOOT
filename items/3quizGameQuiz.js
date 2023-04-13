@@ -32,29 +32,7 @@ export default class Quiz {
       }.bind(this), 500); //setT
     };
   } //drawImg
-
-  #clickHandler = (e) => {
-    if (this.#clickCount >= 1)
-      return;
-
-    const x = e.offsetX;
-    const y = e.offsetY;
-
-    if (x <= 153 && x >= 998)
-      return;
-
-    if (y >= 291 && y <= 700) { //wrong
-      if (y >= 291 && y <= 420 || y >= 431 && y <= 560) {
-        this.#playBeepSound(this.#quizWBeep);
-        this.#showResult(this.#wrongAnswer);
-      } else if (y >= 571 && y <= 700) {
-        this.#playBeepSound(this.#quizCBeep);
-        this.#showResult(this.#correctAnswer);
-      }
-      this.#clickCount++;
-    }
-  } // click(e)
-
+  
   #showResult(img) {
     const result = new Image();
 
@@ -63,7 +41,7 @@ export default class Quiz {
     } else {
       result.src = img.src;
     }
-
+    
     result.onload = () => {
       this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
       this.#ctx.drawImage(result, 120, 132, 911, 584);
@@ -74,5 +52,26 @@ export default class Quiz {
   #playBeepSound(sound) {
     sound.play();
   }
-
+  
+    #clickHandler = (e) => {
+      if (this.#clickCount >= 1)
+        return;
+  
+      const x = e.offsetX;
+      const y = e.offsetY;
+  
+      if (x <= 153 && x >= 998)
+        return;
+  
+      if (y >= 291 && y <= 700) { //wrong
+        if (y >= 291 && y <= 420 || y >= 431 && y <= 560) {
+          this.#playBeepSound(this.#quizWBeep);
+          this.#showResult(this.#wrongAnswer);
+        } else if (y >= 571 && y <= 700) {
+          this.#playBeepSound(this.#quizCBeep);
+          this.#showResult(this.#correctAnswer);
+        }
+        this.#clickCount++;
+      }
+    } // click(e)
 } // quiz class
