@@ -12,7 +12,7 @@ export default class TownCanvas {
     #rstrnts;
     #rstrntImg;
     #user;
-    #arrived;
+    #nextCanvas;
 
     static rstrnts = [
         new Restaurant("짜장하회", 0, 0, 350, 190),
@@ -23,7 +23,7 @@ export default class TownCanvas {
         new Restaurant("영남식당", 5, 0, 760, 520)
     ]
 
-    constructor() {
+    constructor(callback) {
         // timer ID
         this.#tid = null;
 
@@ -32,7 +32,9 @@ export default class TownCanvas {
         document.body.append(this.#canvas);
         this.#canvas.width = 1150;
         this.#canvas.height = 820;
+        this.#canvas.style.display = "none";
         this.#ctx = this.#canvas.getContext("2d");
+        this.#nextCanvas = callback;
 
         // Background -----------------------------------------------------
         this.#background = new TownBackground(this.#ctx);
@@ -95,7 +97,6 @@ export default class TownCanvas {
 
         // User
         this.#user = new User();
-        this.#arrived = this.#user.arrived;
 
         // click
         this.#canvas.addEventListener('click', (e) => { this.click(e) });
@@ -153,7 +154,7 @@ export default class TownCanvas {
             }
         }
     }
-
+    // 클릭한 식당 인덱스 업데이트
     updateInfo(x, y) {
         if (x == 440 && y == 316)
             Restaurant.rstrntIndex = 0;
@@ -174,14 +175,12 @@ export default class TownCanvas {
         return this.#canvas;
     }
 
-    // 식당 배열 getter
-    get rstrnts() {
-        return TownCanvas.rstrnts;
-    }
-
     // 업뎃 ---------------------------------------------------------------------
     update() {
         this.#user.update();
+        // 예진 식당 도착하면 app.js에 callback
+        if(this.#user.arrived)
+            this.#nextCanvas(this.#canvas);
     }
 
     // 그리기 ---------------------------------------------------------------------

@@ -22,6 +22,7 @@ export default class RestaurantCanvas {
     document.body.append(this.#canvas);
     this.#canvas.width = 1150;
     this.#canvas.height = 820;
+    this.#canvas.style.display = "none";
     this.#ctx = this.#canvas.getContext("2d");
 
     this.#x = 0;

@@ -7,17 +7,16 @@ export default class GameResult {
 
     constructor(ctx) {
         this.#ctx = ctx;
-
+        // 트로피 이미지
         this.#trophy = document.getElementById("trophy");
         this.#trophyLose = document.getElementById("trophyLose");
-
     }
-
+    
     draw(bg){
         this.drawBG(bg);
         this.drawTrophies();
     }
-
+    // 배경 그리기()
     drawBG(bg){
         this.#ctx.drawImage(bg, 1150, 820);
     }

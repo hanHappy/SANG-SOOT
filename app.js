@@ -1,8 +1,9 @@
+import Data from "./items/data.js";
 // 상민
+import IntroCanvas from "./ui/introCanvas.js";
 import TownCanvas from "./ui/0townCanvas.js";
 import RestaurantCanvas from "./ui/0restaurantCanvas.js";
-import User from "./items/0user.js";
-// // 세영
+// 세영
 // import Main from './ui/3quizMain.js';
 // import Rule from './ui/3quizRule.js';
 // import Game from './ui/3quizGame.js';
@@ -14,37 +15,40 @@ import User from "./items/0user.js";
 // // 현채
 
 window.onload = () => {
-  const townCanvas = new TownCanvas();
+  // callback : intro -> townCanvas
+  let introToTown = function(canvas){
+    canvas.remove();
+    townCanvas.canvas.style.display = "block";
+  }
+  // callback : townCanvas -> rstrntCanvas
+  let townToRstrant = function(canvas){
+    canvas.remove();
+    rstrntCanvas.canvas.style.display = "block";
+  }
+
+  // 캔버스 인스턴스 ------------------------------------------
+  const introCanvas = new IntroCanvas(introToTown);
+  const townCanvas = new TownCanvas(townToRstrant);
   const rstrntCanvas = new RestaurantCanvas();
   // const battleStartCanvas = new BattleStartCanvas();
   // const battleGameCanvas = new BattleGameCanvas();
-  // 인트로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // // 맵 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // 인트로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  introCanvas.firstScene();
+
+  // 맵 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   townCanvas.run();
 
   // 식당 입장 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  townCanvas.canvas.addEventListener("click", (e) => {
-    // 예진 도착 여부 확인
-    let checkPosition = setInterval(() => {
-      // 예진 -> 식당에 도착하면
-      if (User.arrived) {
-        townCanvas.canvas.remove();
-        clearInterval(checkPosition);
-        rstrntCanvas.welcome();
-      } // 도착하면
-    }, 100); // set interval
-  }); // click listener
+  rstrntCanvas.welcome();
 
-  // // 식당 입장 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // GAME_0 : 슬롯머신 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // // GAME_0 : 슬롯머신 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
-  // // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // // Main
   // battleStartCanvas.run();
   // // Game
@@ -56,4 +60,6 @@ window.onload = () => {
   //     clearInterval(checkIndex);
   //   }
   // }, 100);
+
+
 }; // window.onload

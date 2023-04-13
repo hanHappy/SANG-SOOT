@@ -35,9 +35,9 @@ export default class afterGameCanvas {
 
         // image load
         this.#scenes = new Array(18);
-        for (let scene of this.#scenes) {
-            scene = document.getElementById(`afterGame${i}`);
-        }
+        for (let i = 0; i < this.#scenes.length; i++) {
+            this.#scenes[i] = document.getElementById(`afterGame${i}`);
+          }
 
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
