@@ -9,7 +9,7 @@ export default class RestaurantCanvas {
   #sceneIndex;
   #scenes;
   #sceneNums;
-  #nextCanvas;
+  #toSlot;
 
   #menu;
 
@@ -26,7 +26,7 @@ export default class RestaurantCanvas {
     this.#canvas.height = 820;
     this.#canvas.style.display = "none";
     this.#ctx = this.#canvas.getContext("2d");
-    this.#nextCanvas = callback;
+    this.#toSlot = callback;
 
     this.#x = 0;
     this.#y = 0;
@@ -54,8 +54,8 @@ export default class RestaurantCanvas {
     if (this.#sceneIndex == 1 || this.#sceneIndex == 9)
       return;
     this.#sceneIndex++;
-    if(this.#sceneIndex == 18)
-      this.#nextCanvas(this.#canvas);
+    if(this.#sceneIndex == 12)
+      this.#toSlot(this.#canvas);
     this.draw();
 
     // Scene_1 : 메뉴판

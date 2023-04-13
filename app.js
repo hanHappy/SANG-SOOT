@@ -30,14 +30,15 @@ window.onload = () => {
     rstrntCanvas.canvas.style.display = "block";
   }
   // callback : rstrntCanvas -> slot || game
-  let rstrntToGame = function (canvas) {
+  let rstrntToSlot = function (canvas) {
     canvas.remove();
+    toSlot();
   }
 
   // 캔버스 인스턴스 ------------------------------------------
   const introCanvas = new IntroCanvas(introToTown);
   const townCanvas = new TownCanvas(townToRstrant);
-  const rstrntCanvas = new RestaurantCanvas(rstrntToGame);
+  const rstrntCanvas = new RestaurantCanvas(rstrntToSlot);
   // 슬롯
   const slotMain = new SlotMainCanvas();
   const slotRule = new SlotRuleCanvas();
@@ -56,30 +57,25 @@ window.onload = () => {
   rstrntCanvas.welcome();
 
   // 높은 평가 시
-  if (Data.highRating) {
-    // GAME_0 : 슬롯게임 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    // 문서에서 버튼을 받아온다
-    const strBtn = document.getElementById("strBtn");
-    const conBtn = document.getElementById("conBtn");
-    const spinBtn = document.getElementById("spinBtn");
-    const stop1 = document.getElementById("stop1");
-    const stop2 = document.getElementById("stop2");
-    const stop3 = document.getElementById("stop3");
-    const toOverBtn = document.getElementById("toOverBtn");
-    const strBtn0 = document.getElementById("stopSE");
-    const endingSE = document.getElementById("endingSE");
+  // GAME_0 : 슬롯게임 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // 문서에서 버튼을 받아온다
+  const strBtn = document.getElementById("strBtn");
+  const conBtn = document.getElementById("conBtn");
+  const spinBtn = document.getElementById("spinBtn");
+  const stop1 = document.getElementById("stop1");
+  const stop2 = document.getElementById("stop2");
+  const stop3 = document.getElementById("stop3");
+  const toOverBtn = document.getElementById("toOverBtn");
+  const strBtn0 = document.getElementById("stopSE");
+  const endingSE = document.getElementById("endingSE");
 
-    let toSlot = function(){
-
-    }
+  let toSlot = function () {
     // 1. 슬롯 메인 캔버스 실행
-
     document.getElementById("mainSE");
     mainSE.play();
     slotMain.run();
 
     // 2. start버튼 클릭시 슬롯 규칙 캔버스로 이동
-
     strBtn.addEventListener("click", (e) => {
       document.getElementById("ruleSE");
       ruleSE.play();
@@ -90,8 +86,6 @@ window.onload = () => {
     })
 
     // 슬롯 게임 캔버스에 콜백함수 인자로 전달
-
-
     // 3. 확인 버튼 클릭시 슬롯 게임 캔버스로 이동
     conBtn.addEventListener("click", (e) => {
       document.getElementById("clickSE");
@@ -129,43 +123,45 @@ window.onload = () => {
       // toMainBtn.style.display = "block";
       toOverBtn.style.display = "block";
     }//.bind(this)
-
-    //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
-    // 5. 엔딩크레딧
-    toOverBtn.addEventListener("click", (e) => {
-      document.getElementById("stopSE");
-      stopSE.play();
-      slotGameover.canvas.remove();
-      toOverBtn.style.display = "none";
-
-      const ending = document.getElementById("ending");
-      ending.style.display = "block";
-      ending.play();
-      endingSE.play();
-    })
-
   }
+
+
+  //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+  // 5. 엔딩크레딧
+  toOverBtn.addEventListener("click", (e) => {
+    document.getElementById("stopSE");
+    stopSE.play();
+    slotGameover.canvas.remove();
+    toOverBtn.style.display = "none";
+
+    const ending = document.getElementById("ending");
+    ending.style.display = "block";
+    ending.play();
+    endingSE.play();
+  })
+
+
 
   // 낮은 평가 시
-  else {
-    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-    // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-    // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    // // Main
-    // battleStartCanvas.run();
-    // // Game
-    // let checkIndex = setInterval(() => {
-    //   let index = battleStartCanvas.scenIndex;
-    //   if (index == 5) {
-    //     battleStartCanvas.startCanvas.remove();
-    //     battleGameCanvas.run();
-    //     clearInterval(checkIndex);
-    //   }
-    // }, 100);
+  // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  }
+  // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // // Main
+  // battleStartCanvas.run();
+  // // Game
+  // let checkIndex = setInterval(() => {
+  //   let index = battleStartCanvas.scenIndex;
+  //   if (index == 5) {
+  //     battleStartCanvas.startCanvas.remove();
+  //     battleGameCanvas.run();
+  //     clearInterval(checkIndex);
+  //   }
+  // }, 100);
+
+
 
 }; // window.onload
