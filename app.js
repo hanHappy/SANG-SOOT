@@ -224,7 +224,7 @@ window.onload = () => {
         }
       }, 100);
     });
-  }
+  };
 
   // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // const startBtn = document.getElementById("start-btn");
