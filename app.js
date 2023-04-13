@@ -213,6 +213,7 @@ window.onload = () => {
     nextBtn.addEventListener("click", (e) => {
       game.obj.remove();
       nextBtn.style.display = "none";
+      battleStartCanvas.startCanvas.style.display = "block";
       let checkIndex = setInterval(() => {
         let index = battleStartCanvas.scenIndex;
         if (index == 4) {
