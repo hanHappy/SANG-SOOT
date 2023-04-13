@@ -1,3 +1,5 @@
+import Data from "./data.js";
+
 export default class KioskResult{
 
     #tid;
@@ -61,7 +63,9 @@ export default class KioskResult{
 
     checkResult(result){
         if(result){
-            this.#win = true
+            this.#win = true;
+            Data.gameResult++;
+
             document.getElementById('hcwin').style.display = "block";
             this.#winsound.play();
 
