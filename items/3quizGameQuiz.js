@@ -31,14 +31,15 @@ export default class Quiz {
         this.#obj.addEventListener('click', this.#clickHandler);
       }.bind(this), 500); //setT
     };
+
   } //drawImg
 
   nextBtn() {
     let btn = document.getElementById("nextbtn");
     btn.style.display = "block";
-    btn.addEventListener("click", () => {
+    // btn.addEventListener("click", () => {
       //클릭 시//
-    });
+    // });
   }
 
   #showResult(img) {
