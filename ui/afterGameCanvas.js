@@ -42,6 +42,10 @@ export default class AfterGameCanvas {
 
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
+    get canvas(){
+        return this.#canvas;
+    }
+
     // Scene_0 : 트로피 화면
     gameResult() {
         this.#gameResult.draw(this.#scenes[0]);
