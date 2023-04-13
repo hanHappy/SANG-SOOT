@@ -71,6 +71,7 @@ export default class RestaurantCanvas {
   // Scene_1 : 메뉴판
   scene1(menu) {
     menu.printInfo(this.#ctx);
+    // 다음 버튼 -> Scene_2
     let btn = document.getElementById("S1-next");
     btn.style.display = "block";
     btn.addEventListener('click', function () {

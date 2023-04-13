@@ -13,6 +13,13 @@ body {
     display: none;
 }
 
+button{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    /* display: none; */
+}
+
 button:hover{
     cursor: pointer;
     filter: brightness(0.8);
@@ -139,6 +146,10 @@ button:hover{
 .S9-submit:hover{
     cursor: pointer;
     filter: brightness(0.8);
+}
+
+.AG-S17-btnToMain{
+    
 }
 
 

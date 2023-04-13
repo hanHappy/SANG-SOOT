@@ -34,32 +34,65 @@ export default class afterGameCanvas {
         this.#canvas.onclick = this.clickHandler.bind(this);
 
         // image load
-        for (let i = 0; i < this.#scenes.length; i++) {
-            this.#scenes[i] = document.getElementById(`afterGame${i}`);
+        this.#scenes = new Array(18);
+        for (let scene of this.#scenes) {
+            scene = document.getElementById(`afterGame${i}`);
         }
 
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-    clickHandler() {
+    // Scene_0 : 트로피 화면
+    gameResult() {
+        this.#gameResult.draw(this.#scenes[0]);
+        // 다음 버튼
+        let btn = document.getElementById("AG-S0-nextBtn");
+        btn.style.display = "block";
+        // 클릭하면
+        btn.addEventListener('click', function () {
+            btn.style.display = "none";
+            if (Data.gameResult >= 2)
+                // -> Scene_1 : 게임 승리 첫 씬으로
+                this.#sceneIndex++;
+            else
+                // -> Scene_10 : 게임 패배 첫 씬으로
+                this.#sceneIndex = 10;
+        }.bind(this));
+    }
 
+    // Scene_17 : 메인 || 종료
+    goMainOrEnd(){
+        
+    }
+
+    clickHandler() {
+        // 트로피 화면에서는 버튼 클릭으로만 화면 전환
         if(this.#sceneIndex==0){
-            this.#gameResult.drawTrophies();
             return;
         }
-        
+        // 그리기
         this.draw();
+        // Scene_17 : 메인 || 종료
+        if (this.#sceneIndex == 17) {
+            this.goMainOrEnd();
+        }
+        // Scene_8 : 게임 승리 마지막 씬
+        // Scene_16 : 게임 패배 마지막 씬
+        // 둘 모두 Scene_17로 이동
+        if (this.#sceneIndex == 8 || this.#sceneIndex == 16) {
+            this.#sceneIndex = 17;
+            return;
+        }
         this.#sceneIndex++;
-    
-       
-      } // click handler
+    } // click handler
 
-      draw() {
+
+    draw() {
         let scene = this.#scenes[this.#sceneIndex];
         let x = this.#x;
         let y = this.#y;
         let w = this.#w;
         let h = this.#h;
         this.#ctx.drawImage(scene, x, y, w, h);
-      }
+    }
 
 }

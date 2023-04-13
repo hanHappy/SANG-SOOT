@@ -4,12 +4,6 @@ export default class GameResult {
     #ctx;
     #trophy;
     #trophyLose;
-    #fistPosX;
-    #fistPosY;
-    #secondPosX;
-    #secondPosY;
-    #thirdPosX;
-    #thirdPosY;
 
     constructor(ctx) {
         this.#ctx = ctx;
@@ -17,6 +11,15 @@ export default class GameResult {
         this.#trophy = document.getElementById("trophy");
         this.#trophyLose = document.getElementById("trophyLose");
 
+    }
+
+    draw(bg){
+        this.drawBG(bg);
+        this.drawTrophies();
+    }
+
+    drawBG(bg){
+        this.#ctx.drawImage(bg, 1150, 820);
     }
 
     // 트로피 그리기()
