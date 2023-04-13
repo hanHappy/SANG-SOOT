@@ -20,13 +20,6 @@ button{
     display: none;
 }
 
-button {
-    background-color: transparent;
-    border: none;
-    margin: 0;
-    display: none;
-}
-
 button:hover {
     filter: brightness(0.8);
 }
@@ -402,7 +395,28 @@ input[type=checkbox] {
     color:antiquewhite;
   }
   
-  button{
+  #start-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #next-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #submit-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #last-btn{
     font-family: 'dgm', sans-serif;
     font-size: 30px;
     margin-left: 800px;

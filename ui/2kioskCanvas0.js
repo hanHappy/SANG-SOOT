@@ -1,5 +1,3 @@
-import KioskBG from "../2kioskitem/2kioskBG.js";
-
 export default class KioskCanvas0 {
 
     #img;
