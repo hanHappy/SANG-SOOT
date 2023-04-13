@@ -70,6 +70,7 @@ export default class BattleGauge {
 
     if (this.#redBoxWidth >= this.#width) {
       //win
+
       return;
     }
 

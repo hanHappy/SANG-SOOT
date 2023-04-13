@@ -53,7 +53,6 @@ window.onload = () => {
     if (index == 4) {
       battleGameCanvas.battleCanvas.style.display = "block";
       battleStartCanvas.startCanvas.remove();
-
       battleGameCanvas.run();
       clearInterval(checkIndex);
     }

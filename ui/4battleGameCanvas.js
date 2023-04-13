@@ -10,7 +10,8 @@ export default class BattleGameCanvas {
   #battleGauge;
   #battleNpc;
   #matchPage;
-
+  #battleBgm;
+  #battleKeyup;
   #tid;
 
   constructor() {
@@ -43,6 +44,10 @@ export default class BattleGameCanvas {
 
     // NPC 얼굴 설정
     this.#battleGauge.onChangeNpc = this.onChangeNpcHandler.bind(this);
+
+    // Sound
+    this.#battleBgm = document.getElementById("battleBgm");
+    this.#battleKeyup = document.getElementById("battleKeyup");
   }
 
   onChangeNpcHandler() {
@@ -59,12 +64,17 @@ export default class BattleGameCanvas {
 
   keyUpHandler(e) {
     if (e.keyCode == 32) {
+      document.getElementById("#battleKeyup");
+      this.#battleKeyup.play();
       this.#battleGauge.plus();
     } else alert("스페이스바를 입력하세요");
   }
 
   run() {
     //위에 함수 끝나면 실행
+    document.getElementById("#battleBgm");
+    this.#battleBgm.play();
+
     this.#tid = setInterval(() => {
       this.update();
       this.paint();
