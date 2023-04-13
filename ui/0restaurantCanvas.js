@@ -1,6 +1,7 @@
 import TownCanvas from "./0townCanvas.js";
 import Menu from "../items/0menu.js";
 import Restaurant from "../items/0restaurant.js";
+import Data from "../items/data.js";
 
 export default class RestaurantCanvas {
   #canvas;
@@ -8,6 +9,7 @@ export default class RestaurantCanvas {
   #sceneIndex;
   #scenes;
   #sceneNums;
+  #nextCanvas;
 
   #menu;
 
@@ -16,13 +18,15 @@ export default class RestaurantCanvas {
   #w;
   #h;
 
-  constructor() {
+  constructor(callback) {
     // canvas, constext -----------------------------------------------
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
     this.#canvas.width = 1150;
     this.#canvas.height = 820;
+    this.#canvas.style.display = "none";
     this.#ctx = this.#canvas.getContext("2d");
+    this.#nextCanvas = callback;
 
     this.#x = 0;
     this.#y = 0;
@@ -50,6 +54,8 @@ export default class RestaurantCanvas {
     if (this.#sceneIndex == 1 || this.#sceneIndex == 9)
       return;
     this.#sceneIndex++;
+    if(this.#sceneIndex == 18)
+      this.#nextCanvas(this.#canvas);
     this.draw();
 
     // Scene_1 : 메뉴판
@@ -71,6 +77,7 @@ export default class RestaurantCanvas {
   // Scene_1 : 메뉴판
   scene1(menu) {
     menu.printInfo(this.#ctx);
+    // 다음 버튼 -> Scene_2
     let btn = document.getElementById("S1-next");
     btn.style.display = "block";
     btn.addEventListener('click', function () {
@@ -100,11 +107,13 @@ export default class RestaurantCanvas {
     submit.addEventListener('click', function () {
       // if 판매 가격 <= 평가 가격
       if (price <= input.value) {
+        Data.highRating = true;
         this.#sceneIndex++; // -> Scene_10
         this.draw();
         form.style.display = "none";
       } else {
         // else 판매 가격 > 평가 가격
+        Data.highRating = false;
         this.#sceneIndex += 3; // -> Scene_12
         this.draw();
         form.style.display = "none";
