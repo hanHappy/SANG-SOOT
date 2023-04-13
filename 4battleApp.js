@@ -9,7 +9,7 @@ window.onload = function () {
 
   let checkIndex = setInterval(() => {
     let index = battleStartCanvas.scenIndex;
-    if (index == 6) {
+    if (index == 4) {
       battleStartCanvas.startCanvas.remove();
       let battleGameCanvas = new BattleGameCanvas();
       battleGameCanvas.run();

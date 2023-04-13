@@ -47,13 +47,13 @@ window.onload = () => {
   // // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // // Main
   // battleStartCanvas.run();
-  // // Game
-  // let checkIndex = setInterval(() => {
-  //   let index = battleStartCanvas.scenIndex;
-  //   if (index == 6) {
-  //     battleStartCanvas.startCanvas.remove();
-  //     battleGameCanvas.run();
-  //     clearInterval(checkIndex);
-  //   }
-  // }, 100);
+  // Game
+  let checkIndex = setInterval(() => {
+    let index = battleStartCanvas.scenIndex;
+    if (index == 4) {
+      battleStartCanvas.startCanvas.remove();
+      battleGameCanvas.run();
+      clearInterval(checkIndex);
+    }
+  }, 100);
 }; // window.onload

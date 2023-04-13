@@ -1,9 +1,11 @@
 import BattleGameCanvas from "./4battleGameCanvas.js";
 import MatchPage from "../items/4battleMatch.js";
+import BattleBackground from "../background/4battleBackground.js";
 
 export default class BattleStartCanvas {
   #tid;
   #battleStartCanvas;
+  #battleGameCanvas;
   #battleStartCtx;
   #scenIndex;
   #img1;
@@ -14,6 +16,8 @@ export default class BattleStartCanvas {
   #imgW;
   #imgH;
   #matchPage;
+  #background;
+  #gauge;
 
   constructor() {
     //canvas
@@ -43,38 +47,23 @@ export default class BattleStartCanvas {
       this.#images[i] = document.getElementById(`talk${i}`);
     }
 
+    // Game Canvas
+    this.#battleGameCanvas = new BattleGameCanvas();
+
     // Match Page
     this.#matchPage = new MatchPage();
+
+    //background
+    this.#background = new BattleBackground();
   }
 
   clickHandler(e) {
     this.#scenIndex++;
-    if (this.#scenIndex < 6) this.paint();
+    if (this.#scenIndex < 4) this.paint();
+    // else if ((this.#scenIndex = 4)) this.#battleGameCanvas.run();
   }
 
   run() {
-    // first img
-    setTimeout(() => {
-      let img1 = document.getElementById("talk00");
-      this.#battleStartCtx.drawImage(
-        img1,
-        this.#imgX,
-        this.#imgY,
-        this.#imgW,
-        this.#imgH
-      );
-      setTimeout(() => {
-        let img2 = document.getElementById("talk01");
-        this.#battleStartCtx.drawImage(
-          img2,
-          this.#imgX,
-          this.#imgY,
-          this.#imgW,
-          this.#imgH
-        );
-      }, 1000);
-    }, 10);
-
     this.paint();
   }
 
@@ -84,9 +73,10 @@ export default class BattleStartCanvas {
     let imgW = this.#imgW;
     let imgH = this.#imgH;
 
-    //해당페이지(인덱스==6)에서 매치화면
-    if (this.#scenIndex == 5) {
-      console.log("네모안떠?");
+    //해당페이지(인덱스)에서 매치화면
+    if (this.#scenIndex == 3) {
+      // background
+      this.#background.draw(this.#battleStartCtx);
       this.#battleStartCtx.clearRect(0, 0, 1150, 820);
       this.#matchPage.run(this.#battleStartCtx);
     } else {
