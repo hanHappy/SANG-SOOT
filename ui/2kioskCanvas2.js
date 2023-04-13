@@ -18,7 +18,7 @@ export default class KioskCanvas2 {
     #w;
     #h;
 
-    #img;
+    // #img;
     #winImg;
     #loseImg;
     #submitBtn;
@@ -40,16 +40,9 @@ export default class KioskCanvas2 {
         this.#kioskFood = new KioskFood();
         this.#kioskGauge = new KioskGauge();
         this.#kioskResult = new KioskResult();
-        this.#winImg = document.getElementById('win');
-        this.#loseImg = document.getElementById('lose');
-        this.#x = 100;
-        this.#y = 200;
-        this.#w = 300;
-        this.#h = 300;
 
         this.#submitBtn = document.getElementById('submit-btn');
         this.#submitBtn.addEventListener('click', (e) => { this.click(e) });
-
         this.#ckBoxes = document.getElementById('ingredient-list');
         this.#submitted = false;
     }
@@ -84,7 +77,7 @@ export default class KioskCanvas2 {
 
     click() {
         // 필요한 재료들
-        const correctIngredients = ['kim', 'bap', 'wooeong', 'danmuji', 'egg']; //배열을 담는 상수 공간 //정답데이터
+        const correctIngredients = ['kim', 'bap', 'bbobbye', 'danmuji', 'carrot', 'egg']; //배열을 담는 상수 공간 //정답데이터
         const selectedIngredients = []; //선택데이터
         const checkboxes = document.querySelectorAll('input[name="ingredient"]'); //체크한것(선택데이터)을 담을수있는 체크박스
 

@@ -160,3 +160,143 @@ button:hover{
     left: 778px;
     top: 580px;
 }
+
+/* ■■■■■■■■■■■■■■■■■■■ 현채 ■■■■■■■■■■■■■■■■■■■ */
+
+input[type=checkbox] {
+    transform: scale(2);
+    /* 체크박스 크기 변경 */
+  }
+  
+  li {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color:antiquewhite;
+  }
+  
+  button{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  
+  body {
+    font-family: 'dgm', sans-serif;
+    margin: 0;
+    background-image: url('../2kioskimage/whitebg.jpg');
+    background-size: 1150px 820px;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 1150px;
+    height: 820px;
+  }
+  
+  #ingredient-list {
+    position: absolute;
+    top: 100px;
+    left: 1px;
+    list-style-type: none;
+    float: left; 
+    margin-left: 0px;
+    /* 적절한 간격 */
+    font-family: 'dgm', sans-serif;
+    font-size: 100px;
+  }
+  
+  #start-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #start-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #start-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #next-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #next-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #next-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #submit-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #submit-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #submit-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #last-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #last-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #last-btn:active{
+    transform: translateY(5px);
+  }

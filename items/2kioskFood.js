@@ -25,13 +25,6 @@ export default class KioskFood{
         let width = this.#img.width;
         let height = this.#img.height;
         ctx.drawImage(img, x, y, width, height);
-    //    setTimeout(myObject.doSomething.bind(myObject), 3000);
     }
-
-    // hide(){
-    //     this.#img.style.display = "none";
-    //     console.log("dd");
-    // }
-
 
 }

@@ -6,6 +6,7 @@ export default class KioskGauge{
     #x;
     #y;
     #color;
+    #bgWidth;
 
     constructor(){
 
@@ -13,20 +14,19 @@ export default class KioskGauge{
         this.#height = 50;
         this.#x = 50;
         this.#y = 50;
-        this.#color = 'red';
+        this.#color = 'grey';
+        this.#bgWidth = 1050;
     }
 
     draw(ctx){
-        let x = this.#x; //지역변수를 만들어서 값을 넣어주기^*^
-        let y = this.#y;
-        let width = this.#width;
-        let height = this.#height;
-        let color = this.#color;
-        ctx.fillRect(x, y, width, height);
-        ctx.fillStyle = color;
-        ctx.strokeRect(x, y, 1050, 50);
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = 'black';
+
+        ctx.fillRect(this.#x, this.#y, this.#bgWidth, this.#height);
+        ctx.fillStyle = '#00FFC7';
+        
+        ctx.fillRect(this.#x, this.#y, this.#width, this.#height);
+        ctx.fillStyle = this.#color;
+
+
     }
 
     update(){ //ctx를 써야 할까?(질문)
