@@ -9,7 +9,7 @@ export default class KioskFood{
 
     constructor(){
 
-        this.#img = document.getElementById('food');
+        this.#img = document.getElementById('kimbab');
         this.#x = 361;
         this.#y = 200;
 

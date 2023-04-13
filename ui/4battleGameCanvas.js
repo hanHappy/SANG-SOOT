@@ -13,8 +13,9 @@ export default class BattleGameCanvas {
   #battleBgm;
   #battleKeyup;
   #tid;
+  #nextCanvas;
 
-  constructor() {
+  constructor(callback) {
     // canvas
     this.#battleGameCanvas = document.createElement("canvas");
     this.#battleGameCtx = this.#battleGameCanvas.getContext("2d");
@@ -37,6 +38,9 @@ export default class BattleGameCanvas {
 
     // MatchPage
     this.#matchPage = new MatchPage();
+
+    // 승리/패배 시 afterGame 캔버스로 이동
+    this.#nextCanvas = callback;
 
     // keyboard event
     //this.#battleGameCanvas.onkeydown = this.keyDownHandler.bind(this);
@@ -79,7 +83,9 @@ export default class BattleGameCanvas {
 
   update() {
     this.#battleGauge.update();
-
+    if(this.#battleGauge){
+      this.#nextCanvas(this.#battleGameCanvas);
+    }
     // if (this.#battleGameCanvas) {
     //   this.battleGauge.onChangeNpc =
     //     this.#battleNpc.onChangeNpcHandler.bind(this);

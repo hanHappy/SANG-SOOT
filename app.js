@@ -24,7 +24,6 @@ import KioskCanvas1 from "./ui/2kioskCanvas1.js";
 import KioskCanvas2 from "./ui/2kioskCanvas2.js";
 import KioskResult from "./items/2kioskResult.js";
 
-
 window.onload = () => {
   // callback : intro -> townCanvas
   let introToTown = function (canvas) {
@@ -63,10 +62,15 @@ window.onload = () => {
   let foodToBattle = function (canvas) {
     canvas.remove();
     battleStartCanvas.run();
-  };
+  }
   let main = new Main();
   let rule = new Rule();
   let game = new Game(foodToBattle);
+
+  let battleToAfterGame = function(canvas){
+    canvas.remove();
+    afterGameCanvas.gameResult();
+  }
 
   // 4, 예진
   const battleStartCanvas = new BattleStartCanvas();
@@ -176,37 +180,43 @@ window.onload = () => {
 
     Data.gameResult = 0;
 
-    let mainToRule = function (canvas) {
-      canvas.remove();
-      kioskCanvas1.canvas.style.display = "block";
-    }
-    let ruleToGame = function (canvas) {
-      canvas.remove();
-      kioskCanvas2.canvas.style.display = "block";
-    }
-    let kioskToSecondGame = function (canvas) {
-      canvas.remove();
-      battleStartCanvas.startCanvas.style.display = "block";
-    }
+    // let mainToRule = function(canvas){
+    //   canvas.remove();
+    //   kioskCanvas1.canvas.style.display = "block";
+    //   kioskCanvas1.draw();
+    // }
+    // let ruleToGame = function(canvas){
+    //   canvas.remove();
+    //   kioskCanvas2.canvas.style.display = "block";
+    //   document.getElementById('submit-btn').style.display = "block";
+    //   kioskCanvas2.run();
+    // }
+    // let gameToResult = function(canvas){
+    //   canvas.remove();
+    //   kioskResult.draw();
+    // }
+    // let kioskToSecondGame = function(){
+      
+    // main.obj.style.display = "block";
+    // main.run();
+    // }
+
 
     // GAME_1 : 키오스크 --------------------------------------------------------------
 
     // 첫번째 캔버스
     // const kioskCanvas0 = new KioskCanvas0(mainToRule);
     // const kioskCanvas1 = new KioskCanvas1(ruleToGame);
-    // const kioskCanvas2 = new KioskCanvas2(kioskToSecondGame);
+    // const kioskCanvas2 = new KioskCanvas2(gameToResult);
+    // const kioskResult = new KioskResult(kioskToSecondGame);
+    
     // kioskCanvas0.canvas.style.display = "block";
-
     // kioskCanvas0.draw();
 
-    // kioskCanvas1.draw();
-
-    // kioskCanvas2.run();
 
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    // main.obj.style.display = "none";
-    main.obj.style.display = "block";
-    main.run();
+    main.obj.style.display = "none";
+
 
     main.obj.addEventListener("click", (e) => {
       const startX = e.offsetX;
@@ -260,7 +270,8 @@ window.onload = () => {
         }
       }, 100);
     });
-  }
+
+  } // toGame()
 
 
 }; // window.onload

@@ -18,11 +18,10 @@ export default class KioskCanvas2 {
     #w;
     #h;
     #nextCanvas;
-    #list;
 
     // #img;
-    #winImg;
-    #loseImg;
+    // #winImg;
+    // #loseImg;
     #submitBtn;
     #submitted;
     #ckBoxes;
@@ -32,7 +31,7 @@ export default class KioskCanvas2 {
 
         this.#canvas = document.createElement('canvas');
         document.body.append(this.#canvas);
-        this.#canvas.style.display = "none";
+        // this.#canvas.style.display = "none";
         this.#canvas.width = 1150;
         this.#canvas.height = 820;
         this.#ctx = this.#canvas.getContext('2d');
@@ -50,7 +49,6 @@ export default class KioskCanvas2 {
         this.#submitBtn.addEventListener('click', (e) => { this.click(e) });
         this.#ckBoxes = document.getElementById('ingredient-list');
         this.#submitted = false;
-        this.#list = document.getElementById("ingredient-list");
     }
 
     get canvas() {
@@ -58,7 +56,7 @@ export default class KioskCanvas2 {
     }
 
     run() {
-        this.#list.style.display = "block";
+        this.#ckBoxes.style.display = "block";
 
         this.#tid = setInterval(() => {
             this.update();
@@ -102,10 +100,8 @@ export default class KioskCanvas2 {
         this.#kioskResult.checkResult(result);
         this.#kioskResult.draw();
 
-
         this.#submitted = true;
         this.#submitBtn.style.display = "none";
         this.#ckBoxes.style.display = "none";
     }
 }
-

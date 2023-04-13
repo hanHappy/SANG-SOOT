@@ -2,6 +2,7 @@ import RestaurantCanvas from "./0restaurantCanvas.js";
 import TownBackground from "../background/0townBG.js";
 import Restaurant from "../items/0restaurant.js";
 import User from "../items/0user.js";
+import Data from "../items/data.js";
 
 export default class TownCanvas {
   #tid;
@@ -198,7 +199,7 @@ export default class TownCanvas {
         rstrnt.y <= my &&
         my <= rstrnt.y + rstrnt.h &&
         my > 400
-      ) {
+        ) {
         let arrivalX = rstrnt.x + rstrnt.w / 2;
         let arrivalY = rstrnt.y;
         // 유저 이동
@@ -209,12 +210,12 @@ export default class TownCanvas {
   }
   // 클릭한 식당 인덱스 업데이트
   updateInfo(x, y) {
-    if (x == 440 && y == 316) Restaurant.rstrntIndex = 0;
-    if (x == 647 && y == 316) Restaurant.rstrntIndex = 1;
-    if (x == 850 && y == 316) Restaurant.rstrntIndex = 2;
-    if (x == 440 && y == 520) Restaurant.rstrntIndex = 3;
-    if (x == 647 && y == 520) Restaurant.rstrntIndex = 4;
-    if (x == 850 && y == 520) Restaurant.rstrntIndex = 5;
+    if (x == 440 && y == 316) Data.rstrntIndex = 0;
+    if (x == 647 && y == 316) Data.rstrntIndex = 1;
+    if (x == 850 && y == 316) Data.rstrntIndex = 2;
+    if (x == 440 && y == 520) Data.rstrntIndex = 3;
+    if (x == 647 && y == 520) Data.rstrntIndex = 4;
+    if (x == 850 && y == 520) Data.rstrntIndex = 5;
   }
 
   // town canvas getter -----------------------------------------------------

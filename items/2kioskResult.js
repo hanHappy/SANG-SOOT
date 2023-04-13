@@ -1,3 +1,5 @@
+import Data from "./data.js";
+
 export default class KioskResult{
 
     #tid;
@@ -18,11 +20,12 @@ export default class KioskResult{
     #winsound;
     #failsound;
     #end;
+    #nextCanvas;
 
     #lastBtn;
     #lasted;
 
-    constructor(){
+    constructor(callback){
 
         this.#winImg = document.getElementById('hcwin');
         this.#winImg.width = 1150;
@@ -38,10 +41,17 @@ export default class KioskResult{
         this.#failsound = document.getElementById('failsound');
   
         this.#lastBtn = document.getElementById('last-btn');
+        this.#lastBtn.onclick = this.onClickHandler.bind(this);
         this.#lasted = false;
 
         this.#end = false;
+        this.#nextCanvas = callback;
    
+    }
+
+    onClickHandler(){
+        this.#lastBtn.style.display = "none";
+        this.#nextCanvas();
     }
 
     get end(){
@@ -50,7 +60,7 @@ export default class KioskResult{
 
     draw(ctx){
         this.#lastBtn.style.display = "block";
-        this.#lastBtn.addEventListener('click', function(){
+        this.#lastBtn.addEventListener('click', ()=>{
             this.#end = true;
         })
         // let img = this.#winImg;
@@ -72,7 +82,9 @@ export default class KioskResult{
 
     checkResult(result){
         if(result){
-            this.#win = true
+            this.#win = true;
+            Data.gameResult++;
+
             document.getElementById('hcwin').style.display = "block";
             this.#winsound.play();
 

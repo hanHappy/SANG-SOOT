@@ -7,6 +7,7 @@ export default class BattleGauge {
   #color;
   #redBoxWidth;
   #onChangeNpc;
+  #end;
 
   constructor() {
     //게이지 x,y 좌표
@@ -22,6 +23,9 @@ export default class BattleGauge {
     this.#redBoxWidth = 450;
 
     this.#onChangeNpc = null;
+
+    // 승리 callback 함수
+    this.#end = false;
   }
 
   set onChangeNpc(Callback) {
@@ -73,11 +77,16 @@ export default class BattleGauge {
     if (this.#redBoxWidth <= 0) {
       //win
       Data.gameResult++;
+      this.#end = true;
 
       //다음페이지
     }
 
     this.#redBoxWidth += 1;
+  }
+
+  get end(){
+    return this.#end;
   }
 
   plus() {

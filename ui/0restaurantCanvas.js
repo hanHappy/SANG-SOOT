@@ -75,7 +75,7 @@ export default class RestaurantCanvas {
   // Scene_0 : 어서오세요~ -------------------------------------------------
   welcome() {
     this.draw();
-    let rstrntName = TownCanvas.rstrnts[Restaurant.rstrntIndex].name;
+    let rstrntName = TownCanvas.rstrnts[Data.rstrntIndex].name;
     this.#ctx.font = "37px dgm";
     this.#ctx.fillText(`${rstrntName}입니다!`, 330, 687);
   }
@@ -96,8 +96,8 @@ export default class RestaurantCanvas {
 
   // Scene_9 : 음식 평가 ------------------------------------------------------
   scene9(menu) {
-    let name = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name[Menu.menuIndex];
-    let price = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price[Menu.menuIndex];
+    let name = TownCanvas.rstrnts[Data.rstrntIndex].menus.name[Menu.menuIndex];
+    let price = TownCanvas.rstrnts[Data.rstrntIndex].menus.price[Menu.menuIndex];
     this.#ctx.font = "35px dgm";
     // 메뉴명
     this.#ctx.fillText(name, 122, 530);

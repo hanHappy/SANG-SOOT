@@ -4,4 +4,6 @@ export default class Data{
 
     static highRating = true;
 
+    static rstrntIndex = 0;
+
 }

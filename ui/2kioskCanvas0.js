@@ -10,9 +10,6 @@ export default class KioskCanvas0 {
     #startBtn;
     #started;
 
-    // #submitBtn;
-    // #ckBoxes
-
     constructor(callback) {
 
         this.#canvas = document.createElement('canvas');
