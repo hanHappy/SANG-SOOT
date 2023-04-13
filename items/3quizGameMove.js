@@ -24,7 +24,7 @@ export default class Move {
     this.#drawImage = drawImage;
     this.#imgX = 0;
     this.#imgY = this.#obj.height - this.#imgHeight / 2;
-    this.#speed = 20;
+    this.#speed = 30;
     this.#dx = this.#speed;
     this.#dy = -this.#speed;
 
