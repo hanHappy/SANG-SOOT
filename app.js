@@ -40,9 +40,7 @@ window.onload = () => {
   const townCanvas = new TownCanvas(townToRstrant);
   const rstrntCanvas = new RestaurantCanvas(rstrntToSlot);
   // 슬롯
-  const slotMain = new SlotMainCanvas();
-  const slotRule = new SlotRuleCanvas();
-  const slotGame = new SlotGameCanvas(handleSlotCanvas);
+
   // const battleStartCanvas = new BattleStartCanvas();
   // const battleGameCanvas = new BattleGameCanvas();
   const afterGameCanvas = new AfterGameCanvas();
@@ -58,88 +56,106 @@ window.onload = () => {
 
   // 높은 평가 시
   // GAME_0 : 슬롯게임 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  // 문서에서 버튼을 받아온다
-  const strBtn = document.getElementById("strBtn");
-  const conBtn = document.getElementById("conBtn");
-  const spinBtn = document.getElementById("spinBtn");
-  const stop1 = document.getElementById("stop1");
-  const stop2 = document.getElementById("stop2");
-  const stop3 = document.getElementById("stop3");
-  const toOverBtn = document.getElementById("toOverBtn");
-  const strBtn0 = document.getElementById("stopSE");
-  const endingSE = document.getElementById("endingSE");
 
   let toSlot = function () {
+       // GAME_0 : 슬롯게임 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // 문서에서 버튼을 받아온다
+    const strBtn = document.getElementById("strBtn");
+    const conBtn = document.getElementById("conBtn");
+    const spinBtn = document.getElementById("spinBtn");
+    const stop1 = document.getElementById("stop1");
+    const stop2 = document.getElementById("stop2");
+    const stop3 = document.getElementById("stop3");
+    const toOverBtn = document.getElementById("toOverBtn");
+    const strBtn0 = document.getElementById("stopSE");
+    const endingSE = document.getElementById("endingSE");
+    // const toMainBtn = document.getElementById("toMainBtn");
+
+
+
     // 1. 슬롯 메인 캔버스 실행
+    const slotMain = new SlotMainCanvas();
     document.getElementById("mainSE");
     mainSE.play();
     slotMain.run();
+        // this.#strBtn.style.display = 'block';
+
 
     // 2. start버튼 클릭시 슬롯 규칙 캔버스로 이동
+    const slotRule = new SlotRuleCanvas();
     strBtn.addEventListener("click", (e) => {
-      document.getElementById("ruleSE");
-      ruleSE.play();
-      slotMain.canvas.remove();
-      slotRule.run();
-      strBtn.style.display = "none";
-      conBtn.style.display = "block";
+        document.getElementById("ruleSE");
+        ruleSE.play();
+        slotMain.canvas.remove();
+        slotRule.run();
+        strBtn.style.display = "none";
+        conBtn.style.display = "block";
     })
 
+
     // 슬롯 게임 캔버스에 콜백함수 인자로 전달
+    let slotGame = new SlotGameCanvas(handleSlotCanvas);
     // 3. 확인 버튼 클릭시 슬롯 게임 캔버스로 이동
-    conBtn.addEventListener("click", (e) => {
-      document.getElementById("clickSE");
-      clickSE.play();
-      slotRule.canvas.remove();
-      slotGame.run();
-      conBtn.style.display = "none";
-      spinBtn.style.display = "block";
-      stop1.style.display = "block";
-      stop2.style.display = "block";
-      stop3.style.display = "block";
+    conBtn.addEventListener("click", (e) =>{
+        document.getElementById("clickSE");
+        clickSE.play();
+        slotRule.canvas.remove();
+        slotGame.run();
+        conBtn.style.display = "none";
+        spinBtn.style.display = "block";
+        stop1.style.display = "block";
+        stop2.style.display = "block";
+        stop3.style.display = "block";
     }, { once: true });
+
 
     // 4. 시간초과, 잭팟일 경우 게임오버 클래스로 이동
     const slotGameover = new SlotGameoverCanvas();
-    function handleSlotCanvas() {
-      slotGame.canvas.remove();
+    function handleSlotCanvas()
+    {
+        slotGame.canvas.remove();
 
-      // slotGame가 null일 경우, handleSlotCanvas메서드를 리턴으로 끝낸다
-      if (!slotGame) {
-        return;
-      }
-      // slotGame 문서를 삭제한다
-      slotGame.canvas.remove();
-      slotGame = null;
-      slotGameover.run();
+        // slotGame가 null일 경우, handleSlotCanvas메서드를 리턴으로 끝낸다
+        if(!slotGame){
+            return;
+        }
+        // slotGame 문서를 삭제한다
+        slotGame.canvas.remove();
+        slotGame = null;
+        slotGameover.run();
 
-      // spinBtn, stop버튼 종료
-      spinBtn.style.display = "none";
-      stop1.style.display = "none";
-      stop2.style.display = "none";
-      stop3.style.display = "none";
+        // spinBtn, stop버튼 종료
+        spinBtn.style.display = "none";
+        stop1.style.display = "none";
+        stop2.style.display = "none";
+        stop3.style.display = "none";
 
-      // to메인, to종료 버튼 생성
-      // toMainBtn.style.display = "block";
-      toOverBtn.style.display = "block";
+        // to메인, to종료 버튼 생성
+        // toMainBtn.style.display = "block";
+        toOverBtn.style.display = "block";
     }//.bind(this)
+
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+    // 5. 엔딩크레딧
+    toOverBtn.addEventListener("click", (e) => {
+        document.getElementById("stopSE");
+        stopSE.play();
+        slotGameover.canvas.remove();
+        toOverBtn.style.display = "none";
+
+        const ending = document.getElementById("ending");
+        ending.style.display = "block";
+        ending.play();
+        endingSE.play();
+    })
   }
 
 
   //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-  // 5. 엔딩크레딧
-  toOverBtn.addEventListener("click", (e) => {
-    document.getElementById("stopSE");
-    stopSE.play();
-    slotGameover.canvas.remove();
-    toOverBtn.style.display = "none";
 
-    const ending = document.getElementById("ending");
-    ending.style.display = "block";
-    ending.play();
-    endingSE.play();
-  })
 
 
 

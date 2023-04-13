@@ -1,7 +1,7 @@
-import SlotReel from "../1slotItem/1slotReel.js";
-import SlotGauge from "../1slotItem/1slotGauge.js";
-import SlotFrame from "../1slotItem/1slotFrame.js";
-import SlotBG from "../1slotItem/1slotBG.js";
+import SlotReel from "../items/1slotReel.js";
+import SlotGauge from "../items/1slotGauge.js";
+import SlotFrame from "../items/1slotFrame.js";
+import SlotBG from "../items/1slotBG.js";
 export default class SlotGameCanvas {
     #tid; // 은닉화 영역
     #slotBG;
