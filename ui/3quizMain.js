@@ -7,10 +7,13 @@ export default class Main {
   constructor() {
     this.#obj = document.createElement("canvas");
     document.body.append(this.#obj);
+    this.#obj.style.display = "none";
     this.#ctx = this.#obj.getContext("2d");
     this.#obj.width = 1150;
     this.#obj.height = 820;
-    this.#obj.style.backgroundImage = `url(${document.getElementById("bg1").src})`;
+    this.#obj.style.backgroundImage = `url(${
+      document.getElementById("bg1").src
+    })`;
     this.#startbtn1 = document.getElementById("startbtn1");
     this.#startbtn2 = document.getElementById("startbtn2");
 
@@ -19,7 +22,7 @@ export default class Main {
 
   draw() {
     this.#ctx.drawImage(this.#startbtn1, 372, 610);
-  };
+  }
 
   onMouseMove(e) {
     const mouseX = e.offsetX;
@@ -45,5 +48,5 @@ export default class Main {
 
   run() {
     this.draw();
-  };
+  }
 }

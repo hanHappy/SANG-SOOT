@@ -531,7 +531,7 @@ body {
 }
 #nextbtn {
   display: none;
-  pointer-events: none;
+  /* pointer-events: none; */
   position: absolute;
   left: 900px;
   top: 758px;

@@ -6,8 +6,10 @@ export default class Quiz {
   #clickCount;
   #quizWBeep;
   #quizCBeep;
+  #checked;
+  #next;
 
-  constructor(ctx, obj) {
+  constructor(ctx, obj, next) {
     this.#ctx = ctx;
     this.#obj = obj;
 
@@ -18,6 +20,8 @@ export default class Quiz {
     this.#quizWBeep = document.getElementById("quizWBeep");
 
     this.#clickCount = 0;
+    this.#next = next;
+    this.#checked = false;
   }
 
   drawImage() {
@@ -26,26 +30,32 @@ export default class Quiz {
 
     quizImg.onload = () => {
       this.#ctx.clearRect(0, 0, this.#obj.width, this.#obj.height);
-      setTimeout(function () {
-        this.#ctx.drawImage(quizImg, 120, 132, 911, 584);
-        this.#obj.addEventListener('click', this.#clickHandler);
-      }.bind(this), 500); //setT
+      setTimeout(
+        function () {
+          this.#ctx.drawImage(quizImg, 120, 132, 911, 584);
+          this.#obj.addEventListener("click", this.#clickHandler);
+        }.bind(this),
+        500
+      ); //setT
     };
-
   } //drawImg
 
   nextBtn() {
     let btn = document.getElementById("nextbtn");
     btn.style.display = "block";
-    // btn.addEventListener("click", () => {
-      //클릭 시//
-    // });
+    btn.addEventListener("click", () => {
+      this.#checked = true;
+    });
+  }
+
+  get btn() {
+    return this.#checked;
   }
 
   #showResult(img) {
     const result = new Image();
 
-    if (typeof img === 'string') {
+    if (typeof img === "string") {
       result.src = img;
     } else {
       result.src = img.src;
@@ -62,19 +72,17 @@ export default class Quiz {
     sound.play();
   }
 
-
   #clickHandler = (e) => {
-    if (this.#clickCount >= 1)
-      return;
+    if (this.#clickCount >= 1) return;
 
     const x = e.offsetX;
     const y = e.offsetY;
 
-    if (x <= 153 && x >= 998)
-      return;
+    if (x <= 153 && x >= 998) return;
 
-    if (y >= 291 && y <= 700) { //wrong
-      if (y >= 291 && y <= 420 || y >= 431 && y <= 560) {
+    if (y >= 291 && y <= 700) {
+      //wrong
+      if ((y >= 291 && y <= 420) || (y >= 431 && y <= 560)) {
         this.#playBeepSound(this.#quizWBeep);
         this.#showResult(this.#wrongAnswer);
         this.nextBtn();
@@ -85,7 +93,7 @@ export default class Quiz {
       }
       this.#clickCount++;
     }
-  } // click(e)
+  }; // click(e)
 
   get obj() {
     return this.#obj;

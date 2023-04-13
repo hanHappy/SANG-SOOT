@@ -8,6 +8,7 @@ import AfterGameCanvas from "./ui/afterGameCanvas.js";
 import Main from "./ui/3quizMain.js";
 import Rule from "./ui/3quizRule.js";
 import Game from "./ui/3quizGame.js";
+import Quiz from "./items/3quizGameQuiz.js";
 // 예진
 import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 import BattleGameCanvas from "./ui/4battleGameCanvas.js";
@@ -53,9 +54,13 @@ window.onload = () => {
   const rstrntCanvas = new RestaurantCanvas(rstrntToSlot, rstrntToGame);
 
   // 3, 세영
+  let foodToBattle = function (canvas) {
+    canvas.remove();
+    battleStartCanvas.run();
+  };
   let main = new Main();
   let rule = new Rule();
-  let game = new Game();
+  let game = new Game(foodToBattle);
 
   // 4, 예진
   const battleStartCanvas = new BattleStartCanvas();
@@ -162,59 +167,9 @@ window.onload = () => {
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
-    // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    // const startBtn = document.getElementById("start-btn");
-    // const nextBtn = document.getElementById("next-btn");
-    // const submitBtn = document.getElementById("submit-btn");
-    // const lastBtn = document.getElementById("last-btn");
-    // const clicksound = document.getElementById("clicksound");
-    // const winsound = document.getElementById("winsound");
-    // const failsound = document.getElementById("failsound");
-
-    // clicksound.load();
-    // winsound.load();
-    // failsound.load();
-
-    // //첫번째 캔버스
-    // const kioskCanvas0 = new KioskCanvas0();
-    // kioskCanvas0.draw();
-
-    // document.getElementById("start-btn").style.display = "block";
-
-    // const kioskCanvas1 = new KioskCanvas1();
-    // startBtn.addEventListener("click", (e) => {
-    //   clicksound.play();
-    //   //두번째 캔버스
-    //   kioskCanvas0.canvas.remove();
-    //   kioskCanvas1.draw();
-    //   document.getElementById("start-btn").style.display = "none";
-    //   document.getElementById("next-btn").style.display = "block";
-    // });
-
-    // const kioskCanvas2 = new KioskCanvas2();
-    // nextBtn.addEventListener("click", (e) => {
-    //   // clicksound0.pause();
-    //   clicksound.play();
-    //   //세번째 캔버스
-    //   kioskCanvas1.canvas.remove();
-    //   kioskCanvas2.run();
-    //   document.getElementById("next-btn").style.display = "none";
-    //   document.getElementById("submit-btn").style.display = "block";
-    //   document.getElementById("ingredient-list").style.display = "block";
-    // });
-
-    // const kioskResult = new KioskResult();
-    // submitBtn.addEventListener("click", (e) => {
-    //   kioskCanvas2.canvas.remove();
-    //   document.getElementById("submit-btn").style.display = "none";
-    //   document.getElementById("ingredient-list").style.display = "none";
-
-    //   document.getElementById("last-btn").style.display = "block";
-    // });
-
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
     // main.obj.style.display = "none";
+    main.obj.style.display = "block";
     main.run();
 
     main.obj.addEventListener("click", (e) => {
@@ -251,7 +206,8 @@ window.onload = () => {
       } // rule if
     }); // rule click(e)
 
-    battleStartCanvas.run();
+    // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
     // Game
     let checkIndex = setInterval(() => {
       let index = battleStartCanvas.scenIndex;
@@ -264,6 +220,53 @@ window.onload = () => {
     }, 100);
   };
 
-  // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  // // Main
+  // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  // const startBtn = document.getElementById("start-btn");
+  // const nextBtn = document.getElementById("next-btn");
+  // const submitBtn = document.getElementById("submit-btn");
+  // const lastBtn = document.getElementById("last-btn");
+  // const clicksound = document.getElementById("clicksound");
+  // const winsound = document.getElementById("winsound");
+  // const failsound = document.getElementById("failsound");
+
+  // clicksound.load();
+  // winsound.load();
+  // failsound.load();
+
+  // //첫번째 캔버스
+  // const kioskCanvas0 = new KioskCanvas0();
+  // kioskCanvas0.draw();
+
+  // document.getElementById("start-btn").style.display = "block";
+
+  // const kioskCanvas1 = new KioskCanvas1();
+  // startBtn.addEventListener("click", (e) => {
+  //   clicksound.play();
+  //   //두번째 캔버스
+  //   kioskCanvas0.canvas.remove();
+  //   kioskCanvas1.draw();
+  //   document.getElementById("start-btn").style.display = "none";
+  //   document.getElementById("next-btn").style.display = "block";
+  // });
+
+  // const kioskCanvas2 = new KioskCanvas2();
+  // nextBtn.addEventListener("click", (e) => {
+  //   // clicksound0.pause();
+  //   clicksound.play();
+  //   //세번째 캔버스
+  //   kioskCanvas1.canvas.remove();
+  //   kioskCanvas2.run();
+  //   document.getElementById("next-btn").style.display = "none";
+  //   document.getElementById("submit-btn").style.display = "block";
+  //   document.getElementById("ingredient-list").style.display = "block";
+  // });
+
+  // const kioskResult = new KioskResult();
+  // submitBtn.addEventListener("click", (e) => {
+  //   kioskCanvas2.canvas.remove();
+  //   document.getElementById("submit-btn").style.display = "none";
+  //   document.getElementById("ingredient-list").style.display = "none";
+
+  //   document.getElementById("last-btn").style.display = "block";
+  // });
 }; // window.onload

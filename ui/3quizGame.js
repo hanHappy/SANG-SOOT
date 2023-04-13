@@ -2,15 +2,16 @@ import Countdown from "../items/3quizGameCountdown.js";
 import Move from "../items/3quizGameMove.js";
 import Quiz from "../items/3quizGameQuiz.js";
 
-export default
-  class Game {
-  #obj
-  #ctx
-  #countdown
-  #move
-  #quiz
+export default class Game {
+  #obj;
+  #ctx;
+  #countdown;
+  #move;
+  #quiz;
+  #nextCanvas;
+  #tid;
 
-  constructor() {
+  constructor(callback) {
     this.#obj = document.createElement("canvas");
     document.body.append(this.#obj);
     this.#obj.style.display = "none";
@@ -20,13 +21,32 @@ export default
     this.#obj.style.backgroundImage = "url('3quizImg/quiz_bg2.png')";
 
     this.#quiz = new Quiz(this.#ctx, this.#obj);
-    this.#move = new Move(this.#ctx, this.#obj, this.#quiz.drawImage.bind(this.#quiz));
-    this.#countdown = new Countdown(this.#ctx, this.#obj, this.#quiz.drawImage.bind(this.#quiz), this.#move.run.bind(this.#move));
+    this.#move = new Move(
+      this.#ctx,
+      this.#obj,
+      this.#quiz.drawImage.bind(this.#quiz)
+    );
+    this.#countdown = new Countdown(
+      this.#ctx,
+      this.#obj,
+      this.#quiz.drawImage.bind(this.#quiz),
+      this.#move.run.bind(this.#move)
+    );
+    this.#nextCanvas = callback;
+    this.#tid = null;
   }
-  
+
   countPlay() {
     const countBeep = document.getElementById("countBeep");
     countBeep.play();
+  }
+
+  check() {
+    this.#tid = setInterval(() => {
+      if (this.#quiz.btn) {
+        this.#nextCanvas(this.#obj);
+      }
+    }, 100);
   }
 
   run() {
@@ -37,6 +57,3 @@ export default
     return this.#obj;
   }
 }
-
-
-
