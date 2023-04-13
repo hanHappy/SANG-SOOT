@@ -52,12 +52,8 @@ export default class BattleGameCanvas {
 
   onChangeNpcHandler() {
     //게이지가 일정이상,이하가 됐을 때 기존이미지 지우고 새이미지 띄우기
-    console.log("200이하됐음");
-
     //게이지 낮을때 (손님우세) 사장이미지 변경
     this.#battleNpc.newDraw(this.#battleGameCtx);
-
-    //
   }
 
   //눌렀을때 인덱스 ++; 인덱스를 나머지 연산해서 나머지가 0일때 , 1일때

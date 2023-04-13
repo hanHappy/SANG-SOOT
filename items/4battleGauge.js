@@ -1,3 +1,4 @@
+import Data from "./data.js";
 export default class BattleGauge {
   #x;
   #y;
@@ -60,18 +61,20 @@ export default class BattleGauge {
       }
     }
 
-    if (0 >= this.#redBoxWidth) {
-      // if가 하기문장보다 위에있어야 줄어들지않음(업데이트함수는 계속 실행됨)
-      //alert("LOSE");
-      //let img = document.getElementById("lose");
-      //ctx.drawImage(img, 0, 0, 1150, 820);
-      return;
-    }
+    // if (0 >= this.#redBoxWidth) {
+    //   // if가 하기문장보다 위에있어야 줄어들지않음(업데이트함수는 계속 실행됨)
+    //   //alert("LOSE");
+    //   //let img = document.getElementById("lose");
+    //   //ctx.drawImage(img, 0, 0, 1150, 820);
+    //   return;
+    // }
 
-    if (this.#redBoxWidth >= this.#width) {
+    //★★★★★★★★★★★★★★★★★★★★★게임리저트 수정해주세요
+    if (this.#redBoxWidth <= 0) {
       //win
+      Data.gameResult++;
 
-      return;
+      //다음페이지
     }
 
     this.#redBoxWidth += 1;
@@ -80,7 +83,7 @@ export default class BattleGauge {
   plus() {
     // if 게이지 너비가 틀 너비 보다 작을때, 게이지 너비 ++
     if (0 <= this.#redBoxWidth) {
-      this.#redBoxWidth -= 15;
+      this.#redBoxWidth -= 50;
     }
   }
 }

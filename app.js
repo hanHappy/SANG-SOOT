@@ -23,28 +23,27 @@ import KioskCanvas1 from "./2kioskui/2kioskCanvas1.js";
 import KioskCanvas2 from "./2kioskui/2kioskCanvas2.js";
 import KioskResult from "./2kioskitem/2kioskResult.js";
 
-
 window.onload = () => {
   // callback : intro -> townCanvas
   let introToTown = function (canvas) {
     canvas.remove();
     townCanvas.canvas.style.display = "block";
-  }
+  };
   // callback : townCanvas -> rstrntCanvas
   let townToRstrant = function (canvas) {
     canvas.remove();
     rstrntCanvas.canvas.style.display = "block";
-  }
+  };
   // callback : rstrntCanvas -> slot
   let rstrntToSlot = function (canvas) {
     canvas.remove();
     toSlot();
-  }
+  };
   // callback : rstrntCanvas -> game
   let rstrntToGame = function (canvas) {
     canvas.remove();
     toGame();
-  }
+  };
 
   // 캔버스 인스턴스 ------------------------------------------
   const introCanvas = new IntroCanvas(introToTown);
@@ -92,23 +91,26 @@ window.onload = () => {
       slotRule.run();
       strBtn.style.display = "none";
       conBtn.style.display = "block";
-    })
+    });
 
     // 슬롯 게임 캔버스에 콜백함수 인자로 전달
     let slotGame = new SlotGameCanvas(handleSlotCanvas);
     // 3. 확인 버튼 클릭시 슬롯 게임 캔버스로 이동
-    conBtn.addEventListener("click", (e) => {
-      document.getElementById("clickSE");
-      clickSE.play();
-      slotRule.canvas.remove();
-      slotGame.run();
-      conBtn.style.display = "none";
-      spinBtn.style.display = "block";
-      stop1.style.display = "block";
-      stop2.style.display = "block";
-      stop3.style.display = "block";
-    }, { once: true });
-
+    conBtn.addEventListener(
+      "click",
+      (e) => {
+        document.getElementById("clickSE");
+        clickSE.play();
+        slotRule.canvas.remove();
+        slotGame.run();
+        conBtn.style.display = "none";
+        spinBtn.style.display = "block";
+        stop1.style.display = "block";
+        stop2.style.display = "block";
+        stop3.style.display = "block";
+      },
+      { once: true }
+    );
 
     // 4. 시간초과, 잭팟일 경우 게임오버 클래스로 이동
     const slotGameover = new SlotGameoverCanvas();
@@ -133,7 +135,7 @@ window.onload = () => {
       // to메인, to종료 버튼 생성
       // toMainBtn.style.display = "block";
       toOverBtn.style.display = "block";
-    }//.bind(this)
+    } //.bind(this)
 
     // 5. 엔딩크레딧
     toOverBtn.addEventListener("click", (e) => {
@@ -146,15 +148,12 @@ window.onload = () => {
       ending.style.display = "block";
       ending.play();
       endingSE.play();
-    })
-  } // slot game ----------------------------------------------------------
+    });
+  }; // slot game ----------------------------------------------------------
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
-    
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    
-
 
     // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     // // Main
@@ -165,9 +164,7 @@ window.onload = () => {
       if (index == 4) {
         battleGameCanvas.battleCanvas.style.display = "block";
         battleStartCanvas.startCanvas.remove();
-        console.log("1");
         battleGameCanvas.run();
-        console.log("2");
         clearInterval(checkIndex);
       }
     }, 100);
@@ -222,6 +219,5 @@ window.onload = () => {
 
     //   document.getElementById('last-btn').style.display = "block";
     // })
-  }
-
+  };
 }; // window.onload

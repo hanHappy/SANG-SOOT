@@ -86,7 +86,5 @@ export default class BattleNpc {
 
     // user
     ctx.drawImage(img4, userX, userY, userW, userH);
-
-    console.log("이미지를 그려줘!!");
   }
 }
