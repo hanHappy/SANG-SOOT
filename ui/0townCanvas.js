@@ -4,15 +4,15 @@ import Restaurant from "../items/0restaurant.js";
 import User from "../items/0user.js";
 
 export default class TownCanvas {
-    #tid;
-    #canvas;
-    #ctx;
-    #background;
-    #rstrntNums;
-    #rstrnts;
-    #rstrntImg;
-    #user;
-    #nextCanvas;
+  #tid;
+  #canvas;
+  #ctx;
+  #background;
+  #rstrntNums;
+  #rstrnts;
+  #rstrntImg;
+  #user;
+  #nextCanvas;
 
   static rstrnts = [
     new Restaurant("짜장하회", 0, 0, 350, 190),
@@ -23,18 +23,18 @@ export default class TownCanvas {
     new Restaurant("영남식당", 5, 0, 760, 520),
   ];
 
-    constructor(callback) {
-        // timer ID
-        this.#tid = null;
+  constructor(callback) {
+    // timer ID
+    this.#tid = null;
 
-        // canvas, constext -----------------------------------------------
-        this.#canvas = document.createElement("canvas");
-        document.body.append(this.#canvas);
-        this.#canvas.width = 1150;
-        this.#canvas.height = 820;
-        this.#canvas.style.display = "none";
-        this.#ctx = this.#canvas.getContext("2d");
-        this.#nextCanvas = callback;
+    // canvas, constext -----------------------------------------------
+    this.#canvas = document.createElement("canvas");
+    document.body.append(this.#canvas);
+    this.#canvas.width = 1150;
+    this.#canvas.height = 820;
+    this.#canvas.style.display = "none";
+    this.#ctx = this.#canvas.getContext("2d");
+    this.#nextCanvas = callback;
 
     // Background -----------------------------------------------------
     this.#background = new TownBackground(this.#ctx);
@@ -126,8 +126,8 @@ export default class TownCanvas {
       }
     }
 
-        // User
-        this.#user = new User();
+    // User
+    this.#user = new User();
 
     // click
     this.#canvas.addEventListener("click", (e) => {
@@ -140,82 +140,94 @@ export default class TownCanvas {
     });
   } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-    // 마우스오버 - 식당 정보
-    mousemove(e) {
-        let mx = e.offsetX;
-        let my = e.offsetY;
-        for (let rstrnt of TownCanvas.rstrnts) {
-            if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my < 400) {
-                mx = (rstrnt.x + (rstrnt.w / 2));
-                my = (rstrnt.y + rstrnt.h);
-                this.updateInfo(mx, my);
-                rstrnt.mouseover();
-            } else if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my > 400) {
-                let mx = (rstrnt.x + (rstrnt.w / 2));
-                let my = rstrnt.y;
-                this.updateInfo(mx, my);
-                rstrnt.mouseover();
-            } else
-                rstrnt.mouseleave();
-        }
+  // 마우스오버 - 식당 정보
+  mousemove(e) {
+    let mx = e.offsetX;
+    let my = e.offsetY;
+    for (let rstrnt of TownCanvas.rstrnts) {
+      if (
+        rstrnt.x <= mx &&
+        mx <= rstrnt.x + rstrnt.w &&
+        rstrnt.y <= my &&
+        my <= rstrnt.y + rstrnt.h &&
+        my < 400
+      ) {
+        mx = rstrnt.x + rstrnt.w / 2;
+        my = rstrnt.y + rstrnt.h;
+        this.updateInfo(mx, my);
+        rstrnt.mouseover();
+      } else if (
+        rstrnt.x <= mx &&
+        mx <= rstrnt.x + rstrnt.w &&
+        rstrnt.y <= my &&
+        my <= rstrnt.y + rstrnt.h &&
+        my > 400
+      ) {
+        let mx = rstrnt.x + rstrnt.w / 2;
+        let my = rstrnt.y;
+        this.updateInfo(mx, my);
+        rstrnt.mouseover();
+      } else rstrnt.mouseleave();
     }
-    // 클릭 - 유저 이동 ----------------------------------------------------------
-    click(e) {
-        let user = this.#user;
-        let mx = e.offsetX;
-        let my = e.offsetY;
-        // 개별 식당 좌표 내 클릭 시
-        for (let rstrnt of TownCanvas.rstrnts) {
-            // 윗라인 식당
-            if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my < 400) {
-                let arrivalX = (rstrnt.x + (rstrnt.w / 2));
-                let arrivalY = (rstrnt.y + rstrnt.h);
-                // 유저 이동
-                user.moveTo(arrivalX, arrivalY);
-                this.updateInfo(arrivalX, arrivalY);
-            }
-            // 아랫라인 식당
-            if (rstrnt.x <= mx && mx <= rstrnt.x + rstrnt.w
-                && rstrnt.y <= my && my <= rstrnt.y + rstrnt.h && my > 400) {
-                let arrivalX = (rstrnt.x + (rstrnt.w / 2));
-                let arrivalY = rstrnt.y;
-                // 유저 이동
-                user.moveTo(arrivalX, arrivalY);
-                this.updateInfo(arrivalX, arrivalY);
-            }
-        }
+  }
+  // 클릭 - 유저 이동 ----------------------------------------------------------
+  click(e) {
+    let user = this.#user;
+    let mx = e.offsetX;
+    let my = e.offsetY;
+    // 개별 식당 좌표 내 클릭 시
+    for (let rstrnt of TownCanvas.rstrnts) {
+      // 윗라인 식당
+      if (
+        rstrnt.x <= mx &&
+        mx <= rstrnt.x + rstrnt.w &&
+        rstrnt.y <= my &&
+        my <= rstrnt.y + rstrnt.h &&
+        my < 400
+      ) {
+        let arrivalX = rstrnt.x + rstrnt.w / 2;
+        let arrivalY = rstrnt.y + rstrnt.h;
+        // 유저 이동
+        user.moveTo(arrivalX, arrivalY);
+        this.updateInfo(arrivalX, arrivalY);
+      }
+      // 아랫라인 식당
+      if (
+        rstrnt.x <= mx &&
+        mx <= rstrnt.x + rstrnt.w &&
+        rstrnt.y <= my &&
+        my <= rstrnt.y + rstrnt.h &&
+        my > 400
+      ) {
+        let arrivalX = rstrnt.x + rstrnt.w / 2;
+        let arrivalY = rstrnt.y;
+        // 유저 이동
+        user.moveTo(arrivalX, arrivalY);
+        this.updateInfo(arrivalX, arrivalY);
+      }
     }
-    // 클릭한 식당 인덱스 업데이트
-    updateInfo(x, y) {
-        if (x == 440 && y == 316)
-            Restaurant.rstrntIndex = 0;
-        if (x == 647 && y == 316)
-            Restaurant.rstrntIndex = 1;
-        if (x == 850 && y == 316)
-            Restaurant.rstrntIndex = 2;
-        if (x == 440 && y == 520)
-            Restaurant.rstrntIndex = 3;
-        if (x == 647 && y == 520)
-            Restaurant.rstrntIndex = 4;
-        if (x == 850 && y == 520)
-            Restaurant.rstrntIndex = 5;
-    }
+  }
+  // 클릭한 식당 인덱스 업데이트
+  updateInfo(x, y) {
+    if (x == 440 && y == 316) Restaurant.rstrntIndex = 0;
+    if (x == 647 && y == 316) Restaurant.rstrntIndex = 1;
+    if (x == 850 && y == 316) Restaurant.rstrntIndex = 2;
+    if (x == 440 && y == 520) Restaurant.rstrntIndex = 3;
+    if (x == 647 && y == 520) Restaurant.rstrntIndex = 4;
+    if (x == 850 && y == 520) Restaurant.rstrntIndex = 5;
+  }
 
-    // town canvas getter -----------------------------------------------------
-    get canvas() {
-        return this.#canvas;
-    }
+  // town canvas getter -----------------------------------------------------
+  get canvas() {
+    return this.#canvas;
+  }
 
-    // 업뎃 ---------------------------------------------------------------------
-    update() {
-        this.#user.update();
-        // 예진 식당 도착하면 app.js에 callback
-        if(this.#user.arrived)
-            this.#nextCanvas(this.#canvas);
-    }
+  // 업뎃 ---------------------------------------------------------------------
+  update() {
+    this.#user.update();
+    // 예진 식당 도착하면 app.js에 callback
+    if (this.#user.arrived) this.#nextCanvas(this.#canvas);
+  }
 
   // 그리기 ---------------------------------------------------------------------
   paint() {

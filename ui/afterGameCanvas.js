@@ -1,7 +1,6 @@
 import GameResult from "../items/0gameResult.js";
 
 export default class AfterGameCanvas {
-
     #canvas;
     #ctx;
     #x;
@@ -21,28 +20,26 @@ export default class AfterGameCanvas {
         this.#canvas.height = 820;
         this.#ctx = this.#canvas.getContext("2d");
 
-        // image
-        this.#x = 0;
-        this.#y = 0;
-        this.#w = 1150;
-        this.#h = 820;
+        // click ---------------------------------------------------------
+        this.#sceneIndex = 0;
+        this.#canvas.onclick = this.clickHandler.bind(this);
 
         // Game Result
         this.#gameResult = new GameResult(this.#ctx);
 
-    // click ---------------------------------------------------------
-    this.#sceneIndex = 0;
-    this.#canvas.onclick = this.clickHandler.bind(this);
+        // click ---------------------------------------------------------
+        this.#sceneIndex = 0;
+        this.#canvas.onclick = this.clickHandler.bind(this);
 
         // image load
         this.#scenes = new Array(18);
         for (let i = 0; i < this.#scenes.length; i++) {
             this.#scenes[i] = document.getElementById(`afterGame${i}`);
-          }
+        }
 
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-    get canvas(){
+    get canvas() {
         return this.#canvas;
     }
 
@@ -53,34 +50,36 @@ export default class AfterGameCanvas {
         let btn = document.getElementById("AG-S0-nextBtn");
         btn.style.display = "block";
         // 클릭하면
-        btn.addEventListener('click', function () {
-            btn.style.display = "none";
-            if (Data.gameResult >= 2)
-                // -> Scene_1 : 게임 승리 첫 씬으로
-                this.#sceneIndex++;
-            else
+        btn.addEventListener(
+            "click",
+            function () {
+                btn.style.display = "none";
+                if (Data.gameResult >= 2)
+                    // -> Scene_1 : 게임 승리 첫 씬으로
+                    this.#sceneIndex++;
                 // -> Scene_10 : 게임 패배 첫 씬으로
-                this.#sceneIndex = 10;
-        }.bind(this));
+                else this.#sceneIndex = 10;
+            }.bind(this)
+        );
     }
 
     // Scene_17 : 메인 || 종료
-    goMainOrEnd(){
+    goMainOrEnd() {
         let btnMain = document.getElementById("AG-S17-btnToMain");
         let btnEnd = document.getElementById("AG-S17-btnToEnding");
         btnMain.style.display = "block";
         btnEnd.style.display = "block";
-        btnMain.addEventListener('click', function(){
+        btnMain.addEventListener("click", function () {
             // 메인으로
-        })
-        btnEnd.addEventListener('click', function(){
+        });
+        btnEnd.addEventListener("click", function () {
             // 종료하기
-        })
+        });
     }
 
     clickHandler() {
         // 트로피 화면에서는 버튼 클릭으로만 화면 전환
-        if(this.#sceneIndex==0){
+        if (this.#sceneIndex == 0) {
             return;
         }
         // 그리기
@@ -99,7 +98,6 @@ export default class AfterGameCanvas {
         this.#sceneIndex++;
     } // click handler
 
-
     draw() {
         let scene = this.#scenes[this.#sceneIndex];
         let x = this.#x;
@@ -108,5 +106,4 @@ export default class AfterGameCanvas {
         let h = this.#h;
         this.#ctx.drawImage(scene, x, y, w, h);
     }
-
 }
