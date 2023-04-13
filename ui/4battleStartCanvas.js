@@ -1,23 +1,30 @@
-import BattleGameCanvas from "./4battleGameCanvas.js";
+import MatchPage from "../items/4battleMatch.js";
+import BattleBackground from "../background/4battleBackground.js";
 
 export default class BattleStartCanvas {
-  #tid;
   #battleStartCanvas;
+  #battleGameCanvas;
   #battleStartCtx;
   #scenIndex;
-  #img1;
-  #img2;
   #images;
   #imgX;
   #imgY;
   #imgW;
   #imgH;
+  #matchPage;
+  #background;
+  #battleClick;
+  #battleStartBtn;
 
   constructor() {
     //canvas
     this.#battleStartCanvas = document.createElement("canvas");
     this.#battleStartCtx = this.#battleStartCanvas.getContext("2d");
     document.body.append(this.#battleStartCanvas);
+    this.#battleStartCanvas.style.display = "none";
+
+    this.#battleClick = document.getElementById("battleClick");
+    this.#battleStartBtn = document.getElementById("battleStartBtn");
 
     // size
     this.#battleStartCanvas.width = 1150;
@@ -30,12 +37,19 @@ export default class BattleStartCanvas {
 
     // click event
     this.#battleStartCanvas.onclick = this.clickHandler.bind(this);
+    // this.#battleClick.onplay = this.playHandler.bind(this);
+
+    // Match Page
+    this.#matchPage = new MatchPage();
+
+    //background
+    this.#background = new BattleBackground();
 
     // index
     this.#scenIndex = 0;
 
     // img
-    this.#images = new Array(5);
+    this.#images = new Array(3);
 
     for (let i = 0; i < this.#images.length; i++) {
       this.#images[i] = document.getElementById(`talk${i}`);
@@ -44,32 +58,14 @@ export default class BattleStartCanvas {
 
   clickHandler(e) {
     this.#scenIndex++;
-    if (this.#scenIndex < 5) this.paint();
+    document.getElementById("battleClick");
+    this.#battleClick.play();
+    if (this.#scenIndex < 4) {
+      this.paint();
+    }
   }
 
   run() {
-    // first img
-    setTimeout(() => {
-      let img1 = document.getElementById("talk00");
-      this.#battleStartCtx.drawImage(
-        img1,
-        this.#imgX,
-        this.#imgY,
-        this.#imgW,
-        this.#imgH
-      );
-      setTimeout(() => {
-        let img2 = document.getElementById("talk01");
-        this.#battleStartCtx.drawImage(
-          img2,
-          this.#imgX,
-          this.#imgY,
-          this.#imgW,
-          this.#imgH
-        );
-      }, 1000);
-    }, 10);
-
     this.paint();
   }
 
@@ -79,13 +75,29 @@ export default class BattleStartCanvas {
     let imgW = this.#imgW;
     let imgH = this.#imgH;
 
-    this.#battleStartCtx.drawImage(
-      this.#images[this.#scenIndex],
-      imgX,
-      imgY,
-      imgW,
-      imgH
-    );
+    //인덱스==3 -> 매치화면
+    if (this.#scenIndex == 3) {
+      //sound
+      this.#battleClick.pause();
+      document.getElementById("battleStartBtn");
+      this.#battleStartBtn.play();
+
+      // background
+      this.#background.draw(this.#battleStartCtx);
+
+      // match Page
+      this.#battleStartCtx.clearRect(0, 0, 1150, 820);
+      this.#matchPage.run(this.#battleStartCtx);
+    } else {
+      console.log("#scenIndex");
+      this.#battleStartCtx.drawImage(
+        this.#images[this.#scenIndex],
+        imgX,
+        imgY,
+        imgW,
+        imgH
+      );
+    }
   }
 
   get startCanvas() {

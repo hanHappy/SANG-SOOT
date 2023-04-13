@@ -10,11 +10,11 @@ export default class BattleGauge {
   constructor() {
     //게이지 x,y 좌표
     this.#x = 100;
-    this.#y = 600;
+    this.#y = 70;
 
     //게이지 너비, 높이, 색
     this.#width = 950;
-    this.#height = 65;
+    this.#height = 60;
     this.#color = "red";
 
     //게이지 너비
@@ -38,8 +38,10 @@ export default class BattleGauge {
     let redBoxWidth = this.#redBoxWidth;
 
     //background gauge
-    ctx.fillStyle = "pink";
+    ctx.fillStyle = "yellow";
     ctx.fillRect(x, y, width, height);
+    ctx.lineWidth = 5;
+    ctx.strokeRect(x - 3, y - 2, width + 5, height + 5);
 
     //red gauge.
     ctx.fillStyle = color;
@@ -52,7 +54,7 @@ export default class BattleGauge {
   }
 
   update() {
-    if (100 >= this.#redBoxWidth) {
+    if (300 >= this.#redBoxWidth) {
       if (this.#onChangeNpc) {
         this.#onChangeNpc(this);
       }
@@ -68,6 +70,7 @@ export default class BattleGauge {
 
     if (this.#redBoxWidth >= this.#width) {
       //win
+
       return;
     }
 

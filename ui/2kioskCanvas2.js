@@ -17,6 +17,8 @@ export default class KioskCanvas2 {
     #y;
     #w;
     #h;
+    #nextCanvas;
+    #list;
 
     // #img;
     #winImg;
@@ -25,14 +27,17 @@ export default class KioskCanvas2 {
     #submitted;
     #ckBoxes;
 
-    constructor() {
+    constructor(callback) {
         // 생성자 영역. 모든 속성에는 this가 붙는다. this.#~
 
         this.#canvas = document.createElement('canvas');
         document.body.append(this.#canvas);
+        this.#canvas.style.display = "none";
         this.#canvas.width = 1150;
         this.#canvas.height = 820;
         this.#ctx = this.#canvas.getContext('2d');
+        this.#nextCanvas = callback;
+
         //html body에 캔버스를 생성
         // 배경, 김밥사진, 체크박스, 줄어드는 게이지, 제출버튼
         this.#tid = null;
@@ -45,6 +50,7 @@ export default class KioskCanvas2 {
         this.#submitBtn.addEventListener('click', (e) => { this.click(e) });
         this.#ckBoxes = document.getElementById('ingredient-list');
         this.#submitted = false;
+        this.#list = document.getElementById("ingredient-list");
     }
 
     get canvas() {
@@ -52,6 +58,8 @@ export default class KioskCanvas2 {
     }
 
     run() {
+        this.#list.style.display = "block";
+
         this.#tid = setInterval(() => {
             this.update();
             this.paint();
@@ -62,6 +70,9 @@ export default class KioskCanvas2 {
     
     update() {
         this.#kioskGauge.update();
+        if(this.#kioskResult.end){
+            this.#nextCanvas(this.#canvas);
+        }
     }
 
     paint() {

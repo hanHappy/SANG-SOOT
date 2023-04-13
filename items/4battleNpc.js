@@ -21,18 +21,18 @@ export default class BattleNpc {
     this.#img4 = document.getElementById("userwin");
 
     // location
-    this.#ceoX = 10;
-    this.#ceoY = 100;
+    this.#ceoX = 110;
+    this.#ceoY = 200;
 
-    this.#userX = 700;
-    this.#userY = 100;
+    this.#userX = 680;
+    this.#userY = 0;
 
     // size
-    this.#ceoW = 400;
-    this.#ceoH = 500;
+    this.#ceoW = 380;
+    this.#ceoH = 400;
 
-    this.#userW = 400;
-    this.#userH = 500;
+    this.#userW = 300;
+    this.#userH = 400;
 
     //call back
     this.#onChangeNpc = null;
@@ -82,9 +82,11 @@ export default class BattleNpc {
     let userH = this.#userH;
 
     // ceo
-    ctx.drawImage(img3, ceoX, ceoY, ceoW, ceoH);
+    ctx.drawImage(img3, 0, 0, ceoW, ceoH);
 
     // user
     ctx.drawImage(img4, userX, userY, userW, userH);
+
+    console.log("이미지를 그려줘!!");
   }
 }
