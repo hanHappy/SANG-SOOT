@@ -12,11 +12,11 @@ export default class KioskResult{
         this.#x = 0;
         this.#y = 0;
 
-        this.#winImg = document.getElementById('win');
+        this.#winImg = document.getElementById('hcwin');
         this.#winImg.width = 1150;
         this.#winImg.height = 820;
 
-        this.#loseImg = document.getElementById('lose');
+        this.#loseImg = document.getElementById('hclose');
         this.#loseImg.width = 1150;
         this.#loseImg.height = 820;
 

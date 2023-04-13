@@ -49,7 +49,10 @@ window.onload = () => {
   const introCanvas = new IntroCanvas(introToTown);
   const townCanvas = new TownCanvas(townToRstrant);
   const rstrntCanvas = new RestaurantCanvas(rstrntToSlot, rstrntToGame);
+<<<<<<< HEAD
 
+=======
+>>>>>>> Jin
   const battleStartCanvas = new BattleStartCanvas();
   const battleGameCanvas = new BattleGameCanvas();
   const afterGameCanvas = new AfterGameCanvas();
@@ -150,6 +153,7 @@ window.onload = () => {
       ending.play();
       endingSE.play();
     });
+<<<<<<< HEAD
   };
 
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -162,6 +166,36 @@ window.onload = () => {
     // const clicksound = document.getElementById("clicksound");
     // const winsound = document.getElementById("winsound");
     // const failsound = document.getElementById("failsound");
+=======
+  }; // slot game ----------------------------------------------------------
+
+  // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  let toGame = function () {
+    // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // // Main
+    battleStartCanvas.run();
+    // Game
+    let checkIndex = setInterval(() => {
+      let index = battleStartCanvas.scenIndex;
+      if (index == 4) {
+        battleGameCanvas.battleCanvas.style.display = "block";
+        battleStartCanvas.startCanvas.remove();
+        battleGameCanvas.run();
+        clearInterval(checkIndex);
+      }
+    }, 100);
+
+    // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    // const startBtn = document.getElementById('start-btn');
+    // const nextBtn = document.getElementById('next-btn');
+    // const submitBtn = document.getElementById('submit-btn');
+    // const lastBtn = document.getElementById('last-btn');
+    // const clicksound = document.getElementById('clicksound');
+    // const winsound = document.getElementById('winsound');
+    // const failsound = document.getElementById('failsound');
+>>>>>>> Jin
 
     // clicksound.load();
     // winsound.load();
@@ -171,25 +205,42 @@ window.onload = () => {
     // const kioskCanvas0 = new KioskCanvas0();
     // kioskCanvas0.draw();
 
+<<<<<<< HEAD
     // document.getElementById("start-btn").style.display = "block";
 
     // const kioskCanvas1 = new KioskCanvas1();
     // startBtn.addEventListener("click", (e) => {
+=======
+    // document.getElementById('start-btn').style.display = "block";
+
+    // const kioskCanvas1 = new KioskCanvas1();
+    // startBtn.addEventListener('click', (e) => {
+>>>>>>> Jin
     //   clicksound.play();
     //   //두번째 캔버스
     //   kioskCanvas0.canvas.remove();
     //   kioskCanvas1.draw();
+<<<<<<< HEAD
     //   document.getElementById("start-btn").style.display = "none";
     //   document.getElementById("next-btn").style.display = "block";
     // });
 
     // const kioskCanvas2 = new KioskCanvas2();
     // nextBtn.addEventListener("click", (e) => {
+=======
+    //   document.getElementById('start-btn').style.display = "none";
+    //   document.getElementById('next-btn').style.display = "block";
+    // });
+
+    // const kioskCanvas2 = new KioskCanvas2();
+    // nextBtn.addEventListener('click', (e) => {
+>>>>>>> Jin
     //   // clicksound0.pause();
     //   clicksound.play();
     //   //세번째 캔버스
     //   kioskCanvas1.canvas.remove();
     //   kioskCanvas2.run();
+<<<<<<< HEAD
     //   document.getElementById("next-btn").style.display = "none";
     //   document.getElementById("submit-btn").style.display = "block";
     //   document.getElementById("ingredient-list").style.display = "block";
@@ -220,4 +271,21 @@ window.onload = () => {
 
   // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // // Main
+=======
+    //   document.getElementById('next-btn').style.display = "none";
+    //   document.getElementById('submit-btn').style.display = "block";
+    //   document.getElementById('ingredient-list').style.display = "block";
+
+    // })
+
+    // const kioskResult = new KioskResult();
+    // submitBtn.addEventListener('click', (e) => {
+    //   kioskCanvas2.canvas.remove();
+    //   document.getElementById('submit-btn').style.display = "none";
+    //   document.getElementById('ingredient-list').style.display = "none";
+
+    //   document.getElementById('last-btn').style.display = "block";
+    // })
+  };
+>>>>>>> Jin
 }; // window.onload
