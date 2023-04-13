@@ -1,3 +1,5 @@
+import Data from "./data.js";
+
 export default class Quiz {
   #obj;
   #ctx;
@@ -89,6 +91,8 @@ export default class Quiz {
       } else if (y >= 571 && y <= 700) {
         this.#playBeepSound(this.#quizCBeep);
         this.#showResult(this.#correctAnswer);
+        Data.gameResult++;
+        console.log(Data.gameResult);
         this.nextBtn();
       }
       this.#clickCount++;

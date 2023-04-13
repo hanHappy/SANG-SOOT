@@ -174,6 +174,8 @@ window.onload = () => {
   // 낮은 평가 시 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   let toGame = function () {
 
+    Data.gameResult = 0;
+
     let mainToRule = function (canvas) {
       canvas.remove();
       kioskCanvas1.canvas.style.display = "block";
@@ -190,16 +192,16 @@ window.onload = () => {
     // GAME_1 : 키오스크 --------------------------------------------------------------
 
     // 첫번째 캔버스
-    const kioskCanvas0 = new KioskCanvas0(mainToRule);
-    const kioskCanvas1 = new KioskCanvas1(ruleToGame);
-    const kioskCanvas2 = new KioskCanvas2(kioskToSecondGame);
-    kioskCanvas0.canvas.style.display = "block";
+    // const kioskCanvas0 = new KioskCanvas0(mainToRule);
+    // const kioskCanvas1 = new KioskCanvas1(ruleToGame);
+    // const kioskCanvas2 = new KioskCanvas2(kioskToSecondGame);
+    // kioskCanvas0.canvas.style.display = "block";
 
-    kioskCanvas0.draw();
+    // kioskCanvas0.draw();
 
-    kioskCanvas1.draw();
+    // kioskCanvas1.draw();
 
-    kioskCanvas2.run();
+    // kioskCanvas2.run();
 
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     // main.obj.style.display = "none";
