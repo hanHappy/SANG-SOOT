@@ -1,13 +1,15 @@
 import TownCanvas from "./0townCanvas.js";
 import Menu from "../items/0menu.js";
 import Restaurant from "../items/0restaurant.js";
+import Data from "../items/data.js";
 
 export default class RestaurantCanvas {
   #canvas;
   #ctx;
   #sceneIndex;
   #scenes;
-  #sceneNums;
+  #toSlot;
+  #toGame;
 
   #menu;
 
@@ -16,13 +18,16 @@ export default class RestaurantCanvas {
   #w;
   #h;
 
-  constructor() {
+  constructor(callbackSlot, callbackGame) {
     // canvas, constext -----------------------------------------------
     this.#canvas = document.createElement("canvas");
     document.body.append(this.#canvas);
     this.#canvas.width = 1150;
     this.#canvas.height = 820;
+    this.#canvas.style.display = "none";
     this.#ctx = this.#canvas.getContext("2d");
+    this.#toSlot = callbackSlot;
+    this.#toGame = callbackGame;
 
     this.#x = 0;
     this.#y = 0;
@@ -37,19 +42,26 @@ export default class RestaurantCanvas {
     this.#canvas.onclick = this.clickHandler.bind(this);
 
     // images --------------------------------------------------------
-    this.#sceneNums = 17;
-    this.#scenes = new Array(this.#sceneNums);
+    this.#scenes = new Array(18);
     // html에서 scenes 이미지 가져오기
     for (let i = 0; i < this.#scenes.length; i++) {
       this.#scenes[i] = document.getElementById(`inRstrnt${i}`);
     }
   } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-  // 클릭할 때마다 다음 scene으로 넘어감
+  // 클릭할 때마다 다음 scene으로 넘어감 ------------------------------------
   clickHandler() {
+    // if(this.#sceneIndex==18)
+    //   return;
     if (this.#sceneIndex == 1 || this.#sceneIndex == 9)
       return;
     this.#sceneIndex++;
+    if(this.#sceneIndex == 12)
+      this.#toSlot(this.#canvas);
+    if(this.#sceneIndex == 18){
+      this.#toGame(this.#canvas);
+      return;
+    }
     this.draw();
 
     // Scene_1 : 메뉴판
@@ -60,7 +72,7 @@ export default class RestaurantCanvas {
       this.scene9(this.#menu);
   } // click handler
 
-  // Scene_0 : 어서오세요~
+  // Scene_0 : 어서오세요~ -------------------------------------------------
   welcome() {
     this.draw();
     let rstrntName = TownCanvas.rstrnts[Restaurant.rstrntIndex].name;
@@ -68,9 +80,10 @@ export default class RestaurantCanvas {
     this.#ctx.fillText(`${rstrntName}입니다!`, 330, 687);
   }
 
-  // Scene_1 : 메뉴판
+  // Scene_1 : 메뉴판 ----------------------------------------------------------
   scene1(menu) {
     menu.printInfo(this.#ctx);
+    // 다음 버튼 -> Scene_2
     let btn = document.getElementById("S1-next");
     btn.style.display = "block";
     btn.addEventListener('click', function () {
@@ -81,7 +94,7 @@ export default class RestaurantCanvas {
     }.bind(this))
   }
 
-  // Scene_9 : 음식 평가
+  // Scene_9 : 음식 평가 ------------------------------------------------------
   scene9(menu) {
     let name = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.name[Menu.menuIndex];
     let price = TownCanvas.rstrnts[Restaurant.rstrntIndex].menus.price[Menu.menuIndex];
@@ -100,11 +113,13 @@ export default class RestaurantCanvas {
     submit.addEventListener('click', function () {
       // if 판매 가격 <= 평가 가격
       if (price <= input.value) {
+        Data.highRating = true;
         this.#sceneIndex++; // -> Scene_10
         this.draw();
         form.style.display = "none";
       } else {
         // else 판매 가격 > 평가 가격
+        Data.highRating = false;
         this.#sceneIndex += 3; // -> Scene_12
         this.draw();
         form.style.display = "none";
@@ -112,6 +127,7 @@ export default class RestaurantCanvas {
     }.bind(this));
 
   }
+  // --------------------------------------------------------------------------
   draw() {
     let scene = this.#scenes[this.#sceneIndex];
     let x = this.#x;

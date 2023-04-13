@@ -8,9 +8,8 @@ export default class User{
     #vy;
     #dx;
     #dy;
+    #arrived;
     
-    static arrived = false;
-
     constructor(){
         this.#img = document.getElementById("user");
         this.#x = 30;
@@ -21,6 +20,7 @@ export default class User{
         this.#vy = 0;
         this.#dx = 0;
         this.#dy = 0;
+        this.#arrived = false;
 
     }
 
@@ -33,8 +33,6 @@ export default class User{
         let a = Math.sqrt(w*w + h*h);
         this.#vx = 4*w/a;
         this.#vy = 3;
-        // this.#vx = 100*w/a;
-        // this.#vy = 100;
     }
 
     // 업뎃 ----------------------------------------------------------
@@ -47,7 +45,7 @@ export default class User{
         // 목표 y좌표에 도착했을 때 -> y 변화량 = 0
         if (this.#dy - 2 <= this.#y && this.#y <= this.#dy + 2) {
             this.#vy = 0;
-            User.arrived = true;
+            this.#arrived = true;
             return;
         }
         // x 변화량이 0일 때 -> y좌표 이동
@@ -67,6 +65,10 @@ export default class User{
         let x = this.#x - w/2;
         let y = this.#y - h/2;
         ctx.drawImage(img, x, y, w, h);
+    }
+
+    get arrived(){
+        return this.#arrived;
     }
 
     get x(){

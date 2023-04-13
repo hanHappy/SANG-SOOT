@@ -1,0 +1,138 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  /* 폰트 패밀리 이름 */
+  src: url('../DungGeunMo.ttf') format('truetype');
+  /* 폰트 파일 경로 및 형식 */
+}
+
+input[type=checkbox] {
+  transform: scale(2);
+  /* 체크박스 크기 변경 */
+}
+
+li {
+  font-size: 50px;
+  margin-bottom: 10px;
+  color:antiquewhite
+}
+
+button{
+  font-family: 'MyCustomFont', sans-serif;
+  font-size: 30px;
+  margin-left: 800px;
+  width: 100px;
+  height: 60px;
+}
+
+body {
+  font-family: 'MyCustomFont', sans-serif;
+  margin: 0;
+  background-image: url('흰화면.jpg');
+  background-size: 1150px 820px;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 1150px;
+  height: 820px;
+}
+
+#ingredient-list {
+  position: absolute;
+  top: 100px;
+  left: 1px;
+  list-style-type: none;
+  float: left; 
+  margin-left: 0px;
+  /* 적절한 간격 */
+  font-family: 'MyCustomFont', sans-serif;
+  font-size: 100px;
+}
+
+#start-btn {
+  position: absolute;
+  border-radius: 20px;
+  bottom: 150px;
+  right: 50px;
+  /* padding: 40px 70px; */
+  font-size: 50px;
+  color:rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(240, 192, 49);
+  width: 150px;
+  height: 100px;
+}
+
+#start-btn:hover{
+  border-color: rgb(237, 217, 164);
+  box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+  background-color: rgb(205, 105, 105);
+}
+
+#start-btn:active{
+  transform: translateY(5px);
+}
+
+#next-btn {
+  position: absolute;
+  border-radius: 20px;
+  bottom: 150px;
+  right: 50px;
+  /* padding: 40px 70px; */
+  font-size: 50px;
+  color:rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(240, 192, 49);
+  width: 150px;
+  height: 100px;
+}
+
+#next-btn:hover{
+  border-color: rgb(237, 217, 164);
+  box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+  background-color: rgb(205, 105, 105);
+}
+
+#next-btn:active{
+  transform: translateY(5px);
+}
+
+#submit-btn {
+  position: absolute;
+  border-radius: 20px;
+  bottom: 150px;
+  right: 50px;
+  /* padding: 40px 70px; */
+  font-size: 50px;
+  color:rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border: 5px solid rgb(240, 192, 49);
+  width: 150px;
+  height: 100px;
+}
+
+#submit-btn:hover{
+  border-color: rgb(237, 217, 164);
+  box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+  background-color: rgb(205, 105, 105);
+}
+
+#submit-btn:active{
+  transform: translateY(5px);
+}
+
+/* 게임 화면 */
+/* .game-screen {
+  display: none;
+} */
+
+/* 결과 화면 */
+
+
+/* .imgBox {
+  float: left;
+  width: 564px;
+  height: 564px;
+  margin: 10px;
+} */
+
+
+

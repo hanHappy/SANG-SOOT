@@ -13,12 +13,18 @@ body {
     display: none;
 }
 
-button:hover{
-    cursor: pointer;
+button{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    display: none;
+}
+
+button:hover {
     filter: brightness(0.8);
 }
 
-.S1-next{
+.S1-next {
     display: none;
     position: absolute;
     margin-left: 990px;
@@ -29,7 +35,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn0{
+
+.menuBtn0 {
     display: none;
     position: absolute;
     margin-left: 85px;
@@ -40,7 +47,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn1{
+
+.menuBtn1 {
     display: none;
     position: absolute;
     margin-left: 85px;
@@ -51,7 +59,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn2{
+
+.menuBtn2 {
     display: none;
     margin-left: 85px;
     margin-top: 405px;
@@ -62,7 +71,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn3{
+
+.menuBtn3 {
     display: none;
     margin-left: 85px;
     margin-top: 470px;
@@ -73,7 +83,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn4{
+
+.menuBtn4 {
     display: none;
     margin-left: 85px;
     margin-top: 535px;
@@ -84,7 +95,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn5{
+
+.menuBtn5 {
     display: none;
     margin-left: 85px;
     margin-top: 600px;
@@ -95,7 +107,8 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
-.menuBtn6{
+
+.menuBtn6 {
     display: none;
     margin-left: 85px;
     margin-top: 665px;
@@ -106,9 +119,10 @@ button:hover{
     font-size: 23px;
     text-align: center;
 }
+
 /* Scene_9 : 평가 */
-.S9-input{
-    position:absolute;
+.S9-input {
+    position: absolute;
     margin-top: 580px;
     margin-left: 430px;
     text-align: center;
@@ -120,12 +134,12 @@ button:hover{
     font-size: 40px;
 }
 
-.S9-input::placeholder{
+.S9-input::placeholder {
     font-size: 30px;
     color: #bbbbbb;
 }
 
-.S9-submit{
+.S9-submit {
     position: absolute;
     font-family: 'dgm';
     background-color: #F2D800;
@@ -136,27 +150,395 @@ button:hover{
     height: 55px;
 }
 
-.S9-submit:hover{
-    cursor: pointer;
+.S9-submit:hover {
     filter: brightness(0.8);
+}
+
+.AG-S17-btnToMain {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 275px;
+}
+
+.AG-S17-btnToEnding {
+    position: absolute;
+    margin-top: 350px;
+    margin-left: 275px;
+
+}
+
+/* ■■■■■■■■■■■■■■■■■■■ 현준 ■■■■■■■■■■■■■■■■■■■ */
+
+/* 스핀버튼 */
+#spinBtn {
+    position: absolute;
+    border-radius: 30px;
+    top: 670px;
+    left: 435px;
+    padding: 0px 40px;
+    font-family: 'Galmuri7 Regular';
+    font-size: 50px;
+    color: rgb(255 242 204);
+    background-color: rgb(27 20 100);
+    border: 10px solid rgb(41 171 226);
+}
+
+/* 누름효과 */
+#spinBtn:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#spinBtn:hover {
+    border-color: #0FF;
+    box-shadow: 0 0 29px 10px #57b7e4;
+}
+
+
+
+/* 스톱버튼 */
+#stop1 {
+    position: absolute;
+    border-radius: 30px;
+    top: 560px;
+    left: 225px;
+    padding: 17px 30px;
+    color: rgb(255 242 204);
+    font-family: 'Galmuri7 Regular';
+    /* font-size: 0px; */
+    background-color: rgb(245, 31, 70);
+    box-shadow: 0 0 29 31 #fff,
+        0 0 19px 19px #f00,
+        0 0 33px 17px #f00;
+    border: 10px solid rgb(233, 157, 81);
+    /* border-bottom: solid px #627295; */
+}
+
+#stop2 {
+    position: absolute;
+    border-radius: 30px;
+    top: 560px;
+    left: 485px;
+    padding: 17px 30px;
+    color: rgb(255 242 204);
+    background-color: rgb(245, 31, 70);
+    box-shadow: 0 0 29 31 #fff,
+        0 0 19px 19px #f00,
+        0 0 33px 17px #f00;
+    border: 10px solid rgb(233, 157, 81);
+    /* border-bottom: solid 4px #627295; */
+}
+
+#stop3 {
+    position: absolute;
+    border-radius: 30px;
+    top: 560px;
+    left: 730px;
+    padding: 17px 30px;
+    color: rgb(255 242 204);
+    background-color: rgb(245, 31, 70);
+    box-shadow: 0 0 29 31 #fff,
+        0 0 19px 19px #f00,
+        0 0 33px 17px #f00;
+    border: 10px solid rgb(233, 157, 81);
+    /* border-bottom: solid 4px #627295; */
+}
+
+
+/* 누름효과 */
+#stop1:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#stop1:hover {
+    border-color: rgb(247, 208, 168);
+    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
+}
+
+/* 누름효과 */
+#stop2:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#stop2:hover {
+    border-color: rgb(247, 208, 168);
+    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
+}
+
+/* 누름효과 */
+#stop3:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#stop3:hover {
+    border-color: rgb(247, 208, 168);
+    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
+}
+
+/* 게임종료 */
+#toOverBtn {
+    position: absolute;
+    border-radius: 30px;
+    top: 600px;
+    left: 393px;
+    padding: 13px 30px;
+    font-family: 'Galmuri7 Regular';
+    font-size: 60px;
+    color: rgb(255 242 204);
+    background-color: rgb(27 20 100);
+    border: 12px solid rgb(41 171 226);
+}
+
+/* 누름효과 */
+#toOverBtn:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#toOverBtn:hover {
+    border-color: #0FF;
+    box-shadow: 0 0 70px 20px #57b7e4;
+}
+
+
+/* 시작버튼 */
+#strBtn {
+    position: absolute;
+    border-radius: 30px;
+    top: 610px;
+    left: 366px;
+    padding: 3px 30px;
+    font-family: 'Galmuri7 Regular';
+    font-size: 100px;
+    color: rgb(255 242 204);
+    background-color: rgb(27 20 100);
+    border: 12px solid rgb(41 171 226);
+}
+
+/* 누름효과 */
+#strBtn:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#strBtn:hover {
+    border-color: #0FF;
+    box-shadow: 0 0 70px 40px #57b7e4;
+}
+
+
+/* 확인버튼 */
+#conBtn {
+    position: absolute;
+    border-radius: 30px;
+    top: 580px;
+    left: 465px;
+    padding: 3px 30px;
+    font-family: 'Galmuri7 Regular';
+    font-size: 60px;
+    color: rgb(255 242 204);
+    background-color: rgb(27 20 100);
+    border: 12px solid rgb(41 171 226);
+}
+
+/* 누름효과 */
+#conBtn:active {
+    -webkit-transform: translateY((4px));
+    transform: translateY(4px);
+}
+
+/*호버 */
+#conBtn:hover {
+    border-color: #0FF;
+    box-shadow: 0 0 70px 20px #57b7e4;
 }
 
 
 /* ■■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■■ */
-#startbtn1{
+#startbtn1 {
     position: absolute;
     left: 372px;
     top: 610px;
 }
 
-#startbtn2{
+#startbtn2 {
     position: absolute;
     left: 372px;
     top: 610px;
 }
 
-#rulebtn{
+#rulebtn {
     position: absolute;
     left: 778px;
     top: 580px;
 }
+
+/* ■■■■■■■■■■■■■■■■■■■ 현채 ■■■■■■■■■■■■■■■■■■■ */
+
+input[type=checkbox] {
+    transform: scale(2);
+    /* 체크박스 크기 변경 */
+  }
+  
+  li {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color:antiquewhite;
+  }
+  
+  #start-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #next-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #submit-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  #last-btn{
+    font-family: 'dgm', sans-serif;
+    font-size: 30px;
+    margin-left: 800px;
+    width: 100px;
+    height: 60px;
+  }
+  
+  body {
+    font-family: 'dgm', sans-serif;
+    margin: 0;
+    background-image: url('../2kioskimage/whitebg.jpg');
+    background-size: 1150px 820px;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 1150px;
+    height: 820px;
+  }
+  
+  #ingredient-list {
+    position: absolute;
+    top: 100px;
+    left: 1px;
+    list-style-type: none;
+    float: left; 
+    margin-left: 0px;
+    /* 적절한 간격 */
+    font-family: 'dgm', sans-serif;
+    font-size: 100px;
+  }
+  
+  #start-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #start-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #start-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #next-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #next-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #next-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #submit-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #submit-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #submit-btn:active{
+    transform: translateY(5px);
+  }
+  
+  #last-btn {
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    right: 50px;
+    /* padding: 40px 70px; */
+    font-size: 50px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(240, 192, 49);
+    width: 150px;
+    height: 100px;
+  }
+  
+  #last-btn:hover{
+    border-color: rgb(237, 217, 164);
+    box-shadow: 0 0 29px 10px rgb(237, 217, 164);
+    background-color: rgb(205, 105, 105);
+  }
+  
+  #last-btn:active{
+    transform: translateY(5px);
+  }
