@@ -1,7 +1,6 @@
 import GameResult from "../items/0gameResult.js";
 
 export default class AfterGameCanvas {
-<<<<<<< HEAD
   #canvas;
   #ctx;
   #x;
@@ -21,42 +20,10 @@ export default class AfterGameCanvas {
     this.#canvas.height = 820;
     this.#ctx = this.#canvas.getContext("2d");
 
-=======
-
-    #canvas;
-    #ctx;
-    #x;
-    #y;
-    #w;
-    #h;
-    #gameResult;
-    #scenes;
-    #sceneIndex;
-
-    constructor() {
-        // canvas, constext -----------------------------------------------
-        this.#canvas = document.createElement("canvas");
-        document.body.append(this.#canvas);
-        this.#canvas.style.display = "none";
-        this.#canvas.width = 1150;
-        this.#canvas.height = 820;
-        this.#ctx = this.#canvas.getContext("2d");
-
-        // image
-        this.#x = 0;
-        this.#y = 0;
-        this.#w = 1150;
-        this.#h = 820;
-
-        // Game Result
-        this.#gameResult = new GameResult(this.#ctx);
-
->>>>>>> Jin
     // click ---------------------------------------------------------
     this.#sceneIndex = 0;
     this.#canvas.onclick = this.clickHandler.bind(this);
 
-<<<<<<< HEAD
     // Game Result
     this.#gameResult = new GameResult(this.#ctx);
 
@@ -93,33 +60,6 @@ export default class AfterGameCanvas {
       }.bind(this)
     );
   }
-=======
-        // image load
-        this.#scenes = new Array(18);
-        for (let i = 0; i < this.#scenes.length; i++) {
-            this.#scenes[i] = document.getElementById(`afterGame${i}`);
-          }
-
-    } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
-    // Scene_0 : 트로피 화면
-    gameResult() {
-        this.#gameResult.draw(this.#scenes[0]);
-        // 다음 버튼
-        let btn = document.getElementById("AG-S0-nextBtn");
-        btn.style.display = "block";
-        // 클릭하면
-        btn.addEventListener('click', function () {
-            btn.style.display = "none";
-            if (Data.gameResult >= 2)
-                // -> Scene_1 : 게임 승리 첫 씬으로
-                this.#sceneIndex++;
-            else
-                // -> Scene_10 : 게임 패배 첫 씬으로
-                this.#sceneIndex = 10;
-        }.bind(this));
-    }
->>>>>>> Jin
 
   // Scene_17 : 메인 || 종료
   goMainOrEnd() {
@@ -153,7 +93,6 @@ export default class AfterGameCanvas {
       this.#sceneIndex = 17;
       return;
     }
-<<<<<<< HEAD
     this.#sceneIndex++;
   } // click handler
 
@@ -165,7 +104,4 @@ export default class AfterGameCanvas {
     let h = this.#h;
     this.#ctx.drawImage(scene, x, y, w, h);
   }
-=======
-
->>>>>>> Jin
 }

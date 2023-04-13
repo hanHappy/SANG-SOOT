@@ -5,9 +5,9 @@ import TownCanvas from "./ui/0townCanvas.js";
 import RestaurantCanvas from "./ui/0restaurantCanvas.js";
 import AfterGameCanvas from "./ui/afterGameCanvas.js";
 // 세영
-// import Main from './ui/3quizMain.js';
-// import Rule from './ui/3quizRule.js';
-// import Game from './ui/3quizGame.js';
+import Main from "./ui/3quizMain.js";
+import Rule from "./ui/3quizRule.js";
+import Game from "./ui/3quizGame.js";
 // 예진
 import BattleStartCanvas from "./ui/4battleStartCanvas.js";
 import BattleGameCanvas from "./ui/4battleGameCanvas.js";
@@ -46,9 +46,18 @@ window.onload = () => {
   };
 
   // 캔버스 인스턴스 ------------------------------------------
+
+  // 0, 상민
   const introCanvas = new IntroCanvas(introToTown);
   const townCanvas = new TownCanvas(townToRstrant);
   const rstrntCanvas = new RestaurantCanvas(rstrntToSlot, rstrntToGame);
+
+  // 3, 세영
+  let main = new Main();
+  let rule = new Rule();
+  let game = new Game();
+
+  // 4, 예진
   const battleStartCanvas = new BattleStartCanvas();
   const battleGameCanvas = new BattleGameCanvas();
   const afterGameCanvas = new AfterGameCanvas();
@@ -202,6 +211,46 @@ window.onload = () => {
 
     //   document.getElementById("last-btn").style.display = "block";
     // });
+
+    // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+    // main.obj.style.display = "none";
+    main.run();
+
+    main.obj.addEventListener("click", (e) => {
+      const startX = e.offsetX;
+      const startY = e.offsetY;
+
+      // [Main] 시작하기 버튼 클릭 시 -> [Rule] 이동
+      if (startX >= 372 && startX <= 772 && startY >= 610 && startY <= 731) {
+        main.obj.remove();
+        rule.obj.style.display = "block";
+        main.mainPlay();
+        const quizIntroBgm = document.getElementById("quizIntroBgm");
+        quizIntroBgm.play();
+        // let rule = new Rule();
+        rule.run();
+      } // main if
+    }); // main click(e)
+
+    rule.obj.addEventListener("click", (e) => {
+      const startX = e.offsetX;
+      const startY = e.offsetY;
+
+      // [Rule] 다음 버튼 클릭 시 -> [Game] 게임 진행
+      if (startX >= 778 && startX <= 1022 && startY >= 580 && startY <= 674) {
+        rule.obj.remove();
+        game.obj.style.display = "block";
+        rule.rulePlay();
+        quizIntroBgm.pause();
+        // let game = new Game();
+        game.run();
+        setTimeout(() => {
+          game.countPlay();
+        }, 850);
+      } // rule if
+    }); // rule click(e)
+
     battleStartCanvas.run();
     // Game
     let checkIndex = setInterval(() => {
@@ -214,8 +263,6 @@ window.onload = () => {
       }
     }, 100);
   };
-
-  // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
   // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // // Main
