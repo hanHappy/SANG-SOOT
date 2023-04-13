@@ -13,8 +13,14 @@ body {
     display: none;
 }
 
+button{
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    display: none;
+}
+
 button:hover{
-    cursor: pointer;
     filter: brightness(0.8);
 }
 
@@ -137,214 +143,22 @@ button:hover{
 }
 
 .S9-submit:hover{
-    cursor: pointer;
     filter: brightness(0.8);
 }
 /* ■■■■■■■■■■■■■■■■■■■ 현준 ■■■■■■■■■■■■■■■■■■■ */
 
-/*---------- 메인 ----------- */
-
-/* 시작버튼 */
-#strBtn {
+.AG-S17-btnToMain{
     position: absolute;
-    border-radius: 30px;
-    top: 610px;
-    left: 366px;
-    padding: 3px 30px;
-    font-family: 'Galmuri7 Regular';
-    font-size: 100px;
-    color: rgb(255 242 204);
-    background-color: rgb(27 20 100);
-    border: 12px solid rgb(41 171 226);
+    margin-top: 200px;
+    margin-left: 275px;
 }
-
-/* 누름효과 */
-#strBtn:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#strBtn:hover {
-    border-color: #0FF;
-    box-shadow: 0 0 70px 40px #57b7e4;
-}
-
-
-/* 스핀버튼 */
-#spinBtn {
+.AG-S17-btnToEnding{
     position: absolute;
-    border-radius: 30px;
-    top: 670px;
-    left: 435px;
-    padding: 0px 40px;
-    font-family: 'Galmuri7 Regular';
-    font-size: 50px;
-    color: rgb(255 242 204);
-    background-color: rgb(27 20 100);
-    border: 10px solid rgb(41 171 226);
+    margin-top: 350px;
+    margin-left: 275px;
+    
 }
 
-/* 누름효과 */
-#spinBtn:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#spinBtn:hover {
-    border-color: #0FF;
-    box-shadow: 0 0 29px 10px #57b7e4;
-}
-
-
-/*---------- 규칙 ----------- */
-
-/* 확인버튼 */
-#conBtn {
-    position: absolute;
-    border-radius: 30px;
-    top: 580px;
-    left: 465px;
-    padding: 3px 30px;
-    font-family: 'Galmuri7 Regular';
-    font-size: 60px;
-    color: rgb(255 242 204);
-    background-color: rgb(27 20 100);
-    border: 12px solid rgb(41 171 226);
-}
-
-/* 누름효과 */
-#conBtn:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#conBtn:hover {
-    border-color: #0FF;
-    box-shadow: 0 0 70px 20px #57b7e4;
-}
-
-
-
-/*---------- 슬롯 ----------- */
-
-
-/* 스톱버튼 */
-#stop1 {
-    position: absolute;
-    border-radius: 30px;
-    top: 560px;
-    left: 225px;
-    padding: 17px 30px;
-    color: rgb(255 242 204);
-    font-family: 'Galmuri7 Regular';
-    /* font-size: 0px; */
-    background-color: rgb(245, 31, 70);
-    box-shadow: 0 0 29 31 #fff,
-        0 0 19px 19px #f00,
-        0 0 33px 17px #f00;
-    border: 10px solid rgb(233, 157, 81);
-    /* border-bottom: solid px #627295; */
-}
-
-#stop2 {
-    position: absolute;
-    border-radius: 30px;
-    top: 560px;
-    left: 485px;
-    padding: 17px 30px;
-    color: rgb(255 242 204);
-    background-color: rgb(245, 31, 70);
-    box-shadow: 0 0 29 31 #fff,
-        0 0 19px 19px #f00,
-        0 0 33px 17px #f00;
-    border: 10px solid rgb(233, 157, 81);
-    /* border-bottom: solid 4px #627295; */
-}
-
-#stop3 {
-    position: absolute;
-    border-radius: 30px;
-    top: 560px;
-    left: 730px;
-    padding: 17px 30px;
-    color: rgb(255 242 204);
-    background-color: rgb(245, 31, 70);
-    box-shadow: 0 0 29 31 #fff,
-        0 0 19px 19px #f00,
-        0 0 33px 17px #f00;
-    border: 10px solid rgb(233, 157, 81);
-    /* border-bottom: solid 4px #627295; */
-}
-
-
-/* 누름효과 */
-#stop1:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#stop1:hover {
-    border-color: rgb(247, 208, 168);
-    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
-}
-
-/* 누름효과 */
-#stop2:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#stop2:hover {
-    border-color: rgb(247, 208, 168);
-    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
-}
-
-/* 누름효과 */
-#stop3:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#stop3:hover {
-    border-color: rgb(247, 208, 168);
-    box-shadow: 0 0 29px 10px rgb(237, 168, 99);
-}
-
-
-/*---------- 슬롯 ----------- */
-
-
-/* 게임종료 */
-#toOverBtn {
-    position: absolute;
-    border-radius: 30px;
-    top: 600px;
-    left: 393px;
-    padding: 13px 30px;
-    font-family: 'Galmuri7 Regular';
-    font-size: 60px;
-    color: rgb(255 242 204);
-    background-color: rgb(27 20 100);
-    border: 12px solid rgb(41 171 226);
-}
-
-/* 누름효과 */
-#toOverBtn:active {
-    -webkit-transform: translateY((4px));
-    transform: translateY(4px);
-}
-
-/*호버 */
-#toOverBtn:hover {
-    border-color: #0FF;
-    box-shadow: 0 0 70px 20px #57b7e4;
-}
 
 /* ■■■■■■■■■■■■■■■■■■■ 세영 ■■■■■■■■■■■■■■■■■■■ */
 #startbtn1{
