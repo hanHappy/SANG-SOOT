@@ -209,16 +209,21 @@ window.onload = () => {
     // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
     // Game
-    let checkIndex = setInterval(() => {
-      let index = battleStartCanvas.scenIndex;
-      if (index == 4) {
-        battleGameCanvas.battleCanvas.style.display = "block";
-        battleStartCanvas.startCanvas.remove();
-        battleGameCanvas.run();
-        clearInterval(checkIndex);
-      }
-    }, 100);
-  };
+    const nextBtn = document.getElementById("nextbtn");
+    nextBtn.addEventListener("click", (e) => {
+      game.obj.remove();
+      nextBtn.style.display = "none";
+      let checkIndex = setInterval(() => {
+        let index = battleStartCanvas.scenIndex;
+        if (index == 4) {
+          battleStartCanvas.startCanvas.remove();
+          battleGameCanvas.battleCanvas.style.display = "block";
+          battleGameCanvas.run();
+          clearInterval(checkIndex);
+        }
+      }, 100);
+    });
+  }
 
   // // GAME_1 : 키오스크 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   // const startBtn = document.getElementById("start-btn");
