@@ -30,9 +30,9 @@ export default class AfterGameCanvas {
         // Game Result
         this.#gameResult = new GameResult(this.#ctx);
 
-        // click ---------------------------------------------------------
-        this.#sceneIndex = 0;
-        this.#canvas.onclick = this.clickHandler.bind(this);
+    // click ---------------------------------------------------------
+    this.#sceneIndex = 0;
+    this.#canvas.onclick = this.clickHandler.bind(this);
 
         // image load
         this.#scenes = new Array(18);
