@@ -1,15 +1,11 @@
-import BattleGameCanvas from "./4battleGameCanvas.js";
 import MatchPage from "../items/4battleMatch.js";
 import BattleBackground from "../background/4battleBackground.js";
 
 export default class BattleStartCanvas {
-  #tid;
   #battleStartCanvas;
   #battleGameCanvas;
   #battleStartCtx;
   #scenIndex;
-  #img1;
-  #img2;
   #images;
   #imgX;
   #imgY;
@@ -17,7 +13,6 @@ export default class BattleStartCanvas {
   #imgH;
   #matchPage;
   #background;
-  #gauge;
 
   constructor() {
     //canvas
@@ -37,30 +32,26 @@ export default class BattleStartCanvas {
     // click event
     this.#battleStartCanvas.onclick = this.clickHandler.bind(this);
 
-    // index
-    this.#scenIndex = 0;
-
-    // img
-    this.#images = new Array(6);
-
-    for (let i = 0; i < this.#images.length; i++) {
-      this.#images[i] = document.getElementById(`talk${i}`);
-    }
-
-    // Game Canvas
-    this.#battleGameCanvas = new BattleGameCanvas();
-
     // Match Page
     this.#matchPage = new MatchPage();
 
     //background
     this.#background = new BattleBackground();
+
+    // index
+    this.#scenIndex = 0;
+
+    // img
+    this.#images = new Array(3);
+
+    for (let i = 0; i < this.#images.length; i++) {
+      this.#images[i] = document.getElementById(`talk${i}`);
+    }
   }
 
   clickHandler(e) {
     this.#scenIndex++;
     if (this.#scenIndex < 4) this.paint();
-    // else if ((this.#scenIndex = 4)) this.#battleGameCanvas.run();
   }
 
   run() {
@@ -77,6 +68,8 @@ export default class BattleStartCanvas {
     if (this.#scenIndex == 3) {
       // background
       this.#background.draw(this.#battleStartCtx);
+
+      // match Page
       this.#battleStartCtx.clearRect(0, 0, 1150, 820);
       this.#matchPage.run(this.#battleStartCtx);
     } else {

@@ -18,6 +18,7 @@ export default class BattleGameCanvas {
     this.#battleGameCanvas = document.createElement("canvas");
     this.#battleGameCtx = this.#battleGameCanvas.getContext("2d");
     document.body.append(this.#battleGameCanvas);
+    this.#battleGameCanvas.style.display = "none";
     this.#battleGameCanvas.tabIndex = 0;
     this.#battleGameCanvas.focus();
 
@@ -43,13 +44,6 @@ export default class BattleGameCanvas {
     // NPC 얼굴 설정
     this.#battleGauge.onChangeNpc = this.onChangeNpcHandler.bind(this);
   }
-
-  // keyDownHandler(e) {
-  //   //입력받은 키보드 코드가 32라면 게이지
-  //   if (e.keyCode == 32) {
-  //     this.#battleGauge.plus();
-  //   } else alert("스페이스바를 입력하세요");
-  // }
 
   onChangeNpcHandler() {
     //게이지가 일정이상,이하가 됐을 때 기존이미지 지우고 새이미지 띄우기
@@ -95,5 +89,9 @@ export default class BattleGameCanvas {
 
     // NPC
     this.#battleNpc.draw(this.#battleGameCtx);
+  }
+
+  get battleCanvas() {
+    return this.#battleGameCanvas;
   }
 } //class

@@ -12,29 +12,32 @@ export default class MatchPage {
   #velocity;
   #ceo;
   #user;
+  #background;
 
   constructor() {
     this.#x = -190;
-    this.#y = -150;
-    this.#vx = 180;
-    this.#vy = 120;
+    this.#y = 0;
 
-    this.#ux = 1030;
-    this.#uy = 400;
+    //ceo location
+    this.#vx = 100;
+    this.#vy = 210;
 
-    this.#vux = 650;
+    //user location
+    this.#ux = 980;
+    this.#uy = -300;
+
+    this.#vux = 150;
 
     this.#ceo = document.getElementById("ceo");
     this.#user = document.getElementById("4user");
+    this.#background = document.getElementById("background");
 
-    this.#velocity = 2;
+    this.#velocity = 2.5;
   } //constructor
 
   //런이 실행되면 바로 이미지가 계속해서 그려지고 이미지가 목적지에 도착할떄까지 움직인다.
 
   run(ctx) {
-    console.log("런까지 실행완료");
-
     this.#tid = setInterval(() => {
       this.draw(ctx);
       this.update();
@@ -42,18 +45,21 @@ export default class MatchPage {
   }
 
   draw(ctx) {
-    console.log("드로우까지 실행완료");
-
     ctx.clearRect(this.#x, this.#y, 2000, 2000);
-    ctx.drawImage(this.#ceo, this.#x, this.#y, 300, 400);
+    ctx.drawImage(this.#background, 0, 0, 1150, 820);
+    ctx.drawImage(this.#ceo, this.#x, this.#y, 380, 400);
     ctx.drawImage(this.#user, this.#ux, this.#uy, 300, 400);
   }
 
   update() {
-    console.log("업뎃까지 실행완료");
+    console.log("update");
+    // 멈추기
+    if (this.#x == this.#vx) {
+      clearInterval(this.#tid);
+    }
 
-    // CEO
     if (this.#x < this.#vx) {
+      // CEO
       this.#x += this.#velocity;
     } else if (this.#x > this.#vx) {
       this.#x -= this.#velocity;
