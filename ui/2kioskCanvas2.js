@@ -68,9 +68,7 @@ export default class KioskCanvas2 {
     
     update() {
         this.#kioskGauge.update();
-        if(this.#kioskResult.end){
-            this.#nextCanvas(this.#canvas);
-        }
+
     }
 
     paint() {
@@ -100,6 +98,7 @@ export default class KioskCanvas2 {
         this.#kioskResult.checkResult(result);
         this.#kioskResult.draw();
 
+        this.#canvas.remove();
         this.#submitted = true;
         this.#submitBtn.style.display = "none";
         this.#ckBoxes.style.display = "none";

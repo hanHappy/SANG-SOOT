@@ -183,7 +183,7 @@ window.onload = () => {
     // let ruleToGame = function(canvas){
     //   canvas.remove();
     //   kioskCanvas2.canvas.style.display = "block";
-    //   document.getElementById('submit-btn').style.display = "block";
+    //   document.getElementById("submit-btn").style.display = "block";
     //   kioskCanvas2.run();
     // }
     // let gameToResult = function(canvas){
@@ -191,12 +191,11 @@ window.onload = () => {
     //   kioskResult.draw();
     // }
     // let kioskToSecondGame = function(){
-      
+    //   main.obj.style.display = "block";
+    //   main.run();
     // }
 
-    // GAME_1 : 키오스크 --------------------------------------------------------------
 
-    // 첫번째 캔버스
     // const kioskCanvas0 = new KioskCanvas0(mainToRule);
     // const kioskCanvas1 = new KioskCanvas1(ruleToGame);
     // const kioskCanvas2 = new KioskCanvas2(gameToResult);
@@ -255,6 +254,9 @@ window.onload = () => {
       game.obj.remove();
       nextBtn.style.display = "none";
       battleStartCanvas.startCanvas.style.display = "block";
+      requestAnimationFrame(() => {
+        battleStartCanvas.paint();
+      });
       let checkIndex = setInterval(() => {
         let index = battleStartCanvas.scenIndex;
         if (index == 4) {

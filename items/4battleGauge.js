@@ -8,6 +8,7 @@ export default class BattleGauge {
   #redBoxWidth;
   #onChangeNpc;
   #end;
+  #check;
 
   constructor() {
     //게이지 x,y 좌표
@@ -26,6 +27,8 @@ export default class BattleGauge {
 
     // 승리 callback 함수
     this.#end = false;
+
+    this.#check = false;
   }
 
   set onChangeNpc(Callback) {
@@ -73,10 +76,13 @@ export default class BattleGauge {
     //   return;
     // }
 
+    if(this.#check)
+      return;
     //★★★★★★★★★★★★★★★★★★★★★게임리저트 수정해주세요
     if (this.#redBoxWidth <= 0) {
       //win
       Data.gameResult++;
+      this.#check = true;
       this.#end = true;
     }
     this.#redBoxWidth += 1;
@@ -89,7 +95,7 @@ export default class BattleGauge {
   plus() {
     // if 게이지 너비가 틀 너비 보다 작을때, 게이지 너비 ++
     if (0 <= this.#redBoxWidth) {
-      this.#redBoxWidth -= 50;
+      this.#redBoxWidth -= 15;
     }
   }
 }

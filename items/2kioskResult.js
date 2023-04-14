@@ -50,6 +50,8 @@ export default class KioskResult{
     }
 
     onClickHandler(){
+        this.#winImg.style.display = "none";
+        this.#loseImg.style.display = "none";
         this.#lastBtn.style.display = "none";
         this.#nextCanvas();
     }
@@ -70,6 +72,7 @@ export default class KioskResult{
         // ctx.drawImage(this.#img, 0, 0, 1150, 820);
 
         if(this.#win){
+            Data.gameResult++;
             let width = this.#winImg.width;
             let height = this.#winImg.height;
             ctx.drawImage(this.#winImg, x, y, width, height);

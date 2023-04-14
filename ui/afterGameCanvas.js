@@ -12,6 +12,7 @@ export default class AfterGameCanvas {
     #sceneIndex;
     #trophy;
     #trophyLose;
+    #btn
 
     constructor() {
         // canvas, constext -----------------------------------------------
@@ -40,6 +41,9 @@ export default class AfterGameCanvas {
         this.#trophy = document.getElementById("trophy");
         this.#trophyLose = document.getElementById("trophyLose");
 
+        // s0 다음버튼
+        this.#btn = document.getElementById("AG-S0-nextBtn");
+
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
     get canvas() {
@@ -48,13 +52,14 @@ export default class AfterGameCanvas {
 
     // Scene_0 : 트로피 화면
     gameResult() {
+        if (this.#sceneIndex >= 1)
+            return;
         this.#ctx.drawImage(this.#scenes[0], 0, 0, 1150, 820);
         // 트로피
         let result = Data.gameResult;
         let ctx = this.#ctx;
         let trp = this.#trophy;
         let trpL = this.#trophyLose;
-        console.log(result);
         switch (result) {
             case 0:
                 ctx.drawImage(trpL, 100, 100);
@@ -78,17 +83,12 @@ export default class AfterGameCanvas {
                 break;
         }
         // 다음 버튼
-        let btn = document.getElementById("AG-S0-nextBtn");
-        btn.style.display = "block";
-        // 클릭하면
-        btn.addEventListener(
-            "click",
-            function () {
-                btn.style.display = "none";
-                
-            }.bind(this)
-        );
-        this.#sceneIndex++;
+        // this.#btn.style.display = "block";
+        if (Data.gameResult >= 2)
+            // -> Scene_1 : 게임 승리 첫 씬으로
+            this.#sceneIndex++;
+            // -> Scene_10 : 게임 패배 첫 씬으로
+            else this.#sceneIndex = 10;
     }
 
     // Scene_17 : 메인 || 종료
@@ -106,14 +106,11 @@ export default class AfterGameCanvas {
     }
 
     clickHandler() {
-        // 트로피 화면에서는 버튼 클릭으로만 화면 전환
-        if(this.#sceneIndex==0){
-            if (Data.gameResult >= 2)
-                // -> Scene_1 : 게임 승리 첫 씬으로
-                this.#sceneIndex++;
-            // -> Scene_10 : 게임 패배 첫 씬으로
-            else this.#sceneIndex = 10;
+        if (this.#sceneIndex == 1) {
+            this.#btn.style.display = "none";
         }
+
+        console.log(Data.gameResult);
         // 그리기
         this.draw();
         // Scene_17 : 메인 || 종료
@@ -128,14 +125,11 @@ export default class AfterGameCanvas {
             return;
         }
         this.#sceneIndex++;
+
     } // click handler
 
     draw() {
         let scene = this.#scenes[this.#sceneIndex];
-        let x = this.#x;
-        let y = this.#y;
-        let w = this.#w;
-        let h = this.#h;
-        this.#ctx.drawImage(scene, x, y, w, h);
+        this.#ctx.drawImage(scene, 0, 0, 1150, 820);
     }
 }

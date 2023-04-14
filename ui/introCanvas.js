@@ -30,7 +30,7 @@ export default class IntroCanvas {
         this.#canvas.onclick = this.clickHandler.bind(this);
 
         // image load
-        this.#scenes = new Array(5);
+        this.#scenes = new Array(6);
         for (let i = 0; i < this.#scenes.length; i++) {
             this.#scenes[i] = document.getElementById(`intro${i}`);
           }
@@ -39,7 +39,7 @@ export default class IntroCanvas {
     // 클릭할 때마다 다음 scene으로 넘어감
     clickHandler() {
         this.#sceneIndex++;
-        if(this.#sceneIndex == 5){
+        if(this.#sceneIndex == 6){
             this.#nextCanvas(this.#canvas);
             return;
         }
