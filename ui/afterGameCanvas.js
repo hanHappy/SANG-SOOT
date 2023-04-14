@@ -1,4 +1,4 @@
-import GameResult from "../items/0gameResult.js";
+import Data from "../items/data.js";
 
 export default class AfterGameCanvas {
     #canvas;
@@ -10,6 +10,8 @@ export default class AfterGameCanvas {
     #gameResult;
     #scenes;
     #sceneIndex;
+    #trophy;
+    #trophyLose;
 
     constructor() {
         // canvas, constext -----------------------------------------------
@@ -24,9 +26,6 @@ export default class AfterGameCanvas {
         this.#sceneIndex = 0;
         this.#canvas.onclick = this.clickHandler.bind(this);
 
-        // Game Result
-        this.#gameResult = new GameResult(this.#ctx);
-
         // click ---------------------------------------------------------
         this.#sceneIndex = 0;
         this.#canvas.onclick = this.clickHandler.bind(this);
@@ -37,6 +36,10 @@ export default class AfterGameCanvas {
             this.#scenes[i] = document.getElementById(`afterGame${i}`);
         }
 
+        // 트로피
+        this.#trophy = document.getElementById("trophy");
+        this.#trophyLose = document.getElementById("trophyLose");
+
     } // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
     get canvas() {
@@ -45,7 +48,35 @@ export default class AfterGameCanvas {
 
     // Scene_0 : 트로피 화면
     gameResult() {
-        this.#gameResult.draw(this.#scenes[0]);
+        this.#ctx.drawImage(this.#scenes[0], 0, 0, 1150, 820);
+        // 트로피
+        let result = Data.gameResult;
+        let ctx = this.#ctx;
+        let trp = this.#trophy;
+        let trpL = this.#trophyLose;
+        console.log(result);
+        switch (result) {
+            case 0:
+                ctx.drawImage(trpL, 100, 100);
+                ctx.drawImage(trpL, 400, 100);
+                ctx.drawImage(trpL, 700, 100);
+                break;
+            case 1:
+                ctx.drawImage(trp, 100, 100);
+                ctx.drawImage(trpL, 400, 100);
+                ctx.drawImage(trpL, 700, 100);
+                break;
+            case 2:
+                ctx.drawImage(trp, 100, 100);
+                ctx.drawImage(trp, 400, 100);
+                ctx.drawImage(trpL, 700, 100);
+                break;
+            case 3:
+                ctx.drawImage(trp, 100, 100);
+                ctx.drawImage(trp, 400, 100);
+                ctx.drawImage(trp, 700, 100);
+                break;
+        }
         // 다음 버튼
         let btn = document.getElementById("AG-S0-nextBtn");
         btn.style.display = "block";
@@ -54,13 +85,10 @@ export default class AfterGameCanvas {
             "click",
             function () {
                 btn.style.display = "none";
-                if (Data.gameResult >= 2)
-                    // -> Scene_1 : 게임 승리 첫 씬으로
-                    this.#sceneIndex++;
-                // -> Scene_10 : 게임 패배 첫 씬으로
-                else this.#sceneIndex = 10;
+                
             }.bind(this)
         );
+        this.#sceneIndex++;
     }
 
     // Scene_17 : 메인 || 종료
@@ -79,8 +107,12 @@ export default class AfterGameCanvas {
 
     clickHandler() {
         // 트로피 화면에서는 버튼 클릭으로만 화면 전환
-        if (this.#sceneIndex == 0) {
-            return;
+        if(this.#sceneIndex==0){
+            if (Data.gameResult >= 2)
+                // -> Scene_1 : 게임 승리 첫 씬으로
+                this.#sceneIndex++;
+            // -> Scene_10 : 게임 패배 첫 씬으로
+            else this.#sceneIndex = 10;
         }
         // 그리기
         this.draw();

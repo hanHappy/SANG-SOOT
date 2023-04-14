@@ -83,7 +83,7 @@ export default class BattleGameCanvas {
 
   update() {
     this.#battleGauge.update();
-    if(this.#battleGauge){
+    if(this.#battleGauge.end){
       this.#nextCanvas(this.#battleGameCanvas);
     }
     // if (this.#battleGameCanvas) {

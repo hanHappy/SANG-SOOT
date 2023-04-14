@@ -78,10 +78,7 @@ export default class BattleGauge {
       //win
       Data.gameResult++;
       this.#end = true;
-
-      //다음페이지
     }
-
     this.#redBoxWidth += 1;
   }
 

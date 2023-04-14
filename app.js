@@ -72,11 +72,6 @@ window.onload = () => {
     afterGameCanvas.gameResult();
   }
 
-  // 4, 예진
-  const battleStartCanvas = new BattleStartCanvas();
-  const battleGameCanvas = new BattleGameCanvas();
-  const afterGameCanvas = new AfterGameCanvas();
-
   // 인트로 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   introCanvas.firstScene();
 
@@ -197,10 +192,7 @@ window.onload = () => {
     // }
     // let kioskToSecondGame = function(){
       
-    // main.obj.style.display = "block";
-    // main.run();
     // }
-
 
     // GAME_1 : 키오스크 --------------------------------------------------------------
 
@@ -215,8 +207,9 @@ window.onload = () => {
 
 
     // GAME_2 : 음식맞추기 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    main.obj.style.display = "none";
 
+    main.obj.style.display = "block";
+    main.run();
 
     main.obj.addEventListener("click", (e) => {
       const startX = e.offsetX;
@@ -254,6 +247,8 @@ window.onload = () => {
 
     // GAME_3 : 사장과대결 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
+      // 4, 예진
+
     // Game
     const nextBtn = document.getElementById("nextbtn");
     nextBtn.addEventListener("click", (e) => {
@@ -270,6 +265,17 @@ window.onload = () => {
         }
       }, 100);
     });
+
+    let afterGame = function(canvas){
+      canvas.remove();
+      afterGameCanvas.gameResult();
+      afterGameCanvas.canvas.style.display = "block";
+    }
+    const battleStartCanvas = new BattleStartCanvas();
+    const battleGameCanvas = new BattleGameCanvas(afterGame);
+    const afterGameCanvas = new AfterGameCanvas();
+
+
 
   } // toGame()
 

@@ -56,7 +56,6 @@ export default class MatchPage {
     // 멈추기
     if (this.#x == this.#vx) {
       clearInterval(this.#tid);
-      this.text();
     }
 
     if (this.#x < this.#vx) {
@@ -86,7 +85,4 @@ export default class MatchPage {
     }
   }
 
-  text(ctx) {
-    ctx.fillText("하이~", 500, 700, 100);
-  }
 } //class

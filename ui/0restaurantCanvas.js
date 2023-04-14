@@ -75,9 +75,6 @@ export default class RestaurantCanvas {
   // Scene_0 : 어서오세요~ -------------------------------------------------
   welcome() {
     this.draw();
-    let rstrntName = TownCanvas.rstrnts[Data.rstrntIndex].name;
-    this.#ctx.font = "37px dgm";
-    this.#ctx.fillText(`${rstrntName}입니다!`, 330, 687);
   }
 
   // Scene_1 : 메뉴판 ----------------------------------------------------------
